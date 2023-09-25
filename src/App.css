@@ -16,3 +16,12 @@
     transform: rotate(360deg);
   }
 }
+
+.my-navbar-text {
+  font-size: 0.7rem;
+  background-color: transparent;
+}
+.my-navbar-dropdown {
+  font-size: 0.9rem;
+  background-color: transparent;
+}
