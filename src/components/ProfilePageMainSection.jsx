@@ -21,7 +21,7 @@ const ProfilePageMainSection = () => {
           <Col xs={8}>
             <h3>Angelo Moreno</h3>
           </Col>
-          <Col xs={4}>
+          <Col xs={4} style={{ textAlign: "center" }}>
             <h6>Epicode</h6>
           </Col>
         </Row>
