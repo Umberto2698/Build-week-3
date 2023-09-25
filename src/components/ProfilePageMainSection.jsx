@@ -13,14 +13,11 @@ const ProfilePageMainSection = () => {
           />
         </div>
       </div>
-      <div
-        className=" px-4 user-info py-4 m-0"
-        style={{ backgroundColor: "white" }}
-      >
+      <div className=" px-4 pb-4 pt-3 m-0" style={{ backgroundColor: "white" }}>
         <div className="d-flex justify-content-end">
           <i className="bi bi-pen pointer one"></i>
         </div>
-        <Row className="align-items-center">
+        <Row className="align-items-center pt-2">
           <Col xs={8}>
             <h3>Angelo Moreno</h3>
           </Col>
