@@ -51,9 +51,9 @@ const MyNavbar = () => {
   return (
     <>
       {user && (
-        <Navbar fixed="top" expand="lg" className="bg-body-tertiary p-0">
-          <Container fluid="xl">
-            <Row className="flex-grow-1 p-1">
+        <Navbar fixed="top" expand="lg" style={{ height: "53px" }} className="bg-body-tertiary p-0">
+          <Container fluid="xl" style={{ height: "100%" }}>
+            <Row className="flex-grow-1 " style={{ height: "100%" }}>
               <Col xs={1} lg={4} className="p-1 d-flex align-items-center">
                 <Link to="/" className="me-2">
                   <img
