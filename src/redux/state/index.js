@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import jobsReducer from "../reducers/NavbarReducer";
+import userReducer from "../reducers/NavbarReducer";
 
 const totalReducer = combineReducers({
-  jobs: jobsReducer,
+  user: userReducer,
 });
 
 const store = configureStore({
