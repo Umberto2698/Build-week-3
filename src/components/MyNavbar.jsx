@@ -30,6 +30,7 @@ const MyNavbar = () => {
 
     try {
       const response = await fetch(baseEndpoint, {
+        method: "GET",
         headers: {
           Authorization: token,
         },
@@ -69,7 +70,7 @@ const MyNavbar = () => {
                   <InputGroup>
                     <InputGroup.Text
                       id="basic-addon1"
-                      className="border border-0 p-0 ps-4 "
+                      className="border border-0 p-0 ps-4 pe-1"
                       style={{ backgroundColor: "#EDF3F8" }}
                     >
                       <Search />
@@ -90,7 +91,6 @@ const MyNavbar = () => {
                 <Row className="flex-grow-1" style={{ height: "100%" }}>
                   <Col className="d-lg-none" style={{ height: "100%" }}>
                     <Link
-                      to="/"
                       className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
@@ -196,6 +196,7 @@ const MyNavbar = () => {
                             </div>
                           </div>
                           <Button
+                            id="navbar-button"
                             variant="outline-primary"
                             className="rounded-pill py-0"
                             size="sm"
@@ -221,7 +222,6 @@ const MyNavbar = () => {
                   </Col>
                   <Col className="py-1 d-none d-sm-block" style={{ height: "100%" }}>
                     <Link
-                      to="#"
                       className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >

@@ -21,6 +21,9 @@
   font-size: 0.7rem;
   background-color: transparent;
 }
+.my-navbar-text:hover {
+  color: black !important;
+}
 .my-navbar-dropdown {
   font-size: 0.9rem;
   background-color: transparent;
@@ -29,4 +32,12 @@
 .active {
   color: black !important;
   border-bottom: 2px solid black;
+}
+
+#navbar-button {
+  box-sizing: border-box;
+}
+#navbar-button:hover {
+  border: 2px solid;
+  box-sizing: border-box;
 }
