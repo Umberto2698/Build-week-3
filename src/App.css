@@ -168,7 +168,8 @@
 }
 
 .cards-wrapper::-webkit-scrollbar-track {
-  background: var(--light-grey); /* color of the tracking area */
+  border-radius: 5px;
+  background: var(--mid-grey); /* color of the tracking area */
 }
 
 .cards-wrapper::-webkit-scrollbar-thumb {
