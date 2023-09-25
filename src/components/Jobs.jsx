@@ -25,7 +25,7 @@ const Jobs = ({ jobData }) => {
       </Col>
       <Col lg={2} className="justify-content-end text-end">
         <div
-          className="job-icon eye-slash rounded-5 text-end m-0  d-inline-block  text-center align-middle"
+          className="job-icon eye-slash rounded-5 text-end m-0 d-inline-block text-center align-middle"
           style={{ width: "30px", height: "30px" }}
         >
           <EyeSlashFill size={20}></EyeSlashFill>

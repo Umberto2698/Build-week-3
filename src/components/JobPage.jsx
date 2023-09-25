@@ -16,10 +16,12 @@ import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import Jobs from "./Jobs";
 import { useDispatch, useSelector } from "react-redux";
 import { getRandomJobsAction } from "../redux/actions";
+import JobsPlaceholder from "./JobsPlaceholder";
 
 const JobPage = () => {
   const dispatch = useDispatch();
   const randomJobArray = useSelector((state) => state.job.random.content);
+  const loading = useSelector((state) => state.state.loading.content);
 
   useEffect(() => {
     dispatch(getRandomJobsAction());
@@ -87,7 +89,9 @@ const JobPage = () => {
                 Sulla base del tuo profilo e della tua cronologia di ricerche
               </p>
             </div>
-            {randomJobArray.length !== 0 && randomJobArray.map((job) => <Jobs jobData={job} key={job._id}></Jobs>)}
+            {loading === true
+              ? [...Array(3).keys()].map((el) => <JobsPlaceholder key={el}></JobsPlaceholder>)
+              : randomJobArray.length !== 0 && randomJobArray.map((job) => <Jobs jobData={job} key={job._id}></Jobs>)}
             <div className="job-detail border-top border-top-secondary-subtle d-flex align-items-center justify-content-center py-3 w-100">
               <h4 className="m-0 d-inline-block text-secondary me-2" style={{ fontSize: "15px" }}>
                 Mostra tutto
