@@ -6,9 +6,11 @@ import ProfilePage from "./components/ProfilePage";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<ProfilePage></ProfilePage>}></Route>
-      </Routes>
+      <div style={{ backgroundColor: "#f4f2ee" }}>
+        <Routes>
+          <Route path="/" element={<ProfilePage />}></Route>
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }
