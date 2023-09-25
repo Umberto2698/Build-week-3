@@ -113,34 +113,40 @@
   border-radius: 100px;
   font-weight: 600;
   font-size: 1rem;
-  background-color: transparent;
-  border: 1px solid var(--mainColor);
-  color: var(--mainColor);
+  background-color: transparent !important;
+  border: unset;
+  outline: 1px solid var(--mainColor) !important;
+  color: var(--mainColor) !important;
+}
+
+.my-btn::after {
+  all: unset;
 }
 
 .my-btn:hover {
   background-color: var(--mainColor-light-trasparent);
-  border: 2px solid var(--mainColor);
+  outline: 2px solid var(--mainColor);
   color: var(--mainColor);
 }
-
+/* 
 #profile-page .my-btn:first-of-type {
   color: white;
   background-color: var(--mainColor);
+  outline: 1px solid var(--mainColor-dark);
 }
 #profile-page .my-btn:first-of-type:hover {
   background-color: var(--mainColor-dark);
-  border: 2px solid var(--mainColor-dark);
+  outline: 2px solid var(--mainColor-dark);
 }
 #profile-page .my-btn:last-of-type {
   color: var(--grey);
-  border: 1px solid var(--grey);
+  outline: 1px solid var(--grey);
   font-weight: 400;
 }
 #profile-page .my-btn:last-of-type:hover {
   background-color: var(--light-grey-trasparent);
-  border: 2px solid var(--grey);
-}
+  outline: 2px solid var(--grey);
+} */
 
 .card-user-info {
   display: flex;
@@ -163,6 +169,7 @@
   overflow-x: scroll;
 }
 
+/* --------------------------  STYLE DELLA SCROLLBAR  -------------------------- */
 .cards-wrapper::-webkit-scrollbar {
   height: 5px; /* width of the entire scrollbar */
 }
@@ -177,5 +184,48 @@
   border-radius: 20px; /* roundness of the scroll thumb */
 }
 
+.modal-body::-webkit-scrollbar {
+  width: 7px; /* width of the entire scrollbar */
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: var(--mid-grey); /* color of the tracking area */
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background-color: var(--grey); /* color of the scroll thumb */
+}
+
+/* --------------------------  FINE STYLE DELLA SCROLLBAR  -------------------------- */
+
+.modal-dialog {
+  max-width: 744px;
+}
+
+.my-label {
+  margin-bottom: 2px;
+  font-size: 14px;
+  color: var(--grey);
+}
+
+.my-input-control {
+  padding: 6px 8px;
+  font-size: 14px;
+}
+
+.my-input-check {
+  padding: 6px 8px;
+  font-size: 14px;
+  margin-left: 15px;
+}
+
+.my-input-check .form-check-label {
+  margin: 7px 0 0 10px;
+}
+
+.my-input-check .form-check-input {
+  width: 2em;
+  height: 2em;
+}
 @media screen and (max-width: 1200px) {
 }

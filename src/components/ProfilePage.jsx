@@ -1,4 +1,4 @@
-import ProfilePageExpSection from "./ProfilePageExpSection";
+// import ProfilePageExpSection from "./ProfilePageExpSection";
 import ProfilePageMainSection from "./ProfilePageMainSection";
 
 const ProfilePage = () => {
