@@ -1,5 +1,36 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+}
+
+#publishJob {
+  border-radius: 25px;
+}
+
+#publishJob:hover {
+  border: 2px solid #0d6efd;
+  color: #0d6efd;
+  background-color: rgba(141, 219, 255, 0.235);
+}
+
+.footer-text {
+  font-size: 12px;
+}
+
+.footer-text:hover {
+  color: #0d6efd;
+  text-decoration: underline;
+}
+
+.footer-dropdown {
+  box-shadow: black;
+}
+
+.footer-dropdown:hover {
+  background-color: #ebebeb;
 }
 
 @media (prefers-reduced-motion: no-preference) {
