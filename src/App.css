@@ -11,9 +11,45 @@
 }
 
 #publishJob:hover {
-  border: 2px solid #0d6efd;
+  outline: 2px solid #0d6efd;
   color: #0d6efd;
   background-color: rgba(141, 219, 255, 0.235);
+}
+
+.job:hover {
+  cursor: pointer;
+}
+
+.job:hover h2 {
+  text-decoration: underline;
+  text-decoration-color: #0d6efd;
+}
+
+.job:hover .eye-slash {
+  animation: 1s linear forwards show-eye-slash;
+}
+
+@keyframes show-eye-slash {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 100;
+  }
+}
+
+.job-icon:hover {
+  cursor: pointer;
+  background-color: #ebebeb;
+}
+
+.eye-slash {
+  opacity: 0;
+}
+
+.job-detail:hover {
+  cursor: pointer;
+  background-color: #ebebeb;
 }
 
 .footer-text {
@@ -33,17 +69,7 @@
   background-color: #ebebeb;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.footer-dropdown-2:hover {
+  text-decoration: underline;
+  text-decoration-color: #0d6efd;
 }

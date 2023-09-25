@@ -1,10 +1,31 @@
 import { Button, Col, Container, Dropdown, Row } from "react-bootstrap";
-import { BookmarkFill, BellFill, Clipboard2Check, Youtube, GearFill, PencilSquare } from "react-bootstrap-icons";
+import {
+  BookmarkFill,
+  BellFill,
+  Clipboard2Check,
+  Youtube,
+  GearFill,
+  PencilSquare,
+  Plus,
+  ArrowRight,
+} from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import FooterLogo from "../assets/LinkedIn-Logos/LI-Logo.png";
+import DropdownItem from "react-bootstrap/esm/DropdownItem";
+import Jobs from "./Jobs";
+import { useDispatch, useSelector } from "react-redux";
+import { getRandomJobsAction } from "../redux/actions";
 
 const JobPage = () => {
+  const dispatch = useDispatch();
+  const randomJobArray = useSelector((state) => state.job.random.content);
+
+  useEffect(() => {
+    dispatch(getRandomJobsAction());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => {
     return (
       <Link
@@ -56,7 +77,25 @@ const JobPage = () => {
             </Button>
           </div>
         </Col>
-        <Col></Col>
+        <Col lg={6} className="flex-column align-items-center justify-content-start">
+          <div className="d-flex flex-column align-items-center justify-content-between pt-3 mb-3 bg-white border border-secondary-subtle rounded-3">
+            <div className="d-flex flex-column align-items-start w-100 mb-2 px-2">
+              <h2 className="m-0" style={{ fontSize: "20px" }}>
+                Consigliato per te
+              </h2>
+              <p className="m-0 text-secondary" style={{ fontSize: "13px" }}>
+                Sulla base del tuo profilo e della tua cronologia di ricerche
+              </p>
+            </div>
+            {randomJobArray.length !== 0 && randomJobArray.map((job) => <Jobs jobData={job} key={job._id}></Jobs>)}
+            <div className="job-detail border-top border-top-secondary-subtle d-flex align-items-center justify-content-center py-3 w-100">
+              <h4 className="m-0 d-inline-block text-secondary me-2" style={{ fontSize: "15px" }}>
+                Mostra tutto
+              </h4>
+              <ArrowRight size={20}></ArrowRight>
+            </div>
+          </div>
+        </Col>
         <Col lg={3} className="d-flex flex-column justify-content-start align-items-center">
           <div className="mb-2">
             <div className="text-secondary text-center">
@@ -106,9 +145,39 @@ const JobPage = () => {
               <Link to="/" className="text-decoration-none text-reset mx-2 my-2">
                 <span className="footer-text">Pubblicità</span>
               </Link>
-              <Link to="/" className="text-decoration-none text-reset mx-2 my-2">
-                <span className="footer-text">Servizi alle aziende</span>
-              </Link>
+              <Dropdown className="d-inline-block">
+                <Dropdown.Toggle id="dropdown-custom-components" as={CustomToggle} className="footer-text">
+                  Servizi alle aziende
+                </Dropdown.Toggle>
+                <Dropdown.Menu
+                  className="rounded-start-3 bg-white border border-secondary-subtle "
+                  style={{ borderRadius: "0" }}
+                >
+                  <Dropdown.Item className="fw-medium footer-dropdown-2">
+                    <h6 className="m-0" style={{ fontSize: "13px" }}>
+                      Impara con Linkedin
+                    </h6>
+                    <p className="m-0 text-secondary" style={{ fontSize: "12px" }}>
+                      Corsi per formare i tuoi dipendenti
+                    </p>
+                  </Dropdown.Item>
+                  <Dropdown.Item className="fw-medium footer-dropdown-2">
+                    <h6 className="m-0" style={{ fontSize: "13px" }}>
+                      Centro amministrazione
+                    </h6>
+                    <p className="m-0 text-secondary" style={{ fontSize: "12px" }}>
+                      Gestisci i dettagli di fatturazione e account
+                    </p>
+                  </Dropdown.Item>
+                  <Dropdown.Divider />
+                  <DropdownItem className="fw-medium footer-dropdown-2 d-flex align-items-center">
+                    <h6 className="m-0 d-inline-block" style={{ fontSize: "13px" }}>
+                      Crea una pagina aziendale
+                    </h6>
+                    <Plus className="text-dark fw-bold" size={25}></Plus>
+                  </DropdownItem>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
             <div className="text-secondary text-center">
               <Link to="/" className="text-decoration-none text-reset mx-2 my-2">

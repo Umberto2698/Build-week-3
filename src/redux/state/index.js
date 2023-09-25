@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import mainReducer from "../reducers";
+import fetchReducer from "../reducers/fetchReducer";
 
 const totalReducer = combineReducers({
-  job: mainReducer,
+  job: fetchReducer,
 });
 
 const store = configureStore({
