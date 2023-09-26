@@ -4,11 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell, faBriefcase, faHouse, faSquarePlus, faUserGroup } from "@fortawesome/free-solid-svg-icons";
 
-import { useSelector } from "react-redux";
-
 const BottomBar = () => {
   const location = useLocation();
-  const user = useSelector(state => state.user.content);
 
   return (
     <>
