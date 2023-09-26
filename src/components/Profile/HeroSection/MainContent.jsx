@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const MainContent = () => {
@@ -13,6 +14,8 @@ const MainContent = () => {
     second: false,
     third: false,
   });
+
+  const myProfile = useSelector((state) => state.profiles.myProfile);
   return (
     <div className=" px-4 pb-4 pt-3 m-0" style={{ backgroundColor: "white" }}>
       <div className="d-flex justify-content-end">
@@ -168,15 +171,17 @@ const MainContent = () => {
       </Modal>
       <Row className="align-items-center pt-2">
         <Col xs={8}>
-          <h3>Angelo Moreno</h3>
+          <h3>
+            {myProfile.name} {myProfile.surname}
+          </h3>
         </Col>
         <Col xs={4} style={{ textAlign: "center" }}>
-          <h6>Epicode</h6>
+          <h6>{myProfile.title}</h6>
         </Col>
       </Row>
       <div>
         <p className="mt-2" style={{ color: "#9a9a9a" }}>
-          Monza, Lombardia, Italia ·{" "}
+          {myProfile.area} ·{" "}
           <Link className="link">Informazioni di contatto</Link>
         </p>
       </div>
