@@ -1,16 +1,4 @@
-const setSearch = (search) => {
-  return {
-    type: "SET_SEARCH",
-    payload: search,
-  };
-};
-
-const setQuery = (query) => {
-  return {
-    type: "SET_QUERY",
-    payload: query,
-  };
-};
+import { SET_QUERY, SET_SEARCH } from "../actions";
 
 const initialState = {
   search: false,
@@ -19,12 +7,12 @@ const initialState = {
 
 const searchReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "SET_SEARCH":
+    case SET_SEARCH:
       return {
         ...state,
         search: action.payload,
       };
-    case "SET_QUERY":
+    case SET_QUERY:
       return {
         ...state,
         searchQuery: action.payload,
@@ -34,4 +22,4 @@ const searchReducer = (state = initialState, action) => {
   }
 };
 
-export { setSearch, setQuery, searchReducer };
+export default searchReducer;
