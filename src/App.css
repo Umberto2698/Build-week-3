@@ -16,3 +16,11 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  background-color: #f4f2ee;
+}
+
+#home-center-btn {
+  background-color: transparent;
+}
