@@ -3,13 +3,13 @@ import HomeCenter from "./HomeCenter";
 
 const HomeContainer = () => {
   return (
-    <Container fluid="md" className="mt-3" style={{ height: "100vh" }}>
+    <Container id="home-container" fluid="md" className="mt-3 pt-2">
       <Row>
-        <Col xs={4} lg={3} style={{ height: "100vh" }} className=" d-none d-md-block"></Col>
-        <Col style={{ height: "100vh" }}>
+        <Col xs={4} lg={3} className=" d-none d-md-block"></Col>
+        <Col>
           <HomeCenter />
         </Col>
-        <Col xs={5} lg={4} className="d-none d-lg-block " style={{ height: "100vh" }}></Col>
+        <Col xs={5} lg={4} className="d-none d-lg-block "></Col>
       </Row>
     </Container>
   );

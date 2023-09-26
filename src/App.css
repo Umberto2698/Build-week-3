@@ -61,3 +61,22 @@
 #offcanvas-link:hover {
   text-decoration: underline;
 }
+
+body {
+  background-color: #f4f2ee;
+}
+
+#home-center-btn {
+  background-color: white;
+}
+
+#home-center-btn :hover {
+  background-color: #0000001a;
+}
+#home-center-btn-container :hover {
+  background-color: #0000001a;
+}
+
+#home-container {
+  margin-top: 53px !important;
+}

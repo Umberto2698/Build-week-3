@@ -67,7 +67,12 @@ const MyNavbar = () => {
   return (
     user && (
       <>
-        <Navbar fixed="top" expand="lg" style={{ height: "53px", zIndex: "2000" }} className="bg-white p-0">
+        <Navbar
+          fixed="top"
+          expand="lg"
+          style={{ height: "53px", zIndex: "2000", borderBottom: "solid 1px #e5e5e5" }}
+          className="bg-white p-0"
+        >
           <Container fluid="xl" style={{ height: "100%" }}>
             <Row className="flex-grow-1 " style={{ height: "100%" }}>
               <Col xs={1} lg={4} className="p-1  align-items-center d-none d-md-flex">

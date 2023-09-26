@@ -34,24 +34,30 @@ const HomeCenter = () => {
           </div>
         </div>
         <div className="d-flex flex-wrap justify-content-around p-0">
-          <Button id="home-center-btn" className="text-secondary border-0 d-flex align-items-center">
-            <BsImage className="text-primary" />
-            <span className="ms-2" style={{ fontSize: "0.8rem" }}>
-              Contenuti multimediali
-            </span>
-          </Button>
-          <Button id="home-center-btn" className="text-secondary border-0 d-flex align-items-center">
-            <BsFillCalendar2WeekFill style={{ color: "#C37D16" }} />
-            <span className="ms-2" style={{ fontSize: "0.8rem" }}>
-              Evento
-            </span>
-          </Button>
-          <Button id="home-center-btn" className="text-secondary border-0 d-flex align-items-center">
-            <BsJustifyRight style={{ color: "#E06847" }} />
-            <span className="ms-2" style={{ fontSize: "0.8rem" }}>
-              Scrivi un articolo
-            </span>
-          </Button>
+          <div id="home-center-btn-container">
+            <Button id="home-center-btn" className="text-secondary border-0 d-flex align-items-center p-3">
+              <BsImage className="text-primary" />
+              <span className="ms-2" style={{ fontSize: "0.8rem" }}>
+                Contenuti multimediali
+              </span>
+            </Button>
+          </div>
+          <div id="home-center-btn-container">
+            <Button id="home-center-btn" className="text-secondary border-0 d-flex align-items-center p-3">
+              <BsFillCalendar2WeekFill style={{ color: "#C37D16" }} />
+              <span className="ms-2" style={{ fontSize: "0.8rem" }}>
+                Evento
+              </span>
+            </Button>
+          </div>
+          <div id="home-center-btn-container">
+            <Button id="home-center-btn" className="text-secondary border-0 d-flex align-items-center p-3">
+              <BsJustifyRight style={{ color: "#E06847" }} />
+              <span className="ms-2" style={{ fontSize: "0.8rem" }}>
+                Scrivi un articolo
+              </span>
+            </Button>
+          </div>
         </div>
       </Row>
     </>
