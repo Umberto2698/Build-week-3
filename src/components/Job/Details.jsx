@@ -46,7 +46,7 @@ const Details = () => {
   }, []);
 
   return (
-    <Container>
+    <Container style={{ paddingTop: "53px" }}>
       <Row>
         <Col lg={6} className=" align-items-center justify-content-start">
           <div className="bg-primary px-2 py-1 position-sticky top-0 text-white">

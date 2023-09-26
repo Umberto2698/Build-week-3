@@ -3,7 +3,7 @@ import { BellFill, BookmarkFill, Clipboard2Check, GearFill, PencilSquare, Youtub
 
 const Sidebar = () => {
   return (
-    <div className="position-sticky top-0">
+    <div className="position-sticky" style={{ top: "65px" }}>
       <div className=" d-flex flex-column align-items-start justify-content-between p-3 mb-3 bg-white border border-secondary-subtle rounded-3">
         <div className="d-flex align-items-center justify-content-between w-100 my-2" style={{ cursor: "pointer" }}>
           <BookmarkFill size={20}></BookmarkFill>

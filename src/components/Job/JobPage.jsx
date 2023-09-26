@@ -20,7 +20,7 @@ const JobPage = () => {
   }, []);
 
   return (
-    <Container>
+    <Container style={{ paddingTop: "65px" }}>
       <Row>
         <Col lg={3} className="flex-column align-items-center justify-content-start ">
           <Sidebar></Sidebar>

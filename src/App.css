@@ -99,13 +99,13 @@ body {
 }
 
 .scroll {
-  height: 93vh;
+  height: 85vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
 .scroll2 {
-  height: 100vh;
+  height: 92vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }

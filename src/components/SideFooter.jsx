@@ -24,7 +24,7 @@ const Footer = () => {
 
   return (
     <>
-      <div className="mb-2">
+      <div className="mb-2 mt-3">
         <div className="text-secondary text-center">
           <Link to="/" className="text-decoration-none text-reset mx-2 my-2">
             <span className="footer-text">Informazioni</span>
