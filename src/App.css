@@ -1,5 +1,20 @@
+body {
+  background-color: #f4f2ee;
+}
+
+#home-center-btn {
+  background-color: transparent;
+}
+
 #publishJob {
   border-radius: 25px;
+}
+.profile-background-image {
+  position: relative;
+  width: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  cursor: pointer;
 }
 
 #publishJob:hover,
