@@ -13,7 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Grid3x3GapFill, Search } from "react-bootstrap-icons";
 import MyNavbarOffcanvas from "./MyNavbarOffcanvas";
-import BottomBar from "./Bottombar";
+import Bottombar from "./Bottombar";
 import { GET_USER } from "../redux/actions";
 
 const MyNavbar = () => {
@@ -316,7 +316,7 @@ const MyNavbar = () => {
           </Container>
         </Navbar>
         <div className="d-md-none">
-          <BottomBar />
+          <Bottombar />
         </div>
       </>
     )

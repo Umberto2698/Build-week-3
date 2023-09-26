@@ -3,7 +3,6 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProfilePage from "./components/ProfilePage";
 import MyNavbar from "./components/MyNavbar";
-import Bottombar from "./components/Bottombar";
 
 function App() {
   return (
