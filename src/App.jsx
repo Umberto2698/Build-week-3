@@ -3,13 +3,14 @@ import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ProfilePage from "./components/ProfilePage";
 import MyNavbar from "./components/MyNavbar";
+import HomeContainer from "./components/HomeContainer";
 
 function App() {
   return (
     <BrowserRouter>
       <MyNavbar />
       <Routes>
-        <Route path="/" element={<ProfilePage></ProfilePage>}></Route>
+        <Route path="/" element={<HomeContainer />}></Route>
       </Routes>
     </BrowserRouter>
   );
