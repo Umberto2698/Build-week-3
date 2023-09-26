@@ -16,7 +16,6 @@ export const getRandomJobsAction = () => {
       const response = await fetch(randomJobEndPoint, headers);
       if (response.ok) {
         const { data } = await response.json();
-        console.log(data);
         dispatch({ type: GET_JOBS, payload: data });
       } else {
         throw new Error("Sorry, server are down.");
