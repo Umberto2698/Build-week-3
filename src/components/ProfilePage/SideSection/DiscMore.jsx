@@ -1,4 +1,4 @@
-import SingleFriend from "./SingleFriend";
+import SingleFriendStatic from "./SingleFriendStatic";
 
 const DiscMore = () => {
   return (
@@ -11,7 +11,7 @@ const DiscMore = () => {
       </div>
       <div className="d-flex flex-column">
         {[...Array(2).keys()].map((elem) => (
-          <SingleFriend key={elem} />
+          <SingleFriendStatic key={elem} />
         ))}
       </div>
     </div>

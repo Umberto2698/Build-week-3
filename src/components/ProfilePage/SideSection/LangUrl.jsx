@@ -41,7 +41,7 @@ const LangUrl = () => {
           </svg>
         </div>
         <p style={{ fontSize: "14px", color: "rgb(180, 180, 180)" }}>
-          www.linkedin.com/in/angelo-moreno-0422a0293
+          www.linkedin.com/in/angelo-moreno-0796m5633
         </p>
       </div>
     </div>
