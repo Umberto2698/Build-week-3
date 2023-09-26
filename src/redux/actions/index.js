@@ -1,8 +1,9 @@
 export const GET_JOBS = "GET_JOBS";
 export const GET_JOBS_ERROR = "GET_JOBS_ERROR";
 export const GET_JOBS_LOADING = "GET_JOBS_LOADING";
+export const SELECT_JOB = "SELECT_JOB";
 
-const randomJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?limit=5";
+const randomJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?limit=20";
 const headers = {
   headers: {
     Authorization:

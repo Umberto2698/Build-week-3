@@ -1,15 +1,16 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProfilePage from "./components/ProfilePage";
+
 import JobPage from "./components/JobPage";
+import Details from "./components/Details";
 
 function App() {
   return (
     <BrowserRouter>
-      <JobPage></JobPage>
       <Routes>
-        <Route path="/" element={<ProfilePage></ProfilePage>}></Route>
+        <Route path="/jobs/" element={<JobPage></JobPage>}></Route>
+        <Route path="/jobs/details/" element={<Details></Details>}></Route>
       </Routes>
     </BrowserRouter>
   );

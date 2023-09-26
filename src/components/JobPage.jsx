@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const JobPage = () => {
   const dispatch = useDispatch();
-  const randomJobArray = useSelector((state) => state.job.random.content);
+  const randomJobArray = useSelector((state) => state.job.random.content.slice(0, 5));
   const loading = useSelector((state) => state.state.loading.content);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const JobPage = () => {
             {loading === true
               ? [...Array(3).keys()].map((el) => <JobsPlaceholder key={el}></JobsPlaceholder>)
               : randomJobArray.length !== 0 && randomJobArray.map((job) => <Jobs jobData={job} key={job._id}></Jobs>)}
-            <Link to="jobs/bleah" className="text-decoration-none text-reset job-detail w-100">
+            <Link to="details/" className="text-decoration-none text-reset job-detail w-100">
               <div className=" border-top border-top-secondary-subtle d-flex align-items-center justify-content-center py-3 ">
                 <h4 className="m-0 d-inline-block text me-2" style={{ fontSize: "15px" }}>
                   Mostra tutto
@@ -59,7 +59,7 @@ const JobPage = () => {
             {loading === true
               ? [...Array(3).keys()].map((el) => <JobsPlaceholder key={el}></JobsPlaceholder>)
               : randomJobArray.length !== 0 && randomJobArray.map((job) => <Jobs jobData={job} key={job._id}></Jobs>)}
-            <Link to="jobs/bla" className="text-decoration-none text-reset job-detail w-100">
+            <Link to="details/" className="text-decoration-none text-reset job-detail w-100">
               <div className=" border-top border-top-secondary-subtle d-flex align-items-center justify-content-center py-3">
                 <h4 className="m-0 d-inline-block me-2" style={{ fontSize: "15px" }}>
                   Mostra tutto
