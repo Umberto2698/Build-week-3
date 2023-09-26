@@ -1,13 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProfilePage from "./components/ProfilePage";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import HomeMain from "./components/HomeMain";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<ProfilePage></ProfilePage>}></Route>
+        <Route path="/" element={<HomeMain />} />
       </Routes>
     </BrowserRouter>
   );

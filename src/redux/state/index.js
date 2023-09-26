@@ -1,7 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import { searchReducer } from "../reducers/store";
 
-const totalReducer = combineReducers({});
+const rootReducer = combineReducers({
+  search: searchReducer,
+});
 
-const store = configureStore({});
+const store = configureStore({ reducer: rootReducer });
 
 export default store;
