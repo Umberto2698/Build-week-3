@@ -3,7 +3,7 @@ import { Bookmark, EyeSlashFill } from "react-bootstrap-icons";
 import Logo from "../assets/LinkedIn-Logos/LI-In-Bug.png";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { SELECT_DESCRIPTION, SELECT_JOB } from "../redux/actions";
+import { SELECT_DESCRIPTION, SELECT_JOB } from "../../redux/actions";
 const Jobs = ({ jobData, selected }) => {
   const location = useLocation();
   const dispatch = useDispatch();

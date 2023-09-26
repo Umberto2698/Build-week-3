@@ -3,7 +3,7 @@ import Jobs from "./Jobs";
 import { useDispatch, useSelector } from "react-redux";
 import JobsPlaceholder from "./JobsPlaceholder";
 import { useEffect } from "react";
-import { SELECT_DESCRIPTION, getRandomJobsAction } from "../redux/actions";
+import { SELECT_DESCRIPTION, getRandomJobsAction } from "../../redux/actions";
 import JobDetails from "./JobDetails";
 
 const Details = () => {

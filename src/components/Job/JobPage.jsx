@@ -3,9 +3,9 @@ import { ArrowRight } from "react-bootstrap-icons";
 import React, { useEffect } from "react";
 import Jobs from "./Jobs";
 import { useDispatch, useSelector } from "react-redux";
-import { getRandomJobsAction } from "../redux/actions";
+import { getRandomJobsAction } from "../../redux/actions";
 import JobsPlaceholder from "./JobsPlaceholder";
-import Footer from "./Footer";
+import Footer from "../SideFooter";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
 
