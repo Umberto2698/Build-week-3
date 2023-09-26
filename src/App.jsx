@@ -4,19 +4,27 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import JobPage from "./components/JobPage";
 import Details from "./components/Details";
-import ProfilePage from "./components/ProfilePage";
+// import ProfilePage from "./components/ProfilePage";
 import MyNavbar from "./components/MyNavbar";
+import ProfilePage from "./components/Profile/ProfilePage";
 
 function App() {
   return (
     <BrowserRouter>
       <MyNavbar />
       <Routes>
+        <Route path="/" element={<ProfilePage />}></Route>
         <Route path="/jobs/" element={<JobPage></JobPage>}></Route>
         <Route path="/jobs/details/" element={<Details></Details>}></Route>
       </Routes>
     </BrowserRouter>
   );
+}
+{
+  /* <div style={{ backgroundColor: "#f4f2ee" }}>
+  <Routes>
+  </Routes>
+</div> */
 }
 
 export default App;
