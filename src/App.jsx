@@ -8,6 +8,7 @@ function App() {
   return (
     <BrowserRouter>
       <MyNavbar />
+
       <Routes>
         <Route path="/" element={<ProfilePage></ProfilePage>}></Route>
       </Routes>

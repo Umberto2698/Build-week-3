@@ -38,6 +38,26 @@
   box-sizing: border-box;
 }
 #navbar-button:hover {
-  border: 2px solid;
+  outline: 1px solid;
   box-sizing: border-box;
+}
+
+#navbar-offcanvas {
+  margin-top: 53px;
+}
+
+#offcanvas-title {
+  font-size: 0.8rem;
+  color: black;
+}
+
+#offcanvas-text {
+  font-size: 0.7rem;
+}
+
+#offcanvas-link {
+  text-decoration: none;
+}
+#offcanvas-link:hover {
+  text-decoration: underline;
 }
