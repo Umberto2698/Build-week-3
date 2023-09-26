@@ -1,6 +1,7 @@
 export const GET_JOBS = "GET_JOBS";
 export const GET_JOBS_ERROR = "GET_JOBS_ERROR";
 export const GET_JOBS_LOADING = "GET_JOBS_LOADING";
+export const GET_CATEGORTY_JOBS = "GET_CATEGORTY_JOBS";
 export const SELECT_JOB = "SELECT_JOB";
 export const SELECT_DESCRIPTION = "SELECT_DESCRIPTION";
 
@@ -39,6 +40,7 @@ export const setSearch = (search) => ({ type: SET_SEARCH, payload: search });
 export const setQuery = (query) => ({ type: SET_QUERY, payload: query });
 
 const randomJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?limit=20";
+const categoryJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?category=";
 const headers = {
   headers: {
     Authorization:
@@ -53,6 +55,25 @@ export const getRandomJobsAction = () => {
       if (response.ok) {
         const { data } = await response.json();
         dispatch({ type: GET_JOBS, payload: data });
+      } else {
+        throw new Error("Sorry, server are down.");
+      }
+    } catch (error) {
+      dispatch({ type: GET_JOBS_ERROR, payload: error.message });
+    } finally {
+      dispatch({ type: GET_JOBS_LOADING, payload: false });
+    }
+  };
+};
+
+export const getCategoryJobsAction = (category) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: GET_JOBS_LOADING, payload: true });
+      const response = await fetch(categoryJobEndPoint + category + "&limit=20", headers);
+      if (response.ok) {
+        const { data } = await response.json();
+        dispatch({ type: GET_CATEGORTY_JOBS, payload: data });
       } else {
         throw new Error("Sorry, server are down.");
       }

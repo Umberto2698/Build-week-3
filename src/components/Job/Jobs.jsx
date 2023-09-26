@@ -10,7 +10,7 @@ const Jobs = ({ jobData, selected }) => {
 
   return (
     <div
-      id={selected === jobData._id ? "selected" : ""}
+      id={selected === jobData._id || selected === true ? "selected" : ""}
       className="text-secondary job w-100 align-items-start border-bottom border-bottom-secondary-subtle py-2 ps-2"
     >
       {!location.pathname.includes("details") ? (
