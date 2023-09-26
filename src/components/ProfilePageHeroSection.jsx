@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { Button, Col, Dropdown, Form, Modal, Row } from "react-bootstrap";
+import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const ProfilePageMainSection = () => {
+const ProfilePageHeroSection = () => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [dropdown, setDropdown] = useState({
+    first: false,
+    second: false,
+    third: false,
+  });
   return (
     <div className="main-section">
       <div id="user-banner">
@@ -173,51 +179,49 @@ const ProfilePageMainSection = () => {
             <Link className="link">Informazioni di contatto</Link>
           </p>
         </div>
-        {/* <div className="d-flex pt-3 py-1 gap-2">
-          <Button size="sm" className="my-btn">
+        <div className="d-flex pt-3 py-1 gap-2">
+          <Button
+            size="sm"
+            className="my-btn"
+            onClick={() =>
+              setDropdown({
+                first: !dropdown.first,
+                second: false,
+                third: false,
+              })
+            }
+          >
             Disponibile per
           </Button>
-          <Button size="sm" className="my-btn">
+          {/* <div className="my-dropdown">
+            <p>ciaooooo</p>
+          </div> */}
+          <Button
+            size="sm"
+            className="my-btn"
+            onClick={() =>
+              setDropdown({
+                first: false,
+                second: !dropdown.second,
+                third: false,
+              })
+            }
+          >
             Aggiungi sezioni del profilo
           </Button>
-          <Button size="sm" className="my-btn">
+          <Button
+            size="sm"
+            className="my-btn"
+            onClick={() =>
+              setDropdown({
+                first: false,
+                second: false,
+                third: !dropdown.third,
+              })
+            }
+          >
             Altro
           </Button>
-        </div> */}
-        <div className="d-flex pt-3 py-1 gap-2">
-          <Dropdown>
-            <Dropdown.Toggle size="sm" className="my-btn">
-              Disponibile per
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Dropdown>
-            <Dropdown.Toggle size="sm" className="my-btn">
-              Dropdown Button
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Dropdown>
-            <Dropdown.Toggle size="sm" className="my-btn">
-              Dropdown Button
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
         </div>
         <div className="d-flex pt-4 cards-wrapper" style={{ gap: "14px" }}>
           <div className="card-user-info">
@@ -250,4 +254,4 @@ const ProfilePageMainSection = () => {
   );
 };
 
-export default ProfilePageMainSection;
+export default ProfilePageHeroSection;

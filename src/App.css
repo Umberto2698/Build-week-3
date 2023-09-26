@@ -7,7 +7,8 @@
 :root {
   --backgroundColor: #f4f2ee;
   --grey: #777777;
-  --mid-grey: #dbdbdb;
+  --p-grey: rgb(156, 156, 156);
+  --mid-grey: #ebebeb;
   --light-grey: #f8fafd;
   --light-grey-trasparent: #ebebeb;
   --mainColor: #0a66c2;
@@ -33,16 +34,64 @@
 .main-section {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  max-width: 804px;
   border: 1px solid var(--mid-grey);
   border-radius: 0.8rem;
   overflow: hidden;
+  height: fit-content;
+}
+
+.side-section {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lang-url {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background-color: white;
+  border: 1px solid var(--mid-grey);
+  border-radius: 0.8rem;
+}
+
+.friends,
+.disc-more {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px 0;
+  background-color: white;
+  border: 1px solid var(--mid-grey);
+  border-radius: 0.8rem;
+}
+
+.friends .single-friend,
+.disc-more .single-friend {
+  display: flex;
+  padding-block: 12px;
+  gap: 10px;
+  border-bottom: 1px solid var(--mid-grey);
+}
+
+.friends .single-friend:last-of-type,
+.disc-more .single-friend:last-of-type {
+  border-bottom: unset;
+}
+
+.friends .bi-person-circle::before,
+.disc-more .bi-person-circle::before {
+  font-size: 48px;
 }
 
 #profile-page {
-  max-width: 804px;
-  margin-inline: auto;
-  border-radius: 0.8rem;
+  /* margin-inline: auto;
+  border-radius: 0.8rem; */
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding-top: 24px;
 }
 
 #user-banner {
@@ -113,10 +162,10 @@
   border-radius: 100px;
   font-weight: 600;
   font-size: 1rem;
-  background-color: transparent !important;
+  background-color: transparent;
   border: unset;
-  outline: 1px solid var(--mainColor) !important;
-  color: var(--mainColor) !important;
+  outline: 1px solid var(--mainColor);
+  color: var(--mainColor);
 }
 
 .my-btn::after {
@@ -128,24 +177,44 @@
   outline: 2px solid var(--mainColor);
   color: var(--mainColor);
 }
-/* 
-#profile-page .my-btn:first-of-type {
+
+.single-friend .my-btn {
+  display: flex;
+  gap: 0.25rem;
+  width: fit-content;
+  font-weight: 600;
+}
+
+.main-section .my-btn:first-of-type {
   color: white;
   background-color: var(--mainColor);
-  outline: 1px solid var(--mainColor-dark);
+  outline: 1px solid var(--mainColor);
 }
-#profile-page .my-btn:first-of-type:hover {
+
+.main-section .my-btn:first-of-type:hover {
   background-color: var(--mainColor-dark);
   outline: 2px solid var(--mainColor-dark);
 }
-#profile-page .my-btn:last-of-type {
+
+.main-section .my-btn:last-of-type,
+.single-friend .my-btn {
   color: var(--grey);
   outline: 1px solid var(--grey);
+}
+.main-section .my-btn:last-of-type {
   font-weight: 400;
 }
-#profile-page .my-btn:last-of-type:hover {
+
+.main-section .my-btn:last-of-type:hover,
+.single-friend .my-btn:hover {
   background-color: var(--light-grey-trasparent);
   outline: 2px solid var(--grey);
+}
+/* 
+.my-dropdown {
+  bottom: 10px;
+  max-width: 264px;
+  position: absolute;
 } */
 
 .card-user-info {
@@ -226,6 +295,12 @@
 .my-input-check .form-check-input {
   width: 2em;
   height: 2em;
+}
+
+.horz-card-block {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
 }
 @media screen and (max-width: 1200px) {
 }
