@@ -85,13 +85,17 @@
   font-size: 48px;
 }
 
+.bi-people-fill::before {
+  font-size: 24px;
+}
+
 #profile-page {
   /* margin-inline: auto;
   border-radius: 0.8rem; */
   display: flex;
   justify-content: center;
   gap: 24px;
-  padding-top: 24px;
+  padding-block: 24px;
 }
 
 #user-banner {
@@ -183,6 +187,10 @@
   gap: 0.25rem;
   width: fit-content;
   font-weight: 600;
+}
+
+.horz-card-block .my-btn {
+  height: fit-content;
 }
 
 .main-section .my-btn:first-of-type {
@@ -300,7 +308,19 @@
 .horz-card-block {
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  background-color: white;
+  border: 1px solid var(--mid-grey);
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+
+.horz-card-block .show-more:hover {
+  background-color: var(--light-grey-trasparent);
+}
+
+.mercado-match {
+  color: var(--grey);
+  cursor: pointer;
 }
 @media screen and (max-width: 1200px) {
 }

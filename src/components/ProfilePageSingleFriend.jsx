@@ -11,7 +11,7 @@ const ProfilePageSingleFriend = () => {
         <p style={{ fontSize: "14px" }}>Web developer presso Epicode</p>
         <div className="py-2">
           <Button size="sm" className="my-btn forFriend">
-            <i class="bi bi-person-plus-fill"></i>
+            <i className="bi bi-person-plus-fill"></i>
             Collegati
           </Button>
         </div>
