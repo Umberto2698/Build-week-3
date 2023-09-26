@@ -9,9 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <MyNavbar />
-      <Routes>
-        <Route path="/" element={<HomeContainer />}></Route>
-      </Routes>
+      <Routes>{/* <Route path="/" element={}></Route> */}</Routes>
     </BrowserRouter>
   );
 }
