@@ -3,9 +3,18 @@ import { Button, Col, Container, Dropdown, Form, InputGroup, Navbar, Row } from 
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faBriefcase, faCommentDots, faHouse, faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowDownWideShort,
+  faBell,
+  faBriefcase,
+  faCommentDots,
+  faHouse,
+  faSquarePlus,
+  faUserGroup,
+} from "@fortawesome/free-solid-svg-icons";
 import { Grid3x3GapFill, Search } from "react-bootstrap-icons";
 import MyNavbarOffcanvas from "./MyNavbarOffcanvas";
+import BottomBar from "./Bottombar";
 
 const MyNavbar = () => {
   const [query, setQuery] = useState("");
@@ -60,7 +69,7 @@ const MyNavbar = () => {
       <Navbar fixed="top" expand="lg" style={{ height: "53px", zIndex: "2000" }} className="bg-white p-0">
         <Container fluid="xl" style={{ height: "100%" }}>
           <Row className="flex-grow-1 " style={{ height: "100%" }}>
-            <Col xs={1} lg={4} className="p-1 d-flex align-items-center">
+            <Col xs={1} lg={4} className="p-1  align-items-center d-none d-md-flex">
               <Link to="/" className="me-2">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
@@ -90,8 +99,62 @@ const MyNavbar = () => {
                 </InputGroup>
               </Form>
             </Col>
+            <Col
+              xs={1}
+              className="nav-link d-flex justify-content-center d-md-none"
+              style={{ color: "#8d8d8d", height: "100%", backgroundColor: "transparent" }}
+            >
+              <Link to="/profile" className="m-auto">
+                <img
+                  src="https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg"
+                  width={32}
+                  height={32}
+                  className="rounded-circle "
+                  alt="user"
+                />
+              </Link>
+            </Col>
+            <Col className="py-2 px-0 d-flex d-md-none ">
+              <Form onSubmit={handleSubmit} className="d-flex flex-grow-1 justify-content-center">
+                <InputGroup>
+                  <InputGroup.Text
+                    id="basic-addon1"
+                    className="border border-0 p-0 ps-4 pe-1"
+                    style={{ backgroundColor: "#EDF3F8" }}
+                  >
+                    <Search />
+                  </InputGroup.Text>
+                  <Form.Control
+                    type="search"
+                    value={query}
+                    onChange={handleChange}
+                    placeholder="Cerca"
+                    className="border border-0"
+                    style={{ backgroundColor: "#EDF3F8" }}
+                  />
+                </InputGroup>
+              </Form>
+            </Col>
+            <Col xs={1} className="d-md-none" style={{ height: "100%" }}>
+              <Link
+                to="/publish"
+                className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
+                style={{ color: "#8d8d8d", height: "100%" }}
+              >
+                <FontAwesomeIcon icon={faArrowDownWideShort} style={{ height: "20px" }} />
+              </Link>
+            </Col>
+            <Col xs={1} className="d-md-none" style={{ height: "100%" }}>
+              <Link
+                to="/comments"
+                className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
+                style={{ color: "#8d8d8d", height: "100%" }}
+              >
+                <FontAwesomeIcon icon={faCommentDots} style={{ height: "20px" }} />
+              </Link>
+            </Col>
 
-            <Col xs={10} lg={7} className="d-flex align-items-center flex-grow-1">
+            <Col xs={10} lg={7} className="align-items-center flex-grow-1 d-none d-md-flex">
               <Row className="flex-grow-1" style={{ height: "100%" }}>
                 <Col className="d-lg-none" style={{ height: "100%" }}>
                   <Link
@@ -162,7 +225,7 @@ const MyNavbar = () => {
                     <span className="d-none d-md-block">Notifiche</span>
                   </Link>
                 </Col>
-                <Col className=" d-none d-sm-block" style={{ height: "100%", borderRight: "solid 1px #e5e5e5" }}>
+                <Col className=" d-none d-md-block" style={{ height: "100%", borderRight: "solid 1px #e5e5e5" }}>
                   <Dropdown
                     className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center"
                     style={{ height: "100%" }}
@@ -257,6 +320,9 @@ const MyNavbar = () => {
           </Row>
         </Container>
       </Navbar>
+      <div className="d-md-none">
+        <BottomBar />
+      </div>
       )
     </>
   );
