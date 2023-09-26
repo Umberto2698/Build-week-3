@@ -3,7 +3,7 @@ import { Bookmark, EyeSlashFill } from "react-bootstrap-icons";
 import Logo from "../assets/LinkedIn-Logos/LI-In-Bug.png";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { SELECT_JOB } from "../redux/actions";
+import { SELECT_DESCRIPTION, SELECT_JOB } from "../redux/actions";
 const Jobs = ({ jobData, selected }) => {
   const location = useLocation();
   const dispatch = useDispatch();
@@ -15,7 +15,14 @@ const Jobs = ({ jobData, selected }) => {
     >
       {!location.pathname.includes("details") ? (
         <Link to="details/" className=" text-decoration-none text-reset">
-          <Row onClick={() => dispatch({ type: SELECT_JOB, payload: jobData._id })}>
+          <Row
+            onClick={() => {
+              return (
+                dispatch({ type: SELECT_DESCRIPTION, payload: jobData.description }),
+                dispatch({ type: SELECT_JOB, payload: jobData._id })
+              );
+            }}
+          >
             <Col lg={1}>
               <div>
                 <img src={Logo} alt="Company logo" width={40} />

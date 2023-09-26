@@ -2,6 +2,7 @@ export const GET_JOBS = "GET_JOBS";
 export const GET_JOBS_ERROR = "GET_JOBS_ERROR";
 export const GET_JOBS_LOADING = "GET_JOBS_LOADING";
 export const SELECT_JOB = "SELECT_JOB";
+export const SELECT_DESCRIPTION = "SELECT_DESCRIPTION";
 
 const randomJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?limit=20";
 const headers = {

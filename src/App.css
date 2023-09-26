@@ -10,7 +10,8 @@
   border-radius: 25px;
 }
 
-#publishJob:hover {
+#publishJob:hover,
+#saveBtn:hover {
   outline: 2px solid #0d6efd;
   color: #0d6efd;
   background-color: rgba(141, 219, 255, 0.235);
@@ -20,7 +21,8 @@
   cursor: pointer;
 }
 
-.job:hover h2 {
+.job:hover h2,
+.job:hover h1 {
   text-decoration: underline;
   text-decoration-color: #0d6efd;
 }
@@ -75,12 +77,28 @@
   background-color: white;
 }
 
+#candidatureBtn:hover {
+  border-color: #0b3b82;
+  background-color: #0b3b82;
+}
+
 #selected {
   background-color: #589bff6c;
 }
 
+.customBadge {
+  background-color: #daebd1 !important;
+  color: #555b51;
+}
+
 .scroll {
   height: 93vh;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.scroll2 {
+  height: 100vh;
+  overflow-y: scroll;
   overflow-x: hidden;
 }

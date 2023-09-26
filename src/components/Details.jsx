@@ -3,25 +3,42 @@ import Jobs from "./Jobs";
 import { useDispatch, useSelector } from "react-redux";
 import JobsPlaceholder from "./JobsPlaceholder";
 import { useEffect } from "react";
-import { getRandomJobsAction } from "../redux/actions";
+import { SELECT_DESCRIPTION, getRandomJobsAction } from "../redux/actions";
+import JobDetails from "./JobDetails";
 
 const Details = () => {
   const randomJobArray = useSelector((state) => state.job.random.content);
-  const loading = useSelector((state) => state.state.loading.content);
   const selectedJobId = useSelector((state) => state.job.selected.content);
+  const selectedDescription = useSelector((state) => state.job.description.content);
+  const loading = useSelector((state) => state.state.loading.content);
   const dispatch = useDispatch();
+
   const parser = new DOMParser();
   const colonnaDescrizione = document.getElementById("description");
-
+  const description = parser.parseFromString(
+    randomJobArray.filter((el) => el._id === selectedJobId)[0].description,
+    "text/html"
+  ).body.innerHTML;
   const changeDescription = () => {
-    colonnaDescrizione.innerHTML = parser.parseFromString(
-      randomJobArray.filter((el) => el._id === selectedJobId)[0].description,
-      "text/html"
-    ).body.innerHTML;
+    if (description.slice(0, 15) === "<p><br><br></p>") {
+      console.log(description.slice(0, 15));
+      colonnaDescrizione.innerHTML = description.slice(15);
+    } else if (description.slice(0, 21) === `<p class="description`) {
+      colonnaDescrizione.innerHTML = description.slice(324);
+    } else {
+      colonnaDescrizione.innerHTML = description;
+    }
   };
+
   if (loading) {
     changeDescription();
   }
+  useEffect(() => {
+    if (description.slice(0, 100) !== selectedDescription.slice(0, 100)) {
+      changeDescription();
+    }
+    //   eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedDescription]);
 
   useEffect(() => {
     dispatch(getRandomJobsAction());
@@ -43,7 +60,10 @@ const Details = () => {
           <div className="scroll ">
             <div
               onClick={() => {
-                changeDescription();
+                dispatch({
+                  type: SELECT_DESCRIPTION,
+                  payload: description,
+                });
               }}
               className="d-flex flex-column align-items-center justify-content-start w-100"
             >
@@ -54,7 +74,16 @@ const Details = () => {
             </div>
           </div>
         </Col>
-        <Col lg={6} id="description"></Col>
+        <Col lg={6}>
+          <div className="scroll2">
+            {randomJobArray
+              .filter((el) => el._id === selectedJobId)
+              .map((el, i) => (
+                <JobDetails jobData={el} key={i}></JobDetails>
+              ))}
+            <div id="description"></div>
+          </div>
+        </Col>
       </Row>
     </Container>
   );

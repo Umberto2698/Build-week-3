@@ -1,10 +1,13 @@
-import { GET_JOBS, SELECT_JOB } from "../actions";
+import { GET_JOBS, SELECT_DESCRIPTION, SELECT_JOB } from "../actions";
 
 const initialState = {
   random: {
     content: [],
   },
   selected: {
+    content: "",
+  },
+  description: {
     content: "",
   },
 };
@@ -22,6 +25,13 @@ const fetchReducer = (state = initialState, action) => {
       return {
         ...state,
         selected: {
+          content: action.payload,
+        },
+      };
+    case SELECT_DESCRIPTION:
+      return {
+        ...state,
+        description: {
           content: action.payload,
         },
       };
