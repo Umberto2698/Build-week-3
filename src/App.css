@@ -45,7 +45,7 @@
   width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 .lang-url {

@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 
-const ProfilePageSingleFriend = () => {
+const SingleFriend = () => {
   return (
     <div className="single-friend">
       <i className="bi bi-person-circle"></i>
@@ -20,4 +20,4 @@ const ProfilePageSingleFriend = () => {
   );
 };
 
-export default ProfilePageSingleFriend;
+export default SingleFriend;
