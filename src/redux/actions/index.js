@@ -3,6 +3,7 @@ export const GET_JOBS_ERROR = "GET_JOBS_ERROR";
 export const GET_JOBS_LOADING = "GET_JOBS_LOADING";
 export const GET_CATEGORTY_JOBS = "GET_CATEGORTY_JOBS";
 export const GET_JOB_FROM_ID = "GET_JOB_FROM_ID";
+export const GET_JOB_FROM_QUERY = "GET_JOB_FROM_QUERY";
 export const SELECT_JOB = "SELECT_JOB";
 export const SELECT_DESCRIPTION = "SELECT_DESCRIPTION";
 
@@ -43,12 +44,14 @@ export const setQuery = (query) => ({ type: SET_QUERY, payload: query });
 const randomJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?limit=20";
 const categoryJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?category=";
 const JobFromIdEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?_id=";
+const JobFromQueryEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 const headers = {
   headers: {
     Authorization:
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NTZlY2MwMzRmZjAwMTQwM2Y0ZTgiLCJpYXQiOjE2OTU2NTI2NTAsImV4cCI6MTY5Njg2MjI1MH0.ROP89XyV2jpTEa6kkk724nZCyeo7tM76kwNhuPToIb8",
   },
 };
+
 export const getRandomJobsAction = () => {
   return async (dispatch) => {
     try {
@@ -87,7 +90,7 @@ export const getCategoryJobsAction = (category) => {
   };
 };
 
-export const getJobFromId = (id) => {
+export const getJobFromIdAction = (id) => {
   return async (dispatch) => {
     try {
       dispatch({ type: GET_JOBS_LOADING, payload: true });
@@ -95,6 +98,25 @@ export const getJobFromId = (id) => {
       if (response.ok) {
         const { data } = await response.json();
         dispatch({ type: GET_JOB_FROM_ID, payload: data[0] });
+      } else {
+        throw new Error("Sorry, server are down.");
+      }
+    } catch (error) {
+      dispatch({ type: GET_JOBS_ERROR, payload: error.message });
+    } finally {
+      dispatch({ type: GET_JOBS_LOADING, payload: false });
+    }
+  };
+};
+
+export const getJobFromQueryAction = (query) => {
+  return async (dispatch) => {
+    try {
+      dispatch({ type: GET_JOBS_LOADING, payload: true });
+      const response = await fetch(JobFromQueryEndPoint + query, headers);
+      if (response.ok) {
+        const { data } = await response.json();
+        dispatch({ type: GET_JOB_FROM_QUERY, payload: data.slice(0, 20) });
       } else {
         throw new Error("Sorry, server are down.");
       }

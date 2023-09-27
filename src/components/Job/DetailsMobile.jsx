@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getJobFromId } from "../../redux/actions";
+import { getJobFromIdAction } from "../../redux/actions";
 import { Col, Container, Row, Spinner } from "react-bootstrap";
 import JobDetails from "./JobDetails";
 
@@ -23,7 +23,7 @@ const DetailsMobile = () => {
   };
 
   useEffect(() => {
-    if (job && selectedJobId === job._id) {
+    if ((job && selectedJobId === job._id) || (job && selectedJobId === "")) {
       const colonnaDescrizione = document.getElementById("description");
       changeDescription(colonnaDescrizione, parser.parseFromString(job.description, "text/html").body.innerHTML);
     }
@@ -31,13 +31,30 @@ const DetailsMobile = () => {
   }, [job]);
 
   useEffect(() => {
-    dispatch(getJobFromId(selectedJobId));
+    dispatch(getJobFromIdAction(params.jobId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <Container fluid="sm" style={{ paddingTop: "53px" }}>
-      {job === null || job._id !== selectedJobId ? (
+      {selectedJobId !== "" ? (
+        job === null || job._id !== selectedJobId ? (
+          <div className="d-flex justify-content-center align-items-center w-100" style={{ height: "85vh" }}>
+            <Spinner animation="border" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </Spinner>
+          </div>
+        ) : (
+          <Row>
+            <Col xs={{ span: 11, offset: 1 }}>
+              <div className="scroll2">
+                <JobDetails category={params.category} jobData={job}></JobDetails>
+                <div id="description"></div>
+              </div>
+            </Col>
+          </Row>
+        )
+      ) : job === null ? (
         <div className="d-flex justify-content-center align-items-center w-100" style={{ height: "85vh" }}>
           <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
