@@ -50,7 +50,7 @@ const HomeLeftSidebarTop = () => {
               <div className="text-secondary ">Accedi a strumenti e informazioni in esclusiva</div>{" "}
               <div className="d-flex">
                 <div>
-                  <SquareHalf />
+                  <SquareHalf className="text-warning" />
                 </div>
 
                 <div className="text-dark fw-medium text-decoration-underline ms-1">Prova Premium gratis</div>

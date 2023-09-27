@@ -504,3 +504,11 @@ body {
 .offcanvas-backdrop {
   z-index: 0;
 }
+
+.text-underline-hover {
+  text-decoration: none;
+}
+
+.text-underline-hover:hover {
+  text-decoration: underline;
+}

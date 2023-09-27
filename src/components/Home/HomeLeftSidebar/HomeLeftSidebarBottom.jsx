@@ -7,13 +7,13 @@ const HomeLeftSidebarBottom = () => {
     <>
       <Card className="bg-white rounded-3 ">
         <Card.Body className="p-2 border-bottom pt-3">
-          <Link to="/groups/" className="text-decoration-none">
+          <Link to="/groups/" className="text-underline-hover">
             <Card.Text className="mb-2" style={{ fontSize: "0.7rem" }}>
               Gruppi
             </Card.Text>
           </Link>
-          <div className="d-flex justify-content-between mb-1">
-            <Link to="/events/" className="text-decoration-none ">
+          <div className="d-flex mb-1">
+            <Link to="/events/" className="text-underline-hover flex-grow-1">
               <Card.Text style={{ fontSize: "0.7rem" }}>
                 <span>Eventi</span>
               </Card.Text>
@@ -21,7 +21,7 @@ const HomeLeftSidebarBottom = () => {
             <Plus className="fs-5" />
           </div>
           <Card.Text style={{ fontSize: "0.7rem" }}>
-            <Link to="/mynetwork/network-manager/people-follow/following/" className="text-decoration-none ">
+            <Link to="/mynetwork/network-manager/people-follow/following/" className="text-underline-hover ">
               Hashtag seguiti
             </Link>
           </Card.Text>
