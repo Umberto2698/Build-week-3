@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostsAction, postPostAction } from "../redux/actions";
 import HomeLeftSidebarContainer from "./Home/HomeLeftSidebar/HomeLeftSidebarContainer";
+import HomePostContainer from "./Home/HomeCenter/HomePostContainer";
 
 const HomeMain = () => {
   const [newPost, setNewPost] = useState("");
@@ -68,6 +69,7 @@ const HomeMain = () => {
           <Col className="bg-white rounded-3 pt-3 px-3 border">
             <h2>Consigliati per te</h2>
           </Col>
+          <HomePostContainer />
         </Col>
 
         <Col xs={12} md={3} className="section">
