@@ -86,11 +86,9 @@ const MyNavbar = () => {
               className="nav-link d-flex justify-content-center d-md-none"
               style={{ color: "#8d8d8d", height: "100%", backgroundColor: "transparent" }}
             >
-              (
               <Link to="/profile/" className="m-auto">
                 <img src={user?.image} width={32} height={32} className="rounded-circle " alt="user" />
               </Link>
-              )
             </Col>
             <Col className="py-2 px-0 d-flex d-md-none ">
               <Form onSubmit={handleSubmit} className="d-flex flex-grow-1 justify-content-center">

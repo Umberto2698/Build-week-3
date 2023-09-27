@@ -512,3 +512,13 @@ body {
 .text-underline-hover:hover {
   text-decoration: underline;
 }
+
+#post-btn {
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+}
+
+#post-btn:hover {
+  background-color: #5c5c5c38;
+}

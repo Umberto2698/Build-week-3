@@ -12,7 +12,7 @@ const HomeLeftSidebarTop = () => {
     <>
       {user && !loading ? (
         <>
-          <Card className="bg-white rounded- mb-2">
+          <Card className="bg-white rounded-2 mb-2">
             <div
               className="border-0 rounded-top"
               style={{ height: "56px", width: "100%", backgroundColor: "palegoldenrod" }}
