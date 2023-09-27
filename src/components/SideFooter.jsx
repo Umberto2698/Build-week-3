@@ -124,7 +124,7 @@ const Footer = () => {
           </Link>
         </div>
       </div>
-      <div>
+      <div className="mb-5 mb-md-0">
         <img src={FooterLogo} alt="Logo" width={60} />
         <p className="d-inline-block ms-1" style={{ fontSize: "12px" }}>
           Linkedin Corporation &copy; 2023
