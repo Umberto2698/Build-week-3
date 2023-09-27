@@ -513,12 +513,20 @@ body {
   text-decoration: underline;
 }
 
-#post-btn {
+#post-btn-delete {
   height: 32px;
   width: 32px;
   cursor: pointer;
 }
 
+#post-btn-delete:hover {
+  background-color: #5c5c5c38;
+}
+
+#post-btn {
+  background-color: transparent;
+  border: none;
+}
 #post-btn:hover {
   background-color: #5c5c5c38;
 }

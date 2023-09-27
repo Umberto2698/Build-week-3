@@ -1,5 +1,7 @@
+import { faRetweet } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Row, Col, Card, Placeholder, Button } from "react-bootstrap";
-import { HandThumbsUp, HandThumbsUpFill, ThreeDots, X } from "react-bootstrap-icons";
+import { ChatRightText, HandThumbsUp, SendFill, ThreeDots, X } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 
 const HomeSinglePost = () => {
@@ -8,7 +10,7 @@ const HomeSinglePost = () => {
   return (
     <>
       {!loading ? (
-        <Card className="bg-white rounded-2 mb-2 p-3" style={{ minHeight: "100px" }}>
+        <Card className="bg-white rounded-2 mb-2 p-3 pb-1" style={{ minHeight: "100px" }}>
           <Container className="p-0">
             <Row className="mb-2">
               <Col xs={2} className="pe-0 me-2" style={{ width: "48px" }}>
@@ -30,11 +32,14 @@ const HomeSinglePost = () => {
                 </div>
               </Col>
               <Col xs={2} className="ps-0">
-                <div className="d-flex">
-                  <span id="post-btn" className="rounded-circle d-flex justify-content-center align-middle p-1 me-2">
+                <div className="d-flex justify-content-end">
+                  <span
+                    id="post-btn-delete"
+                    className="rounded-circle d-flex justify-content-center align-middle p-1 me-2"
+                  >
                     <ThreeDots fontSize={20} className="m-auto" />
                   </span>
-                  <span id="post-btn" className="rounded-circle d-flex justify-content-center align-middle p-1">
+                  <span id="post-btn-delete" className="rounded-circle d-flex justify-content-center align-middle p-1">
                     <X fontSize={20} className="m-auto" />
                   </span>
                 </div>
@@ -44,21 +49,29 @@ const HomeSinglePost = () => {
               testo post
             </div>
             <div className="d-flex justify-content-between mt-3">
-              <Button className="d-flex">
-                <HandThumbsUp className="m-auto me-1" />
-                Consiglia
+              <Button id="post-btn" className="d-flex flex-wrap text-secondary">
+                <HandThumbsUp className="m-auto pe-1" size={25} />
+                <span className="m-auto" style={{ fontSize: "0.8rem" }}>
+                  Consiglia
+                </span>
               </Button>
-              <Button className="d-flex">
-                <HandThumbsUp className="m-auto me-1" />
-                Commenta
+              <Button id="post-btn" className="d-flex flex-wrap text-secondary">
+                <ChatRightText className="m-auto pe-1" size={25} />
+                <span className="m-auto" style={{ fontSize: "0.8rem" }}>
+                  Commenta
+                </span>
               </Button>
-              <Button className="d-flex">
-                <HandThumbsUp className="m-auto me-1" />
-                Diffondi il post
+              <Button id="post-btn" className="d-flex flex-wrap text-secondary">
+                <FontAwesomeIcon icon={faRetweet} className="m-auto pe-1" style={{ width: "25px" }} />
+                <span className="m-auto" style={{ fontSize: "0.8rem" }}>
+                  Diffondi il post
+                </span>
               </Button>
-              <Button className="d-flex">
-                <HandThumbsUp className="m-auto me-1" />
-                Invia
+              <Button id="post-btn" className="d-flex flex-wrap text-secondary">
+                <SendFill className="m-auto pe-1" size={25} />
+                <span className="m-auto" style={{ fontSize: "0.8rem" }}>
+                  Invia
+                </span>
               </Button>
             </div>
           </Container>
