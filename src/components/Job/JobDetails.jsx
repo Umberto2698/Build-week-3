@@ -1,11 +1,19 @@
 import { Badge, Button } from "react-bootstrap";
-import { BoxArrowUpRight, BriefcaseFill, Building } from "react-bootstrap-icons";
+import { BoxArrowUpRight, BriefcaseFill, Building, ArrowLeft } from "react-bootstrap-icons";
+import { Link, useParams } from "react-router-dom";
 
-const JobDetails = ({ jobData }) => {
+const JobDetails = ({ category, jobData }) => {
+  const params = useParams();
+
   return (
     <div className="d-flex flex-column align-items-center justify-content-start mb-3">
-      <div className="job w-100 text-start mt-2">
-        <h1 className="m-0 fs-3">{jobData.title} </h1>
+      <div className="job w-100 text-dark d-flex align-items-start justify-content-between mt-2 pe-2">
+        <h1 className="m-0 d-inline-block fs-3">{jobData.title} </h1>
+        {window.screen.availWidth <= 639 && (
+          <Link to={`/jobs/` + params.query + `/details/` + category} className="d-md-none ms-2 text-reset">
+            <ArrowLeft size={30}></ArrowLeft>
+          </Link>
+        )}
       </div>
       <div className="text-start w-100 mt-2 mb-4">
         <p className="m-0 text-secondary" style={{ fontSize: "14px" }}>

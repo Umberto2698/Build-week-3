@@ -47,18 +47,15 @@ body {
   }
 }
 
-.job-icon:hover {
+.job-icon:hover,
+.job-detail:hover,
+.sidebar-dropdown:hover {
   cursor: pointer;
   background-color: #ebebeb;
 }
 
 .eye-slash {
   opacity: 0;
-}
-
-.job-detail:hover {
-  cursor: pointer;
-  background-color: #ebebeb;
 }
 
 .footer-text {
@@ -99,15 +96,49 @@ body {
 }
 
 .scroll {
-  height: 93vh;
+  height: 83vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
 .scroll2 {
-  height: 100vh;
+  height: 90vh;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  .scroll {
+    height: 74vh;
+  }
+  .scroll2 {
+    height: 82vh;
+  }
+}
+
+.details {
+  display: flex;
+}
+
+@media screen and (max-width: 640px) {
+  .details {
+    display: none;
+  }
+}
+
+#description {
+  font-size: medium;
+}
+
+@media screen and (max-width: 992px) {
+  #description {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 693px) {
+  #description {
+    font-size: 12px;
+  }
 }
 
 .my-navbar-text {

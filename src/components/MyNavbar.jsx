@@ -14,7 +14,7 @@ import {
 import { Grid3x3GapFill, Search } from "react-bootstrap-icons";
 import MyNavbarOffcanvas from "./MyNavbarOffcanvas";
 import Bottombar from "./Bottombar";
-import { GET_USER, ISERROR_USER, ISLOADING_USER } from "../redux/actions";
+import { GET_USER, ISERROR_USER, ISLOADING_USER, getJobFromQueryAction } from "../redux/actions";
 
 const MyNavbar = () => {
   const [query, setQuery] = useState("");
@@ -25,14 +25,21 @@ const MyNavbar = () => {
     setShowOffcanvas(!showOffcanvas);
   };
 
-  const user = useSelector(state => state.user.content);
+  const user = useSelector((state) => state.user.content);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setQuery(e.target.value);
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    if (query === "") {
+      dispatch(getJobFromQueryAction("none"));
+      window.location.href = "/jobs/none";
+    } else {
+      dispatch(getJobFromQueryAction(query));
+      window.location.href = "/jobs/" + query;
+    }
   };
 
   const fetchProfile = async () => {
