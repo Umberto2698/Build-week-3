@@ -5,8 +5,13 @@ export const SELECT_JOB = "SELECT_JOB";
 export const SELECT_DESCRIPTION = "SELECT_DESCRIPTION";
 
 export const GET_USER = "GET_USER";
-export const ISLOADING_USER = "ISLOADING_USER_FALSE";
+export const ISLOADING_USER_TRUE = "ISLOADING_USER_TRUE";
+export const ISLOADING_USER_FALSE = "ISLOADING_USER_FALSE";
 export const ISERROR_USER = "ISERROR_USER_FALSE";
+export const GET_HOME_POSTS = "GET_HOME_POSTS";
+export const ISLOADING_HOME_POSTS_TRUE = "ISLOADING_HOME_POSTS_TRUE";
+export const ISLOADING_HOME_POSTS_FALSE = "ISLOADING_HOME_POSTS_FALSE";
+export const ISERROR_HOME_POSTS = "ISERROR_HOME_POSTS";
 
 export const GET_ALL_PROFILES = "GET_ALL_PROFILES";
 export const ISLOADING_PROFILES_FALSE = "ISLOADING_PROFILES_FALSE";
@@ -206,7 +211,7 @@ export const fetchProfile = () => {
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4";
   return async dispatch => {
     try {
-      dispatch({ type: ISLOADING_USER, payload: true });
+      dispatch({ type: ISLOADING_USER_TRUE, payload: true });
       const response = await fetch(baseEndpoint, {
         method: "GET",
         headers: {
@@ -217,13 +222,38 @@ export const fetchProfile = () => {
       if (response.ok) {
         const data = await response.json();
         dispatch({ type: GET_USER, payload: data });
-        dispatch({ type: ISLOADING_USER, payload: false });
+        dispatch({ type: ISLOADING_USER_FALSE, payload: false });
       } else {
         dispatch({ type: ISERROR_USER, payload: true });
         throw new Error("Error fetching results");
       }
     } catch (error) {
       throw error;
+    }
+  };
+};
+
+export const getHomePosts = () => {
+  return async dispatch => {
+    try {
+      dispatch({ type: ISLOADING_HOME_POSTS_FALSE, payload: true });
+
+      const response = await fetch(postsEndpoint, {
+        headers: {
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4`,
+        },
+      });
+
+      if (response.ok) {
+        const posts = await response.json();
+        dispatch({ type: GET_HOME_POSTS, payload: posts });
+        dispatch({ type: ISLOADING_HOME_POSTS_FALSE, payload: false });
+      } else {
+        dispatch({ type: ISERROR_HOME_POSTS, payload: true });
+        throw new Error("Error fetching results");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 };

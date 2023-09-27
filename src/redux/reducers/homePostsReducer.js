@@ -1,4 +1,4 @@
-import { GET_USER, ISERROR_USER, ISLOADING_USER_FALSE, ISLOADING_USER_TRUE } from "../actions";
+import { GET_HOME_POSTS, ISERROR_HOME_POSTS, ISLOADING_HOME_POSTS_FALSE, ISLOADING_HOME_POSTS_TRUE } from "../actions";
 
 const initialState = {
   content: null,
@@ -6,24 +6,24 @@ const initialState = {
   isError: false,
 };
 
-const userReducer = (state = initialState, action) => {
+const homePostsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_USER:
+    case GET_HOME_POSTS:
       return {
         ...state,
         content: action.payload,
       };
-    case ISLOADING_USER_TRUE:
+    case ISLOADING_HOME_POSTS_TRUE:
       return {
         ...state,
         isLoading: action.payload,
       };
-    case ISLOADING_USER_FALSE:
+    case ISLOADING_HOME_POSTS_FALSE:
       return {
         ...state,
         isLoading: action.payload,
       };
-    case ISERROR_USER:
+    case ISERROR_HOME_POSTS:
       return {
         ...state,
         isError: action.payload,
@@ -34,4 +34,4 @@ const userReducer = (state = initialState, action) => {
   }
 };
 
-export default userReducer;
+export default homePostsReducer;
