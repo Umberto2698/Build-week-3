@@ -16,8 +16,10 @@ const SingleFriend = ({ profile }) => {
           src={profile.image}
           alt="img-profile"
           style={{
-            width: "48px",
-            height: "48px",
+            maxWidth: "48px",
+            maxHeight: "48px",
+            minWidth: "48px",
+            minHeight: "48px",
             borderRadius: "50%",
             overflow: "hidden",
           }}

@@ -24,6 +24,7 @@ import { Grid3x3GapFill, Search } from "react-bootstrap-icons";
 import MyNavbarOffcanvas from "./MyNavbarOffcanvas";
 import Bottombar from "./Bottombar";
 import { GET_USER } from "../redux/actions";
+import { getMyProfileAction } from "../redux/actions";
 
 const MyNavbar = () => {
   const [query, setQuery] = useState("");
@@ -35,7 +36,6 @@ const MyNavbar = () => {
   };
 
   const user = useSelector((state) => state.user.content);
-
   const handleChange = (e) => {
     setQuery(e.target.value);
   };
@@ -345,6 +345,7 @@ const MyNavbar = () => {
                               color: "#0d6efd",
                               width: "100%",
                             }}
+                            onClick={() => dispatch(getMyProfileAction())}
                           >
                             Visualizza profilo
                           </Button>

@@ -5,12 +5,13 @@ import {
   ISLOADING_MY_PROFILES_FALSE,
   ISLOADING_PROFILES_FALSE,
   ISLOADING_USER_PROFILES_FALSE,
+  ISLOADING_USER_PROFILES_TRUE,
 } from "../actions";
 
 const initialState = {
   all: [],
-  userProfile: null,
   myProfile: null,
+  currentProfile: null,
   isLoadingProfiles: true,
   isLoadingMyProfile: true,
   isLoadingUserProfile: true,
@@ -23,33 +24,43 @@ const profilesReducer = (state = initialState, action) => {
         ...state,
         all: action.payload,
       };
-    case ISLOADING_PROFILES_FALSE:
-      return {
-        ...state,
-        isLoadingProfiles: false,
-      };
 
     case GET_MY_PROFILE:
       return {
         ...state,
         myProfile: action.payload,
       };
+
+    case GET_USER_PROFILE:
+      return {
+        ...state,
+        currentProfile: action.payload,
+      };
+
+    case ISLOADING_PROFILES_FALSE:
+      return {
+        ...state,
+        isLoadingProfiles: false,
+      };
+
     case ISLOADING_MY_PROFILES_FALSE:
       return {
         ...state,
         isLoadingMyProfile: false,
       };
 
-    case GET_USER_PROFILE:
-      return {
-        ...state,
-        userProfile: action.payload,
-      };
     case ISLOADING_USER_PROFILES_FALSE:
       return {
         ...state,
         isLoadingUserProfile: false,
       };
+
+    case ISLOADING_USER_PROFILES_TRUE:
+      return {
+        ...state,
+        isLoadingUserProfile: true,
+      };
+
     default:
       return state;
   }

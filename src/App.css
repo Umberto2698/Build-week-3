@@ -190,7 +190,7 @@ body {
 .main-section {
   display: flex;
   flex-direction: column;
-  max-width: 804px;
+  width: 804px;
   border: 1px solid var(--mid-grey);
   border-radius: 0.8rem;
   overflow: hidden;

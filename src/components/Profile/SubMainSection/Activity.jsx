@@ -1,8 +1,10 @@
 import { Button } from "react-bootstrap";
 import PenSVG from "../Svgs/PenSVG";
 import ArrowSVG from "../Svgs/ArrowSVG";
+import { useParams } from "react-router-dom";
 
 const Activity = () => {
+  const params = useParams();
   return (
     <div className="horz-card-block">
       <div
@@ -24,14 +26,16 @@ const Activity = () => {
             0 follower
           </p>
         </div>
-        <div className="d-flex align-items-center gap-3">
-          <Button size="sm" className="my-btn">
-            Crea un post
-          </Button>
-          <span className="SVG-click">
-            <PenSVG />
-          </span>
-        </div>
+        {!params.id && (
+          <div className="d-flex align-items-center gap-3">
+            <Button size="sm" className="my-btn">
+              Crea un post
+            </Button>
+            <span className="SVG-click">
+              <PenSVG />
+            </span>
+          </div>
+        )}
       </div>
       <div
         className="d-flex flex-column"
