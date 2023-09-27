@@ -125,7 +125,7 @@ export const getPostsAction = () => {
     try {
       const response = await fetch(postsEndpoint, {
         headers: {
-          Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4`,
+          Authorization: `Bearer  ${process.env.REACT_APP_API_KEY}`,
         },
       });
       if (response.ok) {
