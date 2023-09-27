@@ -6,10 +6,11 @@ import { faBell, faBriefcase, faHouse, faSquarePlus, faUserGroup } from "@fortaw
 
 const BottomBar = () => {
   const location = useLocation();
+  // const user = useSelector((state) => state.user.content);
 
   return (
     <>
-      <Navbar fixed="bottom" expand="lg" style={{ height: "53px", zIndex: "2000" }} className="bg-white p-0">
+      <Navbar fixed="bottom" expand="lg" style={{ height: "53px", zIndex: "10" }} className="bg-white p-0">
         <Container fluid="xl" style={{ height: "100%" }}>
           <Row className="flex-grow-1 " style={{ height: "100%" }}>
             <Col xs={10} lg={7} className="d-flex align-items-center flex-grow-1">
