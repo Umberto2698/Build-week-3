@@ -233,7 +233,7 @@ const MyNavbar = () => {
                           </div>
                           <div className="flex-grow-1">
                             <h6>
-                              user? {user?.name} {user?.surname}
+                              {user?.name} {user?.surname}
                             </h6>
                             <p>{user?.title}</p>
                           </div>
