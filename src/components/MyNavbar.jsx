@@ -181,7 +181,7 @@ const MyNavbar = () => {
                     <Link
                       to="/mynetwork/"
                       className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                        location.pathname === "/mynetwork/" ? "active" : ""
+                        location.pathname.startsWith("/mynetwork/") ? "active" : ""
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
@@ -193,7 +193,7 @@ const MyNavbar = () => {
                     <Link
                       to="/jobs/"
                       className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                        location.pathname === "/jobs/" ? "active" : ""
+                        location.pathname.startsWith("/jobs/") ? "active" : ""
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
@@ -205,7 +205,7 @@ const MyNavbar = () => {
                     <Link
                       to="/messaging/"
                       className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                        location.pathname === "/messaging/" ? "active" : ""
+                        location.pathname.startsWith("/messaging/") ? "active" : ""
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
@@ -217,7 +217,7 @@ const MyNavbar = () => {
                     <Link
                       to="/notifications/"
                       className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                        location.pathname === "/notifications/" ? "active" : ""
+                        location.pathname.startsWith("/notifications/") ? "active" : ""
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
