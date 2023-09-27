@@ -27,8 +27,8 @@ const HomeMain = () => {
   };
 
   return (
-    <Container fluid="xl" className="px-0 pt-3" id="home-container">
-      <Row className=" mx-3">
+    <Container fluid="sm" className="px-0 pt-3" id="home-container">
+      <Row>
         <HomeLeftSidebarContainer />
 
         <Col xs={12} md={9} lg={6} className="section" style={{ marginBottom: "4cm" }}>

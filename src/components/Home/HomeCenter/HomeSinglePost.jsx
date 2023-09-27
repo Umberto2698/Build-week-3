@@ -1,5 +1,5 @@
-import { Container, Row, Col, Card, Placeholder } from "react-bootstrap";
-import { ThreeDots, X } from "react-bootstrap-icons";
+import { Container, Row, Col, Card, Placeholder, Button } from "react-bootstrap";
+import { HandThumbsUp, HandThumbsUpFill, ThreeDots, X } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 
 const HomeSinglePost = () => {
@@ -25,7 +25,9 @@ const HomeSinglePost = () => {
                     usernameaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
                   </div>
                 </div>
-                <div style={{ fontSize: "0.7rem" }}>orario</div>
+                <div className="text-secondary" style={{ fontSize: "0.7rem" }}>
+                  orario
+                </div>
               </Col>
               <Col xs={2} className="ps-0">
                 <div className="d-flex">
@@ -38,9 +40,27 @@ const HomeSinglePost = () => {
                 </div>
               </Col>
             </Row>
-            <Row>
-              <div>testo post</div>
-            </Row>
+            <div className="border-bottom pb-2" style={{ fontSize: "0.9rem" }}>
+              testo post
+            </div>
+            <div className="d-flex justify-content-between mt-3">
+              <Button className="d-flex">
+                <HandThumbsUp className="m-auto me-1" />
+                Consiglia
+              </Button>
+              <Button className="d-flex">
+                <HandThumbsUp className="m-auto me-1" />
+                Commenta
+              </Button>
+              <Button className="d-flex">
+                <HandThumbsUp className="m-auto me-1" />
+                Diffondi il post
+              </Button>
+              <Button className="d-flex">
+                <HandThumbsUp className="m-auto me-1" />
+                Invia
+              </Button>
+            </div>
           </Container>
         </Card>
       ) : (
