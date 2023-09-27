@@ -478,3 +478,25 @@ body {
   color: var(--grey);
   cursor: pointer;
 }
+
+#home-container {
+  margin-top: 53px;
+}
+
+#home-left-sidebar-link {
+  text-decoration: none;
+}
+
+#home-left-sidebar-link-bg:hover {
+  background-color: #6b6b6b3b;
+}
+
+#home-left-sidebar-link:hover {
+  text-decoration: underline;
+}
+
+#home-left-sidebar-image {
+  top: 20px;
+  left: 0;
+  right: 0;
+}

@@ -8,27 +8,30 @@ import Linkedin from "../assets/linkedin.png";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPostsAction, postPostAction } from "../redux/actions";
+import HomeLeftSidebarContainer from "./Home/HomeLeftSidebar/HomeLeftSidebarContainer";
 
 const HomeMain = () => {
   const [newPost, setNewPost] = useState("");
   const dispatch = useDispatch();
-  const allPosts = useSelector((state) => state.allPosts?.content || []);
+  const allPosts = useSelector(state => state.allPosts?.content || []);
 
   useEffect(() => {
     dispatch(getPostsAction());
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     dispatch(postPostAction(newPost));
     setNewPost("");
   };
 
   return (
-    <Container fluid className="px-0">
-      <Row>
-        <Col xs={12} md={9} className="section" style={{ marginBottom: "4cm" }}>
-          <Col className="bg-white rounded-3 pt-3 px-3 mx-3 border">
+    <Container fluid="xl" className="px-0 pt-3" id="home-container">
+      <Row className=" mx-3">
+        <HomeLeftSidebarContainer />
+
+        <Col xs={12} md={9} lg={6} className="section" style={{ marginBottom: "4cm" }}>
+          <Col className="bg-white rounded-3 pt-3 px-3 border">
             <Container fluid>
               <Row className="align-items-center">
                 <Col className="text-center" xs={2}>
@@ -62,18 +65,18 @@ const HomeMain = () => {
               </Col>
             </Row>
           </Col>
-          <Col className="bg-white rounded-3 pt-3 px-3 mx-3 border">
+          <Col className="bg-white rounded-3 pt-3 px-3 border">
             <h2>Consigliati per te</h2>
           </Col>
         </Col>
 
         <Col xs={12} md={3} className="section">
-          <Col className="bg-white rounded-3 pt-3 px-3 mx-3 border">
+          <Col className="bg-white rounded-3 pt-3 px-3 border">
             <h2>Linkeidn Notizie</h2>
           </Col>
 
           {/* Immagine LinkedIn */}
-          <Col className="bg-white rounded-3 pt-3 px-3 mx-3 border">
+          <Col className="bg-white rounded-3 pt-3 px-3 border">
             <img src={Linkedin} alt="error" width={170} height={180} />
           </Col>
         </Col>

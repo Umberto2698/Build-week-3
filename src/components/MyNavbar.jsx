@@ -110,7 +110,7 @@ const MyNavbar = () => {
                 className="nav-link d-flex justify-content-center d-md-none"
                 style={{ color: "#8d8d8d", height: "100%", backgroundColor: "transparent" }}
               >
-                <Link to="/profile" className="m-auto">
+                <Link to="/profile/" className="m-auto">
                   <img src={user.image} width={32} height={32} className="rounded-circle " alt="user" />
                 </Link>
               </Col>
@@ -137,7 +137,7 @@ const MyNavbar = () => {
               </Col>
               <Col xs={1} className="d-md-none" style={{ height: "100%" }}>
                 <Link
-                  to="/publish"
+                  to="/publish/"
                   className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
                   style={{ color: "#8d8d8d", height: "100%" }}
                 >
@@ -146,7 +146,7 @@ const MyNavbar = () => {
               </Col>
               <Col xs={1} className="d-md-none" style={{ height: "100%" }}>
                 <Link
-                  to="/comments"
+                  to="/comments/"
                   className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
                   style={{ color: "#8d8d8d", height: "100%" }}
                 >
@@ -179,9 +179,9 @@ const MyNavbar = () => {
                   </Col>
                   <Col style={{ height: "100%" }}>
                     <Link
-                      to="/mynetwork"
+                      to="/mynetwork/"
                       className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                        location.pathname === "/mynetwork" ? "active" : ""
+                        location.pathname === "/mynetwork/" ? "active" : ""
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
@@ -191,9 +191,9 @@ const MyNavbar = () => {
                   </Col>
                   <Col style={{ height: "100%" }}>
                     <Link
-                      to="/jobs"
+                      to="/jobs/"
                       className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                        location.pathname === "/jobs" ? "active" : ""
+                        location.pathname === "/jobs/" ? "active" : ""
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
@@ -203,9 +203,9 @@ const MyNavbar = () => {
                   </Col>
                   <Col style={{ height: "100%" }}>
                     <Link
-                      to="/messaging"
+                      to="/messaging/"
                       className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                        location.pathname === "/messaging" ? "active" : ""
+                        location.pathname === "/messaging/" ? "active" : ""
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
@@ -215,9 +215,9 @@ const MyNavbar = () => {
                   </Col>
                   <Col style={{ height: "100%" }}>
                     <Link
-                      to="/notifications"
+                      to="/notifications/"
                       className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                        location.pathname === "/notifications" ? "active" : ""
+                        location.pathname === "/notifications/" ? "active" : ""
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
@@ -247,7 +247,7 @@ const MyNavbar = () => {
                         style={{ backgroundColor: "white" }}
                       >
                         <Link
-                          to="/profile"
+                          to="/profile/"
                           className="text-decoration-none dropdown-item p-2 "
                           style={{ backgroundColor: "white" }}
                         >
@@ -308,7 +308,7 @@ const MyNavbar = () => {
                   </Col>
                   <Col xs={3} className=" d-none d-md-block" style={{ height: "100%" }}>
                     <Link
-                      to="/premium"
+                      to="/premium/"
                       className=" d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center"
                       style={{ color: "#915907", height: "100%" }}
                     >
