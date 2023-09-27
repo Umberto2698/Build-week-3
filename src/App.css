@@ -47,18 +47,15 @@ body {
   }
 }
 
-.job-icon:hover {
+.job-icon:hover,
+.job-detail:hover,
+.sidebar-dropdown:hover {
   cursor: pointer;
   background-color: #ebebeb;
 }
 
 .eye-slash {
   opacity: 0;
-}
-
-.job-detail:hover {
-  cursor: pointer;
-  background-color: #ebebeb;
 }
 
 .footer-text {
@@ -108,6 +105,26 @@ body {
   height: 92vh;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.details {
+  display: flex;
+}
+
+@media screen and (max-width: 640px) {
+  .details {
+    display: none;
+  }
+}
+
+#description {
+  font-size: medium;
+}
+
+@media screen and (max-width: 992px) {
+  #description {
+    font-size: 14px;
+  }
 }
 
 .my-navbar-text {

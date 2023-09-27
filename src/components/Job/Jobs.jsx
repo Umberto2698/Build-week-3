@@ -4,7 +4,7 @@ import Logo from "../../assets/LinkedIn-Logos/LI-In-Bug.png";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { SELECT_DESCRIPTION, SELECT_JOB } from "../../redux/actions";
-const Jobs = ({ jobData, selected }) => {
+const Jobs = ({ path, jobData, selected }) => {
   const location = useLocation();
   const dispatch = useDispatch();
 
@@ -14,8 +14,9 @@ const Jobs = ({ jobData, selected }) => {
       className="text-secondary job w-100 align-items-start border-bottom border-bottom-secondary-subtle py-2 ps-2"
     >
       {!location.pathname.includes("details") ? (
-        <Link to="details/" className=" text-decoration-none text-reset">
+        <Link to={`details/` + path} className="text-decoration-none text-reset">
           <Row
+            className="justify-content-between"
             onClick={() => {
               return (
                 dispatch({ type: SELECT_DESCRIPTION, payload: jobData.description }),
@@ -23,12 +24,12 @@ const Jobs = ({ jobData, selected }) => {
               );
             }}
           >
-            <Col lg={1}>
+            <Col xs={1}>
               <div>
                 <img src={Logo} alt="Company logo" width={40} />
               </div>
             </Col>
-            <Col lg={8} className="ms-3 flex-grow-1">
+            <Col xs={7} sm={6} className="ms-3 flex-sm-grow-1">
               <h2 className="text-primary mb-1" style={{ fontSize: "20px" }}>
                 {jobData.title}
               </h2>
@@ -42,7 +43,7 @@ const Jobs = ({ jobData, selected }) => {
                 {jobData.publication_date.split("T")[0]}
               </p>
             </Col>
-            <Col lg={2} className="justify-content-end text-end">
+            <Col xs={3} className="justify-content-end text-end">
               <div
                 className="job-icon eye-slash rounded-5 text-end m-0 d-inline-block text-center align-middle"
                 style={{ width: "30px", height: "30px" }}
@@ -59,13 +60,21 @@ const Jobs = ({ jobData, selected }) => {
           </Row>
         </Link>
       ) : (
-        <Row onClick={() => dispatch({ type: SELECT_JOB, payload: jobData._id })}>
-          <Col lg={1}>
+        <Row
+          className="justify-content-between"
+          onClick={() => {
+            return (
+              dispatch({ type: SELECT_DESCRIPTION, payload: jobData.description }),
+              dispatch({ type: SELECT_JOB, payload: jobData._id })
+            );
+          }}
+        >
+          <Col xs={1}>
             <div>
               <img src={Logo} alt="Company logo" width={40} />
             </div>
           </Col>
-          <Col lg={8} className="ms-3 flex-grow-1">
+          <Col xs={7} sm={6} className="ms-3 flex-sm-grow-1">
             <h2 className="text-primary mb-1" style={{ fontSize: "20px" }}>
               {jobData.title}
             </h2>
@@ -79,7 +88,7 @@ const Jobs = ({ jobData, selected }) => {
               {jobData.publication_date.split("T")[0]}
             </p>
           </Col>
-          <Col lg={2} className="justify-content-end text-end">
+          <Col xs={3} className="justify-content-end text-end">
             <div
               className="job-icon eye-slash rounded-5 text-end m-0 d-inline-block text-center align-middle"
               style={{ width: "30px", height: "30px" }}

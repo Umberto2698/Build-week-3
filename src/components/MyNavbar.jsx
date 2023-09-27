@@ -25,13 +25,13 @@ const MyNavbar = () => {
     setShowOffcanvas(!showOffcanvas);
   };
 
-  const user = useSelector(state => state.user.content);
+  const user = useSelector((state) => state.user.content);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setQuery(e.target.value);
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
   };
 

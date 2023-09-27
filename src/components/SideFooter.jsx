@@ -25,7 +25,7 @@ const Footer = () => {
   return (
     <>
       <div className="mb-2 mt-3">
-        <div className="text-secondary text-center">
+        <div className="d-none d-lg-block text-secondary text-center">
           <Link to="/" className="text-decoration-none text-reset mx-2 my-2">
             <span className="footer-text">Informazioni</span>
           </Link>
@@ -34,6 +34,12 @@ const Footer = () => {
           </Link>
         </div>
         <div className="text-secondary text-center">
+          <Link to="/" className="d-lg-none text-decoration-none text-reset mx-2 my-2">
+            <span className="footer-text">Informazioni</span>
+          </Link>
+          <Link to="/" className="d-lg-none text-decoration-none text-reset mx-2 my-2">
+            <span className="footer-text">Accessibilità</span>
+          </Link>
           <Link to="/" className="text-decoration-none text-reset mx-2 my-2">
             <span className="footer-text">Centro assistenza</span>
           </Link>
@@ -63,12 +69,15 @@ const Footer = () => {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        <div className="text-secondary text-center">
+        <div className="d-none d-lg-block text-secondary text-center">
           <Link to="/" className="text-decoration-none text-reset mx-2 my-2">
             <span className="footer-text">Opzioni per gli annunci pubblicitari</span>
           </Link>
         </div>
         <div className="text-secondary text-center">
+          <Link to="/" className="d-lg-none text-decoration-none text-reset mx-2 my-2">
+            <span className="footer-text">Opzioni per gli annunci pubblicitari</span>
+          </Link>
           <Link to="/" className="text-decoration-none text-reset mx-2 my-2">
             <span className="footer-text">Pubblicità</span>
           </Link>
