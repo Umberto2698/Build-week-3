@@ -10,8 +10,11 @@ const HomeLeftSidebarTop = () => {
   return (
     <>
       {!loading ? (
-        <Card className="bg-white rounded-3 mb-2">
-          <div className="border-0" style={{ height: "56px", width: "100%", backgroundColor: "palegoldenrod" }}></div>
+        <Card className="bg-white rounded- mb-2">
+          <div
+            className="border-0 rounded-top"
+            style={{ height: "56px", width: "100%", backgroundColor: "palegoldenrod" }}
+          ></div>
           <Link id="home-left-sidebar-link" to="/profile/" className="text-center text-black">
             <div id="home-left-sidebar-image" className="position-absolute">
               <img className="rounded-circle border border-2 border-white" src={user.image} width={72} alt="" />
