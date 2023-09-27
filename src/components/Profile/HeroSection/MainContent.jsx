@@ -22,7 +22,7 @@ const MainContent = () => {
   return (
     <div className=" px-4 pb-4 pt-3 m-0" style={{ backgroundColor: "white" }}>
       <div className="d-flex justify-content-end">
-        <span onClick={handleShow}>
+        <span onClick={handleShow} className="SVG-click">
           <PenSVG />
         </span>
       </div>

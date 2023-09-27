@@ -299,16 +299,6 @@ body {
   height: 55px;
 }
 
-.bi.bi-pen.one::before {
-  padding: 10px;
-  font-size: 20px;
-}
-
-.bi.bi-pen.one:hover {
-  background-color: var(--mid-grey);
-  border-radius: 50%;
-}
-
 .link {
   color: var(--mainColor);
   font-weight: 500;
@@ -402,6 +392,15 @@ body {
 .cards-wrapper {
   padding-bottom: 5px;
   overflow-x: scroll;
+}
+
+.SVG-click {
+  padding: 7px 8px;
+  border-radius: 50%;
+}
+
+.SVG-click:hover {
+  background-color: var(--mid-grey);
 }
 
 /* --------------------------  STYLE DELLA SCROLLBAR  -------------------------- */

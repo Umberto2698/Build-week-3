@@ -1,5 +1,6 @@
 import { Button } from "react-bootstrap";
 import PenSVG from "../Svgs/PenSVG";
+import ArrowSVG from "../Svgs/ArrowSVG";
 
 const Activity = () => {
   return (
@@ -27,7 +28,9 @@ const Activity = () => {
           <Button size="sm" className="my-btn">
             Crea un post
           </Button>
-          <PenSVG />
+          <span className="SVG-click">
+            <PenSVG />
+          </span>
         </div>
       </div>
       <div
@@ -37,12 +40,7 @@ const Activity = () => {
           paddingBlock: "12px",
         }}
       >
-        <div
-          className="d-flex  gap-2"
-          style={{
-            paddingTop: "12px",
-          }}
-        >
+        <div className="d-flex  gap-2">
           <div className="d-flex flex-column">
             <h4 style={{ fontSize: "16px" }}>
               Non hai ancora pubblicato nulla
@@ -62,18 +60,7 @@ const Activity = () => {
         }}
       >
         <span style={{ fontWeight: 600 }}> Mostra tutte le attività </span>{" "}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 16 16"
-          className="mercado-match"
-          data-supported-dps="16x16"
-          fill="currentColor"
-          width="16"
-          height="16"
-          focusable="false"
-        >
-          <path d="M11.45 3L15 8l-3.55 5H9l2.84-4H2V7h9.84L9 3z"></path>
-        </svg>
+        <ArrowSVG />
       </div>
     </div>
   );
