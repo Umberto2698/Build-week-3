@@ -9,7 +9,6 @@ const Friends = () => {
   const currentProfile = useSelector((state) => state.profiles.currentProfile);
 
   useEffect(() => {
-    console.log("Sta fuzionando");
     setRandomArr([]);
     for (let i = 0; i < numFriends; i++) {
       let numeroCasuale = Math.floor(Math.random() * 677); // Genera un numero casuale tra 0 e 676
@@ -27,9 +26,7 @@ const Friends = () => {
     <div className="friends">
       <div className="d-flex flex-column">
         <h4 style={{ fontSize: "16px" }}>Persone che potresti conoscere</h4>
-        <p style={{ fontSize: "14px", color: "var(--p-grey)" }}>
-          Dalla tua azienda
-        </p>
+        <p style={{ fontSize: "14px", color: "var(--p-grey)" }}>Dalla tua azienda</p>
       </div>
       <div className="d-flex flex-column">
         {randomArr.map((elem) => (

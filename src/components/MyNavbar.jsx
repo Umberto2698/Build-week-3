@@ -200,7 +200,7 @@ const MyNavbar = () => {
                   </Col>
                   <Col style={{ height: "100%" }}>
                     <Link
-                      to="/jobs"
+                      to="/jobs/none"
                       className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
                         location.pathname === "/jobs" ? "active" : ""
                       }`}
@@ -325,19 +325,6 @@ const MyNavbar = () => {
                         </div>
                         Per le aziende
                       </Dropdown.Toggle>
-                    </Link>
-                    <MyNavbarOffcanvas show={showOffcanvas} hide={handleToggleOffcanvas} />
-                  </Col>
-                  <Col xs={3} className=" d-none d-md-block" style={{ height: "100%" }}>
-                    <Link
-                      to="/premium"
-                      className=" d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center"
-                      style={{ color: "#915907", height: "100%" }}
-                    >
-                      <div>
-                        <Grid3x3GapFill size={20} />
-                      </div>
-                      Per le aziende
                     </Link>
                     <MyNavbarOffcanvas show={showOffcanvas} hide={handleToggleOffcanvas} />
                   </Col>

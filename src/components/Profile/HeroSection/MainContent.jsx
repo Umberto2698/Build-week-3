@@ -5,10 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import PenSVG from "../Svgs/PenSVG";
 import XsPenSVG from "../Svgs/XsPenSVG";
 import CloseSVG from "../Svgs/CloseSVG";
-import {
-  ISLOADING_USER_PROFILES_TRUE,
-  modifyUserProfileAction,
-} from "../../../redux/actions";
+import { ISLOADING_USER_PROFILES_TRUE, modifyUserProfileAction } from "../../../redux/actions";
 
 const MainContent = () => {
   const dispatch = useDispatch();
@@ -41,15 +38,12 @@ const MainContent = () => {
 
   return (
     <div className=" px-4 pb-4 pt-3 m-0" style={{ backgroundColor: "white" }}>
-      {console.log(params.id)}
       {!params.id ? (
         <div className="d-flex justify-content-end">
           <span
             onClick={handleShow}
             className="SVG-click"
-            style={
-              !params.id ? { display: "inline-block" } : { display: "hiden" }
-            }
+            style={!params.id ? { display: "inline-block" } : { display: "hiden" }}
           >
             <PenSVG />
           </span>
@@ -69,9 +63,7 @@ const MainContent = () => {
             overflowY: "scroll",
           }}
         >
-          <p style={{ fontSize: "12px", margin: "0" }}>
-            * Indica che è obbligatorio
-          </p>
+          <p style={{ fontSize: "12px", margin: "0" }}>* Indica che è obbligatorio</p>
           <Form className="pt-4" onSubmit={handleSubmit}>
             <div className="pb-4">
               <Form.Label className="my-label">Nome*</Form.Label>
@@ -91,9 +83,7 @@ const MainContent = () => {
                 placeholder="Inserisci il tuo cognome"
                 aria-describedby="basic-addon3"
                 value={query.surname}
-                onChange={(e) =>
-                  setQuery({ ...query, surname: e.target.value })
-                }
+                onChange={(e) => setQuery({ ...query, surname: e.target.value })}
                 required
               />
             </div>
@@ -104,9 +94,7 @@ const MainContent = () => {
                 placeholder="Inserisci il tuo nome"
                 aria-describedby="basic-addon3"
                 value={query.username}
-                onChange={(e) =>
-                  setQuery({ ...query, username: e.target.value })
-                }
+                onChange={(e) => setQuery({ ...query, username: e.target.value })}
                 required
               />
             </div>
@@ -122,9 +110,7 @@ const MainContent = () => {
             </div>
             <h5 className="m-0 pb-1">Posizione attuale</h5>
             <div className="pb-4">
-              <Form.Label className="my-label">
-                Posizione lavorativa*
-              </Form.Label>
+              <Form.Label className="my-label">Posizione lavorativa*</Form.Label>
               <Form.Control
                 className="my-input-control"
                 placeholder="Inserisci la tua posizione lavorativa"
@@ -136,9 +122,7 @@ const MainContent = () => {
             </div>
             <h5 className="m-0 pb-1">Località</h5>
             <div className="pb-1">
-              <Form.Label className="my-label">
-                Paese/Area geografica*
-              </Form.Label>
+              <Form.Label className="my-label">Paese/Area geografica*</Form.Label>
               <Form.Control
                 className="my-input-control"
                 placeholder="Inserisci il tuo paese"
@@ -166,8 +150,7 @@ const MainContent = () => {
       </Row>
       <div>
         <p className="mt-2" style={{ color: "#9a9a9a" }}>
-          {currentProfile.area} ·{" "}
-          <Link className="link">Informazioni di contatto</Link>
+          {currentProfile.area} · <Link className="link">Informazioni di contatto</Link>
         </p>
       </div>
       {!params.id && (
