@@ -198,3 +198,31 @@ export const deletePostAction = postID => {
     }
   };
 };
+
+export const fetchProfile = () => {
+  const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile/me";
+  const token =
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4";
+  return async dispatch => {
+    try {
+      dispatch({ type: ISLOADING_USER, payload: true });
+      const response = await fetch(baseEndpoint, {
+        method: "GET",
+        headers: {
+          Authorization: token,
+          team: "team-6",
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        dispatch({ type: GET_USER, payload: data });
+        dispatch({ type: ISLOADING_USER, payload: false });
+      } else {
+        dispatch({ type: ISERROR_USER, payload: true });
+        throw new Error("Error fetching results");
+      }
+    } catch (error) {
+      throw error;
+    }
+  };
+};
