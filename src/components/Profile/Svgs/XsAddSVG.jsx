@@ -1,18 +1,18 @@
-const CloseSVG = () => {
+const XsAddSVG = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 16"
       data-supported-dps="16x16"
       fill="currentColor"
-      style={{ cursor: "pointer", color: "var(--grey)" }}
+      style={{ cursor: "pointer", color: "var(--mainColor)" }}
       width="16"
       height="16"
       focusable="false"
     >
-      <path d="M14 3.41L9.41 8 14 12.59 12.59 14 8 9.41 3.41 14 2 12.59 6.59 8 2 3.41 3.41 2 8 6.59 12.59 2z"></path>
+      <path d="M14 9H9v5H7V9H2V7h5V2h2v5h5z"></path>
     </svg>
   );
 };
 
-export default CloseSVG;
+export default XsAddSVG;

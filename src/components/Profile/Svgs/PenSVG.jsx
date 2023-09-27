@@ -5,7 +5,7 @@ const PenSVG = () => {
       viewBox="0 0 24 24"
       data-supported-dps="24x24"
       fill="currentColor"
-      className="mercado-match"
+      style={{ cursor: "pointer", color: "var(--grey)" }}
       width="24"
       height="24"
       focusable="false"

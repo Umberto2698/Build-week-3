@@ -3,7 +3,7 @@ const ArrowSVG = () => {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 16 16"
-      className="mercado-match"
+      style={{ cursor: "pointer", color: "var(--grey)" }}
       data-supported-dps="16x16"
       fill="currentColor"
       width="16"

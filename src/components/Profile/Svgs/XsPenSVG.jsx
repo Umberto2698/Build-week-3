@@ -5,7 +5,7 @@ const XsPenSVG = () => {
       viewBox="0 0 16 16"
       data-supported-dps="16x16"
       fill="currentColor"
-      className="mercado-match"
+      style={{ cursor: "pointer", color: "var(--grey)" }}
       width="16"
       height="16"
       focusable="false"

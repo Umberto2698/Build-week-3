@@ -9,7 +9,9 @@ import JobDetails from "./JobDetails";
 const Details = () => {
   const randomJobArray = useSelector((state) => state.job.random.content);
   const selectedJobId = useSelector((state) => state.job.selected.content);
-  const selectedDescription = useSelector((state) => state.job.description.content);
+  const selectedDescription = useSelector(
+    (state) => state.job.description.content
+  );
   const loading = useSelector((state) => state.state.loading.content);
   const dispatch = useDispatch();
 
@@ -23,7 +25,7 @@ const Details = () => {
     if (description.slice(0, 15) === "<p><br><br></p>") {
       console.log(description.slice(0, 15));
       colonnaDescrizione.innerHTML = description.slice(15);
-    } else if (description.slice(0, 21) === `<p class="description`) {
+    } else if (description.slice(0, 21) === `<p className="description`) {
       colonnaDescrizione.innerHTML = description.slice(324);
     } else {
       colonnaDescrizione.innerHTML = description;
@@ -68,9 +70,17 @@ const Details = () => {
               className="d-flex flex-column align-items-center justify-content-start w-100"
             >
               {loading === true
-                ? [...Array(3).keys()].map((el) => <JobsPlaceholder key={el}></JobsPlaceholder>)
+                ? [...Array(3).keys()].map((el) => (
+                    <JobsPlaceholder key={el}></JobsPlaceholder>
+                  ))
                 : randomJobArray.length !== 0 &&
-                  randomJobArray.map((job) => <Jobs selected={selectedJobId} jobData={job} key={job._id}></Jobs>)}
+                  randomJobArray.map((job) => (
+                    <Jobs
+                      selected={selectedJobId}
+                      jobData={job}
+                      key={job._id}
+                    ></Jobs>
+                  ))}
             </div>
           </div>
         </Col>
