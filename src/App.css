@@ -251,7 +251,9 @@ body {
   display: flex;
   justify-content: center;
   gap: 24px;
-  padding-block: 24px;
+  margin-top: 53px;
+  padding-top: 17px;
+  padding-bottom: 24px;
 }
 
 #user-banner {
@@ -403,6 +405,19 @@ body {
 }
 
 /* --------------------------  STYLE DELLA SCROLLBAR  -------------------------- */
+body::-webkit-scrollbar {
+  width: 5px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 5px;
+  background: var(--mid-grey); /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--grey); /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+}
 .cards-wrapper::-webkit-scrollbar {
   height: 5px; /* width of the entire scrollbar */
 }

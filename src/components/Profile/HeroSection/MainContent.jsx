@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import PenSVG from "../Svgs/PenSVG";
+import XsPenSVG from "../Svgs/XsPenSVG";
+import CloseSVG from "../Svgs/CloseSVG";
 
 const MainContent = () => {
   const [show, setShow] = useState(false);
@@ -19,19 +22,9 @@ const MainContent = () => {
   return (
     <div className=" px-4 pb-4 pt-3 m-0" style={{ backgroundColor: "white" }}>
       <div className="d-flex justify-content-end">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          data-supported-dps="24x24"
-          fill="currentColor"
-          className="mercado-match"
-          width="24"
-          height="24"
-          focusable="false"
-          onClick={handleShow}
-        >
-          <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
-        </svg>
+        <span onClick={handleShow}>
+          <PenSVG />
+        </span>
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -236,18 +229,7 @@ const MainContent = () => {
             <p>Ruoli di Ingegnere Full Stack</p>
             <Link className="link">Mostra dettagli</Link>
           </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            data-supported-dps="16x16"
-            fill="currentColor"
-            className="mercado-match"
-            width="16"
-            height="16"
-            focusable="false"
-          >
-            <path d="M14.13 1.86a3 3 0 00-4.17 0l-7 7L1 15l6.19-2 6.94-7a3 3 0 000-4.16zm-8.36 9.71l-1.35-1.34L9.64 5 11 6.35z"></path>
-          </svg>
+          <XsPenSVG />
         </div>
         <div className="card-user-info">
           <div>
@@ -255,18 +237,7 @@ const MainContent = () => {
             <p>Ruoli di Ingegnere Full Stack</p>
             <Link className="link">Mostra dettagli</Link>
           </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            data-supported-dps="16x16"
-            fill="currentColor"
-            className="mercado-match"
-            width="16"
-            height="16"
-            focusable="false"
-          >
-            <path d="M14 3.41L9.41 8 14 12.59 12.59 14 8 9.41 3.41 14 2 12.59 6.59 8 2 3.41 3.41 2 8 6.59 12.59 2z"></path>
-          </svg>
+          <CloseSVG />
         </div>
         <div className="card-user-info">
           <div>
@@ -274,18 +245,7 @@ const MainContent = () => {
             <p>Ruoli di Ingegnere Full Stack</p>
             <Link className="link">Mostra dettagli</Link>
           </div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            data-supported-dps="16x16"
-            fill="currentColor"
-            className="mercado-match"
-            width="16"
-            height="16"
-            focusable="false"
-          >
-            <path d="M14 3.41L9.41 8 14 12.59 12.59 14 8 9.41 3.41 14 2 12.59 6.59 8 2 3.41 3.41 2 8 6.59 12.59 2z"></path>
-          </svg>
+          <CloseSVG />
         </div>
       </div>
     </div>

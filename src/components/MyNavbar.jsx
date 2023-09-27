@@ -1,5 +1,14 @@
 import { useEffect, useState } from "react";
-import { Button, Col, Container, Dropdown, Form, InputGroup, Navbar, Row } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  Dropdown,
+  Form,
+  InputGroup,
+  Navbar,
+  Row,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,18 +34,19 @@ const MyNavbar = () => {
     setShowOffcanvas(!showOffcanvas);
   };
 
-  const user = useSelector(state => state.user.content);
+  const user = useSelector((state) => state.user.content);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setQuery(e.target.value);
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
   };
 
   const fetchProfile = async () => {
-    const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile/me";
+    const baseEndpoint =
+      "https://striveschool-api.herokuapp.com/api/profile/me";
     const token =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4";
 
@@ -67,10 +77,19 @@ const MyNavbar = () => {
   return (
     user && (
       <>
-        <Navbar fixed="top" expand="lg" style={{ height: "53px", zIndex: "2000" }} className="bg-white p-0">
+        <Navbar
+          fixed="top"
+          expand="lg"
+          style={{ height: "53px", zIndex: "10" }}
+          className="bg-white p-0"
+        >
           <Container fluid="xl" style={{ height: "100%" }}>
             <Row className="flex-grow-1 " style={{ height: "100%" }}>
-              <Col xs={1} lg={4} className="p-1  align-items-center d-none d-md-flex">
+              <Col
+                xs={1}
+                lg={4}
+                className="p-1  align-items-center d-none d-md-flex"
+              >
                 <Link to="/" className="me-2">
                   <img
                     src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
@@ -80,7 +99,11 @@ const MyNavbar = () => {
                   />
                 </Link>
 
-                <Form onSubmit={handleSubmit} style={{ maxWidth: "280px" }} className="flex-grow-1 d-none d-lg-block ">
+                <Form
+                  onSubmit={handleSubmit}
+                  style={{ maxWidth: "280px" }}
+                  className="flex-grow-1 d-none d-lg-block "
+                >
                   <InputGroup>
                     <InputGroup.Text
                       id="basic-addon1"
@@ -103,14 +126,27 @@ const MyNavbar = () => {
               <Col
                 xs={1}
                 className="nav-link d-flex justify-content-center d-md-none"
-                style={{ color: "#8d8d8d", height: "100%", backgroundColor: "transparent" }}
+                style={{
+                  color: "#8d8d8d",
+                  height: "100%",
+                  backgroundColor: "transparent",
+                }}
               >
                 <Link to="/profile" className="m-auto">
-                  <img src={user.image} width={32} height={32} className="rounded-circle " alt="user" />
+                  <img
+                    src={user.image}
+                    width={32}
+                    height={32}
+                    className="rounded-circle "
+                    alt="user"
+                  />
                 </Link>
               </Col>
               <Col className="py-2 px-0 d-flex d-md-none ">
-                <Form onSubmit={handleSubmit} className="d-flex flex-grow-1 justify-content-center">
+                <Form
+                  onSubmit={handleSubmit}
+                  className="d-flex flex-grow-1 justify-content-center"
+                >
                   <InputGroup>
                     <InputGroup.Text
                       id="basic-addon1"
@@ -136,7 +172,10 @@ const MyNavbar = () => {
                   className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
                   style={{ color: "#8d8d8d", height: "100%" }}
                 >
-                  <FontAwesomeIcon icon={faArrowDownWideShort} style={{ height: "20px" }} />
+                  <FontAwesomeIcon
+                    icon={faArrowDownWideShort}
+                    style={{ height: "20px" }}
+                  />
                 </Link>
               </Col>
               <Col xs={1} className="d-md-none" style={{ height: "100%" }}>
@@ -145,11 +184,18 @@ const MyNavbar = () => {
                   className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
                   style={{ color: "#8d8d8d", height: "100%" }}
                 >
-                  <FontAwesomeIcon icon={faCommentDots} style={{ height: "20px" }} />
+                  <FontAwesomeIcon
+                    icon={faCommentDots}
+                    style={{ height: "20px" }}
+                  />
                 </Link>
               </Col>
 
-              <Col xs={10} lg={7} className="align-items-center flex-grow-1 d-none d-md-flex">
+              <Col
+                xs={10}
+                lg={7}
+                className="align-items-center flex-grow-1 d-none d-md-flex"
+              >
                 <Row className="flex-grow-1" style={{ height: "100%" }}>
                   <Col className="d-lg-none" style={{ height: "100%" }}>
                     <Link
@@ -168,7 +214,10 @@ const MyNavbar = () => {
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
-                      <FontAwesomeIcon icon={faHouse} style={{ height: "20px" }} />
+                      <FontAwesomeIcon
+                        icon={faHouse}
+                        style={{ height: "20px" }}
+                      />
                       <span className="d-none d-md-block"> Home</span>
                     </Link>
                   </Col>
@@ -180,7 +229,10 @@ const MyNavbar = () => {
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
-                      <FontAwesomeIcon icon={faUserGroup} style={{ height: "20px" }} />
+                      <FontAwesomeIcon
+                        icon={faUserGroup}
+                        style={{ height: "20px" }}
+                      />
                       <span className="d-none d-md-block">Rete</span>
                     </Link>
                   </Col>
@@ -192,7 +244,10 @@ const MyNavbar = () => {
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
-                      <FontAwesomeIcon icon={faBriefcase} style={{ height: "20px" }} />
+                      <FontAwesomeIcon
+                        icon={faBriefcase}
+                        style={{ height: "20px" }}
+                      />
                       <span className="d-none d-md-block"> Lavoro</span>
                     </Link>
                   </Col>
@@ -204,7 +259,10 @@ const MyNavbar = () => {
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
-                      <FontAwesomeIcon icon={faCommentDots} style={{ height: "20px" }} />
+                      <FontAwesomeIcon
+                        icon={faCommentDots}
+                        style={{ height: "20px" }}
+                      />
                       <span className="d-none d-md-block"> Messaggistica</span>
                     </Link>
                   </Col>
@@ -216,11 +274,17 @@ const MyNavbar = () => {
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >
-                      <FontAwesomeIcon icon={faBell} style={{ height: "20px" }} />
+                      <FontAwesomeIcon
+                        icon={faBell}
+                        style={{ height: "20px" }}
+                      />
                       <span className="d-none d-md-block">Notifiche</span>
                     </Link>
                   </Col>
-                  <Col className=" d-none d-md-block" style={{ height: "100%", borderRight: "solid 1px #e5e5e5" }}>
+                  <Col
+                    className=" d-none d-md-block"
+                    style={{ height: "100%", borderRight: "solid 1px #e5e5e5" }}
+                  >
                     <Dropdown
                       className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center"
                       style={{ height: "100%" }}
@@ -228,10 +292,19 @@ const MyNavbar = () => {
                       <Dropdown.Toggle
                         className="nav-link my-navbar-text"
                         id="dropdown-basic"
-                        style={{ color: "#8d8d8d", height: "100%", backgroundColor: "transparent" }}
+                        style={{
+                          color: "#8d8d8d",
+                          height: "100%",
+                          backgroundColor: "transparent",
+                        }}
                       >
                         <div>
-                          <img src={user.image} width={24} className="rounded-circle" alt="user" />
+                          <img
+                            src={user.image}
+                            width={24}
+                            className="rounded-circle"
+                            alt="user"
+                          />
                         </div>
                         Tu
                       </Dropdown.Toggle>
@@ -248,7 +321,12 @@ const MyNavbar = () => {
                         >
                           <div className="d-flex">
                             <div className="p-2">
-                              <img src={user.image} width={48} className="rounded-circle" alt="user" />
+                              <img
+                                src={user.image}
+                                width={48}
+                                className="rounded-circle"
+                                alt="user"
+                              />
                             </div>
                             <div className="flex-grow-1">
                               <h6>
@@ -262,7 +340,11 @@ const MyNavbar = () => {
                             variant="outline-primary"
                             className="rounded-pill py-0"
                             size="sm"
-                            style={{ backgroundColor: "transparent", color: "#0d6efd", width: "100%" }}
+                            style={{
+                              backgroundColor: "transparent",
+                              color: "#0d6efd",
+                              width: "100%",
+                            }}
                           >
                             Visualizza profilo
                           </Button>
@@ -276,13 +358,18 @@ const MyNavbar = () => {
                         <hr className="m-0" />
                         <h6 className="pt-3 ps-3">Gestisci</h6>
                         <Dropdown.Item>Post e attivitá</Dropdown.Item>
-                        <Dropdown.Item className="text-truncate">Account per la pubblicazione di offerte</Dropdown.Item>
+                        <Dropdown.Item className="text-truncate">
+                          Account per la pubblicazione di offerte
+                        </Dropdown.Item>
                         <hr className="m-0" />
                         <Dropdown.Item>Esci</Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                   </Col>
-                  <Col className="py-1 d-none d-sm-block" style={{ height: "100%" }}>
+                  <Col
+                    className="py-1 d-none d-sm-block"
+                    style={{ height: "100%" }}
+                  >
                     <Link
                       onClick={handleToggleOffcanvas}
                       className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
@@ -291,7 +378,11 @@ const MyNavbar = () => {
                       <Dropdown.Toggle
                         className="nav-link my-navbar-text "
                         id="dropdown-basic"
-                        style={{ color: "#8d8d8d", height: "100%", backgroundColor: "transparent" }}
+                        style={{
+                          color: "#8d8d8d",
+                          height: "100%",
+                          backgroundColor: "transparent",
+                        }}
                       >
                         <div>
                           <Grid3x3GapFill size={20} />
@@ -299,9 +390,16 @@ const MyNavbar = () => {
                         Per le aziende
                       </Dropdown.Toggle>
                     </Link>
-                    <MyNavbarOffcanvas show={showOffcanvas} hide={handleToggleOffcanvas} />
+                    <MyNavbarOffcanvas
+                      show={showOffcanvas}
+                      hide={handleToggleOffcanvas}
+                    />
                   </Col>
-                  <Col xs={3} className=" d-none d-md-block" style={{ height: "100%" }}>
+                  <Col
+                    xs={3}
+                    className=" d-none d-md-block"
+                    style={{ height: "100%" }}
+                  >
                     <Link
                       to="/premium"
                       className=" d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center"
