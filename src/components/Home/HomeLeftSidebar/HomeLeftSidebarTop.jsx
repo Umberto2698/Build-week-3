@@ -57,7 +57,11 @@ const HomeLeftSidebarTop = () => {
               </div>
             </Link>
           </Card.Text>
-          <Card.Text id="home-left-sidebar-link-bg" className="text-secondary p-2 m-0" style={{ fontSize: "0.7rem" }}>
+          <Card.Text
+            id="home-left-sidebar-link-bg"
+            className="text-secondary p-2 m-0 rounded-bottom"
+            style={{ fontSize: "0.7rem" }}
+          >
             <Link to="/my-item/s" className="text-decoration-none text-dark ">
               <div className="text-dark fw-medium">
                 <BookmarkFill />

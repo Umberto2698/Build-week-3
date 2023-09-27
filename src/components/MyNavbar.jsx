@@ -70,7 +70,7 @@ const MyNavbar = () => {
         <Navbar
           fixed="top"
           expand="lg"
-          style={{ height: "53px", zIndex: "2000", borderBottom: "solid 1px #e5e5e5" }}
+          style={{ height: "53px", zIndex: "1", borderBottom: "solid 1px #e5e5e5" }}
           className="bg-white p-0"
         >
           <Container fluid="xl" style={{ height: "100%" }}>

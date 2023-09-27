@@ -500,3 +500,7 @@ body {
   left: 0;
   right: 0;
 }
+
+.offcanvas-backdrop {
+  z-index: 0;
+}
