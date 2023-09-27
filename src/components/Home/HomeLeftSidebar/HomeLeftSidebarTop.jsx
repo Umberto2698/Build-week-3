@@ -1,16 +1,15 @@
-import { Card, Col } from "react-bootstrap";
+import { Card, Placeholder } from "react-bootstrap";
 import { BookmarkFill, SquareHalf } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const HomeLeftSidebarTop = () => {
   const user = useSelector(state => state.user.content);
-
-  console.log(user);
+  const loading = useSelector(state => state.user.isLoading);
 
   return (
     <>
-      {user && (
+      {!loading ? (
         <Card className="bg-white rounded-3 mb-2">
           <div className="border-0" style={{ height: "56px", width: "100%", backgroundColor: "palegoldenrod" }}></div>
           <Link id="home-left-sidebar-link" to="/profile/" className="text-center text-black">
@@ -35,10 +34,10 @@ const HomeLeftSidebarTop = () => {
             style={{ fontSize: "0.7rem" }}
           >
             <Link to="/mynetwork/" className="text-decoration-none ">
-              <div className="d-flex justify-content-between">
-                <div className="text-secondary ">Collegamento</div> <span className="text-primary">0</span>
-              </div>
-              <div className="text-dark fw-medium">Espandi la tua rete</div>
+              <span className="d-flex justify-content-between">
+                <span className="text-secondary ">Collegamento</span> <span className="text-primary">0</span>
+              </span>
+              <span className="text-dark fw-medium">Espandi la tua rete</span>
             </Link>
           </Card.Text>
           <Card.Text
@@ -47,14 +46,14 @@ const HomeLeftSidebarTop = () => {
             style={{ fontSize: "0.7rem" }}
           >
             <Link to="/premium/" className="text-decoration-none ">
-              <div className="text-secondary ">Accedi a strumenti e informazioni in esclusiva</div>{" "}
-              <div className="d-flex">
-                <div>
+              <span className="text-secondary ">Accedi a strumenti e informazioni in esclusiva</span>{" "}
+              <span className="d-flex">
+                <span>
                   <SquareHalf className="text-warning" />
-                </div>
+                </span>
 
-                <div className="text-dark fw-medium text-decoration-underline ms-1">Prova Premium gratis</div>
-              </div>
+                <span className="text-dark fw-medium text-decoration-underline ms-1">Prova Premium gratis</span>
+              </span>
             </Link>
           </Card.Text>
           <Card.Text
@@ -63,13 +62,18 @@ const HomeLeftSidebarTop = () => {
             style={{ fontSize: "0.7rem" }}
           >
             <Link to="/my-item/s" className="text-decoration-none text-dark ">
-              <div className="text-dark fw-medium">
+              <span className="text-dark fw-medium">
                 <BookmarkFill />
                 <span className="ms-2">I miei elementi</span>
-              </div>
+              </span>
             </Link>
           </Card.Text>
         </Card>
+      ) : (
+        <>
+          <Placeholder xs={6} />
+          <Placeholder className="w-75" /> <Placeholder style={{ width: "25%" }} />
+        </>
       )}
     </>
   );

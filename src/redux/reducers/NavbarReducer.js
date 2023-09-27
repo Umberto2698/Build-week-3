@@ -1,7 +1,9 @@
-import { GET_USER } from "../actions";
+import { GET_USER, ISERROR_USER, ISLOADING_USER } from "../actions";
 
 const initialState = {
   content: null,
+  isLoading: true,
+  isError: false,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -10,6 +12,16 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         content: action.payload,
+      };
+    case ISLOADING_USER:
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    case ISERROR_USER:
+      return {
+        ...state,
+        isError: action.payload,
       };
 
     default:

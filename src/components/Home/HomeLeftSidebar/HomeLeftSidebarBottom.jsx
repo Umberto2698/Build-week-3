@@ -12,14 +12,14 @@ const HomeLeftSidebarBottom = () => {
               Gruppi
             </Card.Text>
           </Link>
-          <div className="d-flex mb-1">
+          <span className="d-flex mb-1">
             <Link to="/events/" className="text-underline-hover flex-grow-1">
               <Card.Text style={{ fontSize: "0.7rem" }}>
                 <span>Eventi</span>
               </Card.Text>
             </Link>
             <Plus className="fs-5" />
-          </div>
+          </span>
           <Card.Text style={{ fontSize: "0.7rem" }}>
             <Link to="/mynetwork/network-manager/people-follow/following/" className="text-underline-hover ">
               Hashtag seguiti
@@ -32,7 +32,7 @@ const HomeLeftSidebarBottom = () => {
             className="text-center rounded-bottom p-2"
             style={{ fontSize: "0.8rem" }}
           >
-            <div className="fw-medium mb-1">Scopri di piú </div>
+            <span className="fw-medium mb-1">Scopri di piú </span>
           </Card.Text>
         </Link>
       </Card>
