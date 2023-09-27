@@ -9,7 +9,7 @@ const HomeLeftSidebarTop = () => {
 
   return (
     <>
-      {!loading ? (
+      {user && !loading ? (
         <Card className="bg-white rounded- mb-2">
           <div
             className="border-0 rounded-top"
