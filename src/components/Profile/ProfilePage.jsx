@@ -1,13 +1,15 @@
-import { useEffect } from "react";
 import ProfilePageHeroSection from "./ProfilePageHeroSection";
 import ProfilePageSideSection from "./ProfilePageSideSection";
 import ProfilePageSubMainSection from "./ProfilePageSubMainSection";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllProfilesAction, getMyProfileAction } from "../../redux/actions";
+import { useSelector } from "react-redux";
 import { Spinner } from "react-bootstrap";
+// import { useDispatch } from "react-redux";
+// import { useParams } from "react-router-dom";
+// import { useEffect } from "react";
+// import { getUserProfileAction } from "../../redux/actions";
 
 const ProfilePage = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch()
   const isLoadingProfiles = useSelector(
     (state) => state.profiles.isLoadingProfiles
   );
@@ -16,14 +18,6 @@ const ProfilePage = () => {
     (state) => state.profiles.isLoadingMyProfile
   );
 
-  // const fetchMyProfile = async () => {}
-
-  useEffect(() => {
-    dispatch(getAllProfilesAction());
-    dispatch(getMyProfileAction());
-    // fetchMyProfile();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   return (
     <>
       {isLoadingProfiles || isLoadingMyProfile ? (

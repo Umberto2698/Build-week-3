@@ -24,9 +24,7 @@ const LangUrl = () => {
             <PenSVG />
           </span>
         </div>
-        <p style={{ fontSize: "14px", color: "rgb(180, 180, 180)" }}>
-          www.linkedin.com/in/angelo-moreno-0796m5633
-        </p>
+        <p style={{ fontSize: "14px", color: "rgb(180, 180, 180)" }}>Public</p>
       </div>
     </div>
   );

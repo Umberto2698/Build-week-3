@@ -8,13 +8,24 @@ import Details from "./components/Details";
 import MyNavbar from "./components/MyNavbar";
 import ProfilePage from "./components/Profile/ProfilePage";
 import HomeMain from "./components/HomeMain";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getAllProfilesAction, getMyProfileAction } from "./redux/actions";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllProfilesAction());
+    dispatch(getMyProfileAction());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <BrowserRouter>
       <MyNavbar />
       <Routes>
         <Route path="/profile/" element={<ProfilePage />}></Route>
+        <Route path="/profile/:id" element={<ProfilePage />}></Route>
         <Route path="/jobs/" element={<JobPage></JobPage>}></Route>
         <Route path="/jobs/details/" element={<Details></Details>}></Route>
         <Route path="/" element={<HomeMain />} />

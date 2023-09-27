@@ -221,7 +221,7 @@ const Experience = () => {
                         Descrizione (max 2000)
                       </Form.Label>
                       <Form.Control
-                        maxlength="2000"
+                        maxLength="2000"
                         as="textarea"
                         style={{ fontSize: "14px" }}
                       />

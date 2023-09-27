@@ -12,13 +12,14 @@ const MainContent = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [dropdown, setDropdown] = useState({
-    first: false,
-    second: false,
-    third: false,
-  });
+  // const [dropdown, setDropdown] = useState({
+  //   first: false,
+  //   second: false,
+  //   third: false,
+  // });
 
   const myProfile = useSelector((state) => state.profiles.myProfile);
+  const userProfile = useSelector((state) => state.profiles.userProfile);
   return (
     <div className=" px-4 pb-4 pt-3 m-0" style={{ backgroundColor: "white" }}>
       <div className="d-flex justify-content-end">
@@ -164,31 +165,48 @@ const MainContent = () => {
       </Modal>
       <Row className="align-items-center pt-2">
         <Col xs={8}>
-          <h3>
-            {myProfile.name} {myProfile.surname}
-          </h3>
+          {userProfile ? (
+            <h3>
+              {userProfile.name} {userProfile.surname}
+            </h3>
+          ) : (
+            <h3>
+              {myProfile.name} {myProfile.surname}
+            </h3>
+          )}
         </Col>
         <Col xs={4} style={{ textAlign: "center" }}>
-          <h6>{myProfile.title}</h6>
+          {userProfile ? (
+            <h6>{userProfile.title}</h6>
+          ) : (
+            <h6>{myProfile.title}</h6>
+          )}
         </Col>
       </Row>
       <div>
-        <p className="mt-2" style={{ color: "#9a9a9a" }}>
-          {myProfile.area} ·{" "}
-          <Link className="link">Informazioni di contatto</Link>
-        </p>
+        {userProfile ? (
+          <p className="mt-2" style={{ color: "#9a9a9a" }}>
+            {userProfile.area} ·{" "}
+            <Link className="link">Informazioni di contatto</Link>
+          </p>
+        ) : (
+          <p className="mt-2" style={{ color: "#9a9a9a" }}>
+            {myProfile.area} ·{" "}
+            <Link className="link">Informazioni di contatto</Link>
+          </p>
+        )}
       </div>
       <div className="d-flex pt-3 py-1 gap-2">
         <Button
           size="sm"
           className="my-btn"
-          onClick={() =>
-            setDropdown({
-              first: !dropdown.first,
-              second: false,
-              third: false,
-            })
-          }
+          // onClick={() =>
+          //   setDropdown({
+          //     first: !dropdown.first,
+          //     second: false,
+          //     third: false,
+          //   })
+          // }
         >
           Disponibile per
         </Button>
@@ -198,26 +216,26 @@ const MainContent = () => {
         <Button
           size="sm"
           className="my-btn"
-          onClick={() =>
-            setDropdown({
-              first: false,
-              second: !dropdown.second,
-              third: false,
-            })
-          }
+          // onClick={() =>
+          //   setDropdown({
+          //     first: false,
+          //     second: !dropdown.second,
+          //     third: false,
+          //   })
+          // }
         >
           Aggiungi sezioni del profilo
         </Button>
         <Button
           size="sm"
           className="my-btn"
-          onClick={() =>
-            setDropdown({
-              first: false,
-              second: false,
-              third: !dropdown.third,
-            })
-          }
+          // onClick={() =>
+          //   setDropdown({
+          //     first: false,
+          //     second: false,
+          //     third: !dropdown.third,
+          //   })
+          // }
         >
           Altro
         </Button>

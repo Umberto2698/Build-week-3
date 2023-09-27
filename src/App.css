@@ -293,11 +293,12 @@ body {
   border: 3px solid white;
   border-radius: 50%;
   cursor: pointer;
+  overflow: hidden;
 }
 
-#user-banner .img-wrapper img {
+/* #user-banner .img-wrapper img {
   height: 55px;
-}
+} */
 
 .link {
   color: var(--mainColor);

@@ -1,16 +1,19 @@
 import {
   GET_ALL_PROFILES,
   GET_MY_PROFILE,
+  GET_USER_PROFILE,
   ISLOADING_MY_PROFILES_FALSE,
   ISLOADING_PROFILES_FALSE,
+  ISLOADING_USER_PROFILES_FALSE,
 } from "../actions";
 
 const initialState = {
   all: [],
-  tenRandomProfiles: [],
+  userProfile: null,
   myProfile: null,
   isLoadingProfiles: true,
   isLoadingMyProfile: true,
+  isLoadingUserProfile: true,
 };
 
 const profilesReducer = (state = initialState, action) => {
@@ -35,6 +38,17 @@ const profilesReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoadingMyProfile: false,
+      };
+
+    case GET_USER_PROFILE:
+      return {
+        ...state,
+        userProfile: action.payload,
+      };
+    case ISLOADING_USER_PROFILES_FALSE:
+      return {
+        ...state,
+        isLoadingUserProfile: false,
       };
     default:
       return state;
