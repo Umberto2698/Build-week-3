@@ -7,6 +7,7 @@ import Details from "./components/Job/Details";
 import MyNavbar from "./components/MyNavbar";
 import ProfilePage from "./components/Profile/ProfilePage";
 import HomeMain from "./components/HomeMain";
+import DetailsMobile from "./components/Job/DetailsMobile";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/profile/" element={<ProfilePage />}></Route>
         <Route path="/jobs/" element={<JobPage></JobPage>}></Route>
         <Route path="/jobs/details/:category" element={<Details></Details>}></Route>
+        <Route path="/jobs/details/mobile/:category/" element={<DetailsMobile></DetailsMobile>}></Route>
         <Route path="/" element={<HomeMain />} />
       </Routes>
     </BrowserRouter>

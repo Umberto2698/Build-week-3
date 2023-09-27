@@ -96,15 +96,24 @@ body {
 }
 
 .scroll {
-  height: 85vh;
+  height: 83vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 
 .scroll2 {
-  height: 92vh;
+  height: 90vh;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  .scroll {
+    height: 74vh;
+  }
+  .scroll2 {
+    height: 82vh;
+  }
 }
 
 .details {
@@ -124,6 +133,11 @@ body {
 @media screen and (max-width: 992px) {
   #description {
     font-size: 14px;
+  }
+}
+@media screen and (max-width: 693px) {
+  #description {
+    font-size: 12px;
   }
 }
 

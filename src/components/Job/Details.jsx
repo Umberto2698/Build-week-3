@@ -112,7 +112,7 @@ const Details = () => {
     <Container fluid="md" style={{ paddingTop: "53px" }}>
       {location.pathname.includes("random") ? (
         <Row>
-          <Col sm={6} className=" flex-grow-1 align-items-center justify-content-start">
+          <Col sm={6} className="flex-grow-1 mb-5 mb-md-0 align-items-center justify-content-start">
             <div className="bg-primary px-2 py-1 position-sticky top-0 text-white">
               <h4 className="m-0" style={{ fontSize: "15px" }}>
                 Offerte di lavoro sulla base del tuo profilo
@@ -123,7 +123,7 @@ const Details = () => {
             </div>
             <div className="scroll ">
               {window.screen.availWidth <= 639 ? (
-                <Link to={`details/mobile/` + selectedJobId}>
+                <Link className="text-decoration-none" to={`/jobs/details/mobile/random/`}>
                   <div
                     onClick={() => {
                       dispatch({
@@ -179,7 +179,7 @@ const Details = () => {
               )}
             </div>
           </Col>
-          <Col sm={6} className="details">
+          <Col sm={6} className="details mb-5 mb-md-0">
             <div className="scroll2">
               {selectedJobId === "" && randomJobArray.length !== 0 && (
                 <JobDetails jobData={randomJobArray[0]} key={1}></JobDetails>
@@ -195,7 +195,7 @@ const Details = () => {
         </Row>
       ) : (
         <Row>
-          <Col sm={6} className=" align-items-center justify-content-start">
+          <Col sm={6} className="flex-grow-1 mb-5 mb-md-0 align-items-center justify-content-start">
             <div className="bg-primary px-2 py-1 position-sticky top-0 text-white">
               <h4 className="m-0" style={{ fontSize: "15px" }}>
                 Offerte di lavoro sulla base del tuo profilo
@@ -206,7 +206,7 @@ const Details = () => {
             </div>
             <div className="scroll ">
               {window.screen.availWidth <= 639 ? (
-                <Link to={`details/mobile/` + selectedJobId}>
+                <Link className="text-decoration-none" to={`/jobs/details/mobile/dev/`}>
                   <div
                     onClick={() => {
                       dispatch({
@@ -264,7 +264,7 @@ const Details = () => {
               )}
             </div>
           </Col>
-          <Col sm={6}>
+          <Col sm={6} className="details mb-5 mb-md-0">
             <div className="scroll2">
               {selectedJobId === "" && categoryJobArray.length !== 0 && (
                 <JobDetails jobData={categoryJobArray[0]} key={1}></JobDetails>
