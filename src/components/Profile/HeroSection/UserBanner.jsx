@@ -85,6 +85,7 @@ const UserBanner = () => {
               objectFit: "cover",
               objectPosition: "center",
               height: "100%",
+              cursor: "default",
             }}
           />
         </div>
