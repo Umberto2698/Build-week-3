@@ -23,13 +23,7 @@ import {
 import { Grid3x3GapFill, Search } from "react-bootstrap-icons";
 import MyNavbarOffcanvas from "./MyNavbarOffcanvas";
 import Bottombar from "./Bottombar";
-import {
-  GET_USER,
-  ISERROR_USER,
-  ISLOADING_USER,
-  getJobFromQueryAction,
-  getMyProfileAction,
-} from "../redux/actions";
+import { getJobFromQueryAction, getMyProfileAction } from "../redux/actions";
 
 const MyNavbar = () => {
   const [query, setQuery] = useState("");
