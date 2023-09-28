@@ -221,7 +221,7 @@ const MyNavbar = () => {
                       }}
                     >
                       <div>
-                        <img src={user?.image} width={24} className="rounded-circle" alt="user" />
+                        <img src={user?.image} width={24} height={24} className="rounded-circle" alt="user" />
                       </div>
                       Tu
                     </Dropdown.Toggle>
@@ -238,7 +238,7 @@ const MyNavbar = () => {
                       >
                         <div className="d-flex">
                           <div className="p-2">
-                            <img src={user?.image} width={48} className="rounded-circle" alt="user" />
+                            <img src={user?.image} width={48} height={48} className="rounded-circle" alt="user" />
                           </div>
                           <div className="flex-grow-1">
                             <h6>

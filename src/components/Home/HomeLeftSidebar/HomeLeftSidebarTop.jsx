@@ -14,7 +14,13 @@ const HomeLeftSidebarTop = () => {
           <div className="border-0" style={{ height: "56px", width: "100%", backgroundColor: "palegoldenrod" }}></div>
           <Link id="home-left-sidebar-link" to="/profile/" className="text-center text-black">
             <div id="home-left-sidebar-image" className="position-absolute">
-              <img className="rounded-circle border border-2 border-white" src={user.image} width={72} alt="" />
+              <img
+                className="rounded-circle border border-2 border-white"
+                src={user.image}
+                width={72}
+                height={72}
+                alt=""
+              />
             </div>
             <div style={{ height: "52px" }}></div>
             <Card.Title style={{ fontSize: "1rem" }}>
