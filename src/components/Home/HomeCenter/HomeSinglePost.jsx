@@ -1,24 +1,28 @@
 import { faRetweet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Container, Row, Col, Card, Placeholder, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { ChatRightText, HandThumbsUp, SendFill, ThreeDots, X } from "react-bootstrap-icons";
+import TimeConverter from "./TimeConverter";
 
-const HomeSinglePost = post => {
-  console.log(post.post.user.image);
+const HomeSinglePost = ({ post }) => {
+  console.log(post);
+
   return (
     <>
       <Card className="bg-white rounded-2 mb-2 p-3 pb-1" style={{ minHeight: "100px" }}>
         <Container className="p-0">
           <Row className="mb-2">
             <Col xs={2} className="pe-0 me-2" style={{ width: "48px" }}>
-              <img src={post.post.user.image} width={48} height={48} alt="user" />
+              <img src={post.user.image} width={48} height={48} alt="user" />
             </Col>
             <Col xs={8} className="me-auto">
               <div className="d-flex justify-content-between">
-                <div className="text-truncate overflow-hidden fw-medium" style={{ fontSize: "0.9rem" }}></div>
+                <div className="text-truncate overflow-hidden fw-medium" style={{ fontSize: "0.9rem" }}>
+                  {post.username}
+                </div>
               </div>
               <div className="text-secondary" style={{ fontSize: "0.7rem" }}>
-                orario
+                <TimeConverter createdAt={post.createdAt} />
               </div>
             </Col>
             <Col xs={2} className="ps-0">
@@ -36,7 +40,7 @@ const HomeSinglePost = post => {
             </Col>
           </Row>
           <div className="border-bottom pb-2" style={{ fontSize: "0.9rem" }}>
-            testo post
+            {post.text}
           </div>
           <div className="d-flex justify-content-between mt-3">
             <Button id="post-btn" className="d-flex flex-wrap text-secondary">

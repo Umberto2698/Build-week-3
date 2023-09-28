@@ -2,31 +2,42 @@ import { useEffect, useState } from "react";
 import HomeSinglePost from "./HomeSinglePost";
 import { getHomePosts } from "../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { Placeholder } from "react-bootstrap";
+import { Button, Placeholder, Spinner } from "react-bootstrap";
 
 const HomePostContainer = () => {
   const dispatch = useDispatch();
   const posts = useSelector(state => state.homePosts.content);
-  const loading = useSelector(state => state.user.isLoading);
-  const [randomPosts, setRandomPosts] = useState([]);
+  const loading = useSelector(state => state.homePosts.isLoading);
+  const [randomIndexes, setRandomIndexes] = useState([]);
+  const numRandomPosts = 5;
 
   useEffect(() => {
     dispatch(getHomePosts());
   }, []);
 
+  const getRandomIndexes = () => {
+    const allIndexes = Array.from({ length: posts.length }, (_, i) => i);
+    const remainingIndexes = allIndexes.filter(index => !randomIndexes.includes(index));
+
+    const newIndexes = [];
+    while (newIndexes.length < numRandomPosts && remainingIndexes.length > 0) {
+      const randomIndex = Math.floor(Math.random() * remainingIndexes.length);
+      newIndexes.push(remainingIndexes.splice(randomIndex, 1)[0]);
+    }
+
+    setRandomIndexes(prevIndexes => [...prevIndexes, ...newIndexes]);
+  };
+
   useEffect(() => {
     if (posts?.length > 0) {
-      const randomIndex = Math.floor(Math.random() * posts?.length);
-      const randomPostsSlice = posts.slice(randomIndex, randomIndex + 5);
-      setRandomPosts(randomPostsSlice);
+      getRandomIndexes();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts]);
 
   const handleShowMoreClick = () => {
     if (posts?.length > 0) {
-      const randomIndex = Math.floor(Math.random() * posts?.length);
-      const randomPostsSlice = posts.slice(randomIndex, randomIndex + 5);
-      setRandomPosts(prevRandomPosts => [...prevRandomPosts, ...randomPostsSlice]);
+      getRandomIndexes();
     }
   };
 
@@ -34,15 +45,19 @@ const HomePostContainer = () => {
     <>
       {posts && !loading ? (
         <div>
-          {randomPosts.map(post => (
-            <HomeSinglePost key={post._id} post={post} />
+          {randomIndexes.map(randomIndex => (
+            <HomeSinglePost key={posts[randomIndex]._id} post={posts[randomIndex]} />
           ))}
-          <button onClick={handleShowMoreClick}>Mostra altri</button>
+          <div className="text-center">
+            <Button onClick={handleShowMoreClick}>Vedi nuovi post</Button>
+          </div>
         </div>
       ) : (
         <>
-          <Placeholder xs={6} />
-          <Placeholder className="w-75" /> <Placeholder style={{ width: "25%" }} />
+          <div className="mt-3 text-center">
+            {" "}
+            <Spinner variant="dark" />
+          </div>
         </>
       )}
     </>
