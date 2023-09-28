@@ -141,6 +141,17 @@ body {
   }
 }
 
+#text-hover {
+  border-left: 4px solid #0a66c2;
+}
+
+#text-hover:hover span {
+  text-decoration: underline;
+  text-decoration-color: black;
+}
+
+/* Fine Job */
+
 .my-navbar-text {
   font-size: 0.7rem;
   background-color: transparent;

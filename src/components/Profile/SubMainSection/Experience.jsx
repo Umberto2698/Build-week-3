@@ -69,18 +69,12 @@ const Experience = () => {
                     fontSize: "14px",
                   }}
                 >
-                  <p style={{ fontWeight: "600", margin: "0" }}>
-                    Informa la rete
-                  </p>
+                  <p style={{ fontWeight: "600", margin: "0" }}>Informa la rete</p>
                   <div className="d-flex align-items-start">
-                    <p
-                      className="flex-grow-1 pe-3 m-0"
-                      style={{ color: "var(--grey)" }}
-                    >
-                      Attiva l'opzione per informare la tua rete delle
-                      principali modifiche al profilo (ad esempio un nuovo
-                      lavoro) e degli anniversari lavorativi. Gli aggiornamenti
-                      possono richiedere fino a 2 ore. Scopri di più sulla{"  "}
+                    <p className="flex-grow-1 pe-3 m-0" style={{ color: "var(--grey)" }}>
+                      Attiva l'opzione per informare la tua rete delle principali modifiche al profilo (ad esempio un
+                      nuovo lavoro) e degli anniversari lavorativi. Gli aggiornamenti possono richiedere fino a 2 ore.
+                      Scopri di più sulla{"  "}
                       <Link
                         to="https://www.linkedin.com/help/linkedin/answer/a529062?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_add_position%3BtdPngjXDRJCEEu2TlGBp6Q%3D%3D"
                         target="_blank"
@@ -89,10 +83,7 @@ const Experience = () => {
                         condivisione delle modifiche del profilo.
                       </Link>
                     </p>
-                    <div
-                      id="switch-wrapper"
-                      className="d-flex align-items-center"
-                    >
+                    <div id="switch-wrapper" className="d-flex align-items-center">
                       <input type="checkbox" id="switch" />
                       <label for="switch">Toggle</label>
                     </div>
@@ -123,18 +114,13 @@ const Experience = () => {
                       />
                     </div>
                     <div className="pb-4">
-                      <Form.Label className="my-label">
-                        Tipologia di impiego
-                      </Form.Label>
+                      <Form.Label className="my-label">Tipologia di impiego</Form.Label>
                       <Form.Control
                         className="my-input-control"
                         placeholder="Inserisci il tuo cognome"
                         aria-describedby="basic-addon3"
                       />
-                      <Form.Label
-                        className="my-label mt-2"
-                        style={{ fontSize: "16px" }}
-                      >
+                      <Form.Label className="my-label mt-2" style={{ fontSize: "16px" }}>
                         Scopri di più sui{" "}
                         <Link
                           to={
@@ -147,9 +133,7 @@ const Experience = () => {
                       </Form.Label>
                     </div>
                     <div className="pb-4">
-                      <Form.Label className="my-label">
-                        Nome azienda*
-                      </Form.Label>
+                      <Form.Label className="my-label">Nome azienda*</Form.Label>
                       <Form.Control
                         className="my-input-control"
                         placeholder="Esempio: Microsoft"
@@ -166,17 +150,13 @@ const Experience = () => {
                       />
                     </div>
                     <div className="pb-4">
-                      <Form.Label className="my-label">
-                        Tipologia di località
-                      </Form.Label>
+                      <Form.Label className="my-label">Tipologia di località</Form.Label>
                       <Form.Select className="my-input-control">
                         <option>In sede</option>
                         <option>Da remoto</option>
                         <option>Ibrida</option>
                       </Form.Select>
-                      <Form.Label className="my-label">
-                        Scegli un tipo di località (es. da remoto)
-                      </Form.Label>
+                      <Form.Label className="my-label">Scegli un tipo di località (es. da remoto)</Form.Label>
                     </div>
                     <div className="pb-4">
                       <Form.Check
@@ -186,9 +166,7 @@ const Experience = () => {
                       />
                     </div>
                     <div className="pb-4">
-                      <Form.Label className="my-label">
-                        Data di inizio*
-                      </Form.Label>
+                      <Form.Label className="my-label">Data di inizio*</Form.Label>
                       <div className="d-flex gap-2">
                         <Form.Select className="my-input-control" required>
                           <option>Mese</option>
@@ -206,9 +184,7 @@ const Experience = () => {
                     </div>
                     <div className="pb-4">
                       <div className="pb-4">
-                        <Form.Label className="my-label">
-                          Data di fine*
-                        </Form.Label>
+                        <Form.Label className="my-label">Data di fine*</Form.Label>
                         <div className="d-flex gap-2">
                           <Form.Select className="my-input-control" required>
                             <option>Mese</option>
@@ -225,22 +201,16 @@ const Experience = () => {
                         </div>
                       </div>
                       <div>
-                        <Form.Label className="my-label">
-                          Descrizione (max 2000)
-                        </Form.Label>
-                        <Form.Control
-                          maxLength="2000"
-                          as="textarea"
-                          style={{ fontSize: "14px" }}
-                        />
+                        <Form.Label className="my-label">Descrizione (max 2000)</Form.Label>
+                        <Form.Control maxLength="2000" as="textarea" style={{ fontSize: "14px" }} />
                       </div>
                     </div>
 
                     <h5 className="m-0 pb-1">Competenze</h5>
                     <div style={{ paddingBottom: "30px" }}>
                       <p style={{ fontSize: "14px", marginBottom: "12px" }}>
-                        Oltre il 50% delle aziende su LinkedIn usa i dati sulle
-                        competenze per coprire le posizioni aperte
+                        Oltre il 50% delle aziende su LinkedIn usa i dati sulle competenze per coprire le posizioni
+                        aperte
                       </p>
                       <Button size="sm" className="my-btn">
                         <div className="d-flex align-items-center gap-1">
@@ -252,9 +222,8 @@ const Experience = () => {
                     <h5 className="m-0 pb-1">Media</h5>
                     <div>
                       <p style={{ fontSize: "14px", marginBottom: "12px" }}>
-                        Aggiungi contenuti multimediali come immagini,
-                        documenti, siti o presentazioni. Scopri di più sui{" "}
-                        {"  "}
+                        Aggiungi contenuti multimediali come immagini, documenti, siti o presentazioni. Scopri di più
+                        sui {"  "}
                         <Link
                           to={
                             "https://www.linkedin.com/help/linkedin/answer/a1516731?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_add_position%3Bm0emWd%2BMR8GVhWRjePUDjw%3D%3D"
@@ -298,12 +267,8 @@ const Experience = () => {
       >
         <div className="d-flex  gap-2">
           <div className="d-flex flex-column">
-            <h4 style={{ fontSize: "16px" }}>
-              Non hai ancora pubblicato nulla
-            </h4>
-            <p style={{ fontSize: "14px" }}>
-              Le esperienze che condividi appariranno qui
-            </p>
+            <h4 style={{ fontSize: "16px" }}>Non hai ancora pubblicato nulla</h4>
+            <p style={{ fontSize: "14px" }}>Le esperienze che condividi appariranno qui</p>
           </div>
         </div>
       </div>
@@ -315,8 +280,7 @@ const Experience = () => {
           color: "var(--grey)",
         }}
       >
-        <span style={{ fontWeight: 600 }}> Mostra tutte le esperienze </span>{" "}
-        <ArrowSVG />
+        <span style={{ fontWeight: 600 }}> Mostra tutte le esperienze </span> <ArrowSVG />
       </div>
     </div>
   );

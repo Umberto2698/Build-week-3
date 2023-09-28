@@ -1,9 +1,13 @@
 import { Badge, Button } from "react-bootstrap";
 import { BoxArrowUpRight, BriefcaseFill, Building, ArrowLeft } from "react-bootstrap-icons";
 import { Link, useParams } from "react-router-dom";
+import { ADD_JOB_TO_FAVOURITE, REMOVE_JOB_TO_FAVOURITE } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const JobDetails = ({ category, jobData }) => {
+  const favouriteArray = useSelector((state) => state.favourite.list.content);
   const params = useParams();
+  const dispatch = useDispatch();
 
   return (
     <div className="d-flex flex-column align-items-center justify-content-start mb-3">
@@ -46,11 +50,29 @@ const JobDetails = ({ category, jobData }) => {
             <BoxArrowUpRight size={15} className="fw-bold"></BoxArrowUpRight>
           </div>
         </Button>
-        <Button id="saveBtn" variant="outline-primary" className=" rounded-pill">
-          <div className="d-flex align-items-center justify-content-center ">
-            <span className="fw-medium fs-6 mx-2 text-center ">Salva</span>
-          </div>
-        </Button>
+        {favouriteArray.some((job) => job._id === jobData._id) ? (
+          <Button
+            onClick={() => dispatch({ type: REMOVE_JOB_TO_FAVOURITE, payload: jobData._id })}
+            id="saveBtn"
+            variant="outline-primary"
+            className=" rounded-pill"
+          >
+            <div className="d-flex align-items-center justify-content-center ">
+              <span className="fw-medium fs-6 mx-2 text-center ">Salvato</span>
+            </div>
+          </Button>
+        ) : (
+          <Button
+            onClick={() => dispatch({ type: ADD_JOB_TO_FAVOURITE, payload: jobData })}
+            id="saveBtn"
+            variant="outline-primary"
+            className=" rounded-pill"
+          >
+            <div className="d-flex align-items-center justify-content-center ">
+              <span className="fw-medium fs-6 mx-2 text-center ">Salva</span>
+            </div>
+          </Button>
+        )}
       </div>
     </div>
   );

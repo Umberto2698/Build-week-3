@@ -6,6 +6,8 @@ export const GET_JOB_FROM_ID = "GET_JOB_FROM_ID";
 export const GET_JOB_FROM_QUERY = "GET_JOB_FROM_QUERY";
 export const SELECT_JOB = "SELECT_JOB";
 export const SELECT_DESCRIPTION = "SELECT_DESCRIPTION";
+export const ADD_JOB_TO_FAVOURITE = "ADD_JOB_TO_FAVOURITE";
+export const REMOVE_JOB_TO_FAVOURITE = "REMOVE_JOB_TO_FAVOURITE";
 
 export const GET_USER = "GET_USER";
 export const ISLOADING_USER_TRUE = "ISLOADING_USER_TRUE";
@@ -60,14 +62,10 @@ export const getSearchAction = (content) => ({
 export const setSearch = (search) => ({ type: SET_SEARCH, payload: search });
 export const setQuery = (query) => ({ type: SET_QUERY, payload: query });
 
-const randomJobEndPoint =
-  "https://strive-benchmark.herokuapp.com/api/jobs?limit=20";
-const categoryJobEndPoint =
-  "https://strive-benchmark.herokuapp.com/api/jobs?category=";
-const JobFromIdEndPoint =
-  "https://strive-benchmark.herokuapp.com/api/jobs?_id=";
-const JobFromQueryEndPoint =
-  "https://strive-benchmark.herokuapp.com/api/jobs?search=";
+const randomJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?limit=20";
+const categoryJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?category=";
+const JobFromIdEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?_id=";
+const JobFromQueryEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 const headers = {
   headers: {
     Authorization:
@@ -98,10 +96,7 @@ export const getCategoryJobsAction = (category) => {
   return async (dispatch) => {
     try {
       dispatch({ type: GET_JOBS_LOADING, payload: true });
-      const response = await fetch(
-        categoryJobEndPoint + category + "&limit=20",
-        headers
-      );
+      const response = await fetch(categoryJobEndPoint + category + "&limit=20", headers);
       if (response.ok) {
         const { data } = await response.json();
         dispatch({ type: GET_CATEGORTY_JOBS, payload: data });

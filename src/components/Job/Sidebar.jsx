@@ -1,13 +1,19 @@
 import { Button, ButtonGroup, Dropdown } from "react-bootstrap";
 import { BellFill, BookmarkFill, Clipboard2Check, GearFill, PencilSquare, Youtube } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <div className="position-sticky" style={{ top: "65px" }}>
       <div className=" d-flex flex-column align-items-start justify-content-between py-1 ps-3 pe-2 p-md-3 mb-3 bg-white border border-secondary-subtle rounded-3">
-        <div className="d-flex align-items-center justify-content-between w-100 my-2" style={{ cursor: "pointer" }}>
-          <BookmarkFill size={20}></BookmarkFill>
-          <span className="text-start ms-3 fs-6 fw-medium flex-grow-1">Le mie offerte di lavoro</span>
+        <div
+          className="d-flex align-items-center text-dark justify-content-between w-100 my-2"
+          style={{ cursor: "pointer" }}
+        >
+          <Link to="/jobs/favourite" className="text-decoration-none text-reset d-flex align-items-center">
+            <BookmarkFill size={20}></BookmarkFill>
+            <span className="text-start ms-3 fs-6 fw-medium flex-grow-1">Le mie offerte di lavoro</span>
+          </Link>
           <Dropdown as={ButtonGroup} className="bg-white border-0">
             <Dropdown.Toggle className="d-sm-flex align-items-center justify-content-between d-md-none border-0 bg-secondary-subtle text-secondary">
               Altro
