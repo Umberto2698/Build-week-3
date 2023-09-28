@@ -67,7 +67,7 @@ const HomeLeftSidebarTop = () => {
             className="text-secondary p-2 m-0 rounded-bottom"
             style={{ fontSize: "0.7rem" }}
           >
-            <Link to="/my-item/s" className="text-decoration-none text-dark ">
+            <Link to="/my-items/" className="text-decoration-none text-dark ">
               <span className="text-dark fw-medium">
                 <BookmarkFill />
                 <span className="ms-2">I miei elementi</span>
