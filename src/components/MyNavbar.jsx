@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Dropdown, Form, InputGroup, Navbar, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowDownWideShort,
@@ -20,6 +20,7 @@ const MyNavbar = () => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const handleToggleOffcanvas = () => {
     setShowOffcanvas(!showOffcanvas);
@@ -222,7 +223,7 @@ const MyNavbar = () => {
                         }}
                       >
                         <div>
-                          <Link to={"/profile"}>
+                          <Link to="/profile">
                             <img
                               src={user.image}
                               style={{
@@ -244,7 +245,7 @@ const MyNavbar = () => {
                       >
                         <div className="text-decoration-none dropdown-item p-2 " style={{ backgroundColor: "white" }}>
                           <div className="d-flex">
-                            <Link to={"/profile"} className="link">
+                            <Link to="/profile" className="link">
                               <div className="p-2">
                                 <img
                                   src={user.image}
@@ -259,7 +260,7 @@ const MyNavbar = () => {
                               </div>
                             </Link>
                             <div className="flex-grow-1">
-                              <Link to={"/profile"} className="link" style={{ color: "black" }}>
+                              <Link to="/profile" className="link" style={{ color: "black" }}>
                                 <h6>
                                   {user.name} {user.surname}
                                 </h6>
@@ -267,6 +268,7 @@ const MyNavbar = () => {
                               <p>{user.title}</p>
                             </div>
                           </div>
+
                           <Button
                             id="navbar-button"
                             variant="outline-primary"
@@ -277,7 +279,10 @@ const MyNavbar = () => {
                               color: "#0d6efd",
                               width: "100%",
                             }}
-                            onClick={() => dispatch(getMyProfileAction())}
+                            onClick={() => {
+                              navigate("/profile");
+                              dispatch(getMyProfileAction());
+                            }}
                           >
                             Visualizza profilo
                           </Button>
