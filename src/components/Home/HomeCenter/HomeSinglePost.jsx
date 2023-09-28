@@ -63,7 +63,7 @@ const HomeSinglePost = ({ post }) => {
           <div className="border-bottom pb-2" style={{ fontSize: "0.9rem" }}>
             {post.text}
           </div>
-          <div className="d-flex justify-content-between mt-3">
+          <div className="d-flex justify-content-between mt-2">
             <Button id="post-btn" className="d-flex flex-wrap text-secondary">
               <HandThumbsUp className="m-auto pe-1" size={25} />
               <span className="m-auto" style={{ fontSize: "0.8rem" }}>
