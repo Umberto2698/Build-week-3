@@ -530,3 +530,11 @@ body {
 #post-btn:hover {
   background-color: #5c5c5c38;
 }
+
+#posts-show-more {
+  background-color: transparent;
+}
+
+#posts-show-more:hover {
+  background-color: rgba(72, 128, 231, 0.199);
+}

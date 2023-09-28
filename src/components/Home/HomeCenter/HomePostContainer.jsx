@@ -49,7 +49,14 @@ const HomePostContainer = () => {
             <HomeSinglePost key={posts[randomIndex]._id} post={posts[randomIndex]} />
           ))}
           <div className="text-center">
-            <Button onClick={handleShowMoreClick}>Vedi nuovi post</Button>
+            <Button
+              id="posts-show-more"
+              variant="outline-primary"
+              className="rounded-pill text-primary px-3 py-1 my-3"
+              onClick={handleShowMoreClick}
+            >
+              Vedi nuovi post
+            </Button>
           </div>
         </div>
       ) : (
