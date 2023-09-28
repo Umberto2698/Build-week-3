@@ -4,6 +4,7 @@ import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { ChatRightText, HandThumbsUp, SendFill, ThreeDots, X } from "react-bootstrap-icons";
 import TimeConverter from "./TimeConverter";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const HomeSinglePost = ({ post }) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -17,13 +18,17 @@ const HomeSinglePost = ({ post }) => {
         <Container className="p-0">
           <Row className="mb-2">
             <Col xs={2} className="pe-0 me-2" style={{ width: "48px" }}>
-              <img src={post.user.image} width={48} height={48} alt="user" />
+              <Link to={`/profile/${post.user._id}`} className="text-underline-hover text-black">
+                <img src={post.user.image} width={48} height={48} alt="user" className="d-flex flex-wrap" />
+              </Link>
             </Col>
             <Col xs={8} className="me-auto">
               <div className="d-flex justify-content-between">
-                <div className="text-truncate overflow-hidden fw-medium" style={{ fontSize: "0.9rem" }}>
-                  {post.username}
-                </div>
+                <Link to={`/profile/${post.user._id}`} className="text-underline-hover">
+                  <div className="text-black text-truncate overflow-hidden fw-medium" style={{ fontSize: "0.9rem" }}>
+                    {post.username}
+                  </div>
+                </Link>
               </div>
               <div className="text-secondary" style={{ fontSize: "0.7rem" }}>
                 <TimeConverter createdAt={post.createdAt} />
