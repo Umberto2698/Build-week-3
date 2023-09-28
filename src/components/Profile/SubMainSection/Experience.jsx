@@ -10,10 +10,12 @@ import {
   getMyExperienceAction,
   modifyMyExperienceAction,
 } from "../../../redux/actions";
+import SingleExperience from "./SingleExperience";
 
 const Experience = () => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.profiles.myProfile);
+  const experience = useSelector((state) => state.profiles.experience);
   const params = useParams();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -33,12 +35,13 @@ const Experience = () => {
     "Dicembre",
   ];
 
-  const arrYears = [];
+  const arrYearsInv = [];
   for (let i = 0; i < 2024; i++) {
     if (i >= 1923) {
-      arrYears.push(i);
+      arrYearsInv.push(i);
     }
   }
+  const arrYears = arrYearsInv.reverse();
 
   const [startDate, setStartDate] = useState({
     mese: "",
@@ -292,7 +295,7 @@ const Experience = () => {
                             }
                           >
                             <option>Anno</option>
-                            {arrYears.reverse().map((i) => (
+                            {arrYears.map((i) => (
                               <option key={`year-${i}`} value={i}>
                                 {i}
                               </option>
@@ -334,7 +337,7 @@ const Experience = () => {
                               }
                             >
                               <option>Anno</option>
-                              {arrYears.reverse().map((i) => (
+                              {arrYears.map((i) => (
                                 <option key={`year-${i}`} value={i}>
                                   {i}
                                 </option>
@@ -428,16 +431,25 @@ const Experience = () => {
           paddingBlock: "12px",
         }}
       >
-        <div className="d-flex  gap-2">
-          <div className="d-flex flex-column">
-            <h4 style={{ fontSize: "16px" }}>
-              Non hai ancora pubblicato nulla
-            </h4>
-            <p style={{ fontSize: "14px" }}>
-              Le esperienze che condividi appariranno qui
-            </p>
+        {experience.length === 0 ? (
+          <div className="d-flex gap-2">
+            <div className="d-flex flex-column">
+              <h4 style={{ fontSize: "16px" }}>
+                Non hai ancora pubblicato nulla
+              </h4>
+              <p style={{ fontSize: "14px" }}>
+                Le esperienze che condividi appariranno qui
+              </p>
+            </div>
           </div>
-        </div>
+        ) : (
+          <>
+            {console.log("experience", experience)}
+            {experience.map((elem) => (
+              <SingleExperience key={`experience-${elem._id}`} exp={elem} />
+            ))}
+          </>
+        )}
       </div>
       <div
         className="d-flex justify-content-center align-items-center gap-1 show-more"

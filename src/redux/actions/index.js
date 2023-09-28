@@ -22,6 +22,7 @@ export const GET_ALL_PROFILES = "GET_ALL_PROFILES";
 export const GET_MY_PROFILE = "GET_MY_PROFILE";
 export const GET_USER_PROFILE = "GET_USER_PROFILE";
 export const GET_EXPERIENCE = "GET_EXPERIENCE";
+export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
 export const ISLOADING_PROFILES_FALSE = "ISLOADING_PROFILES_FALSE";
 export const ISLOADING_MY_PROFILES_FALSE = "ISLOADING_MY_PROFILES_FALSE";
 export const ISLOADING_USER_PROFILES_FALSE = "ISLOADING_USER_PROFILES_FALSE";
@@ -335,7 +336,7 @@ export const modifyMyExperienceAction = (userId, experienceMod) => {
       if (resp.ok) {
         const experience = await resp.json();
         console.log("experience", experience);
-        dispatch({ type: GET_EXPERIENCE, payload: experience });
+        dispatch({ type: ADD_EXPERIENCE, payload: experience });
       }
     } catch (error) {
       console.log(error);
