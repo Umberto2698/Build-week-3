@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
+import { ThreeDots } from "react-bootstrap-icons";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import PenSVG from "../Svgs/PenSVG";
@@ -143,8 +144,9 @@ const MainContent = () => {
           <h3>
             {currentProfile.name} {currentProfile.surname}
           </h3>
+          <h6 className="d-sm-none d-md-block d-lg-none">{currentProfile.title}</h6>
         </Col>
-        <Col xs={4} style={{ textAlign: "center" }}>
+        <Col xs={4} className="d-none d-sm-flex d-md-none d-lg-flex" style={{ textAlign: "center" }}>
           <h6>{currentProfile.title}</h6>
         </Col>
       </Row>
@@ -154,7 +156,7 @@ const MainContent = () => {
         </p>
       </div>
       {!params.id && (
-        <div className="d-flex pt-3 py-1 gap-2">
+        <div className="d-flex pt-3 py-1 gap-2 align-items-start">
           <Button
             size="sm"
             className="my-btn"
@@ -173,7 +175,7 @@ const MainContent = () => {
           </div> */}
           <Button
             size="sm"
-            className="my-btn"
+            className="my-btn px-1  px-sm-3"
             // onClick={() =>
             //   setDropdown({
             //     first: false,
@@ -185,8 +187,22 @@ const MainContent = () => {
             Aggiungi sezioni del profilo
           </Button>
           <Button
+            id="dots"
             size="sm"
-            className="my-btn"
+            className="d-flex d-sm-none d-md-flex d-lg-none align-items-center py-2 rounded-circle border-secondary text-secondary "
+            // onClick={() =>
+            //   setDropdown({
+            //     first: false,
+            //     second: false,
+            //     third: !dropdown.third,
+            //   })
+            // }
+          >
+            <ThreeDots size={12}></ThreeDots>
+          </Button>
+          <Button
+            size="sm"
+            className="my-btn d-none d-sm-block d-md-none d-lg-block"
             // onClick={() =>
             //   setDropdown({
             //     first: false,
