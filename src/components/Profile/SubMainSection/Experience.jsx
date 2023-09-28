@@ -6,7 +6,10 @@ import ArrowSVG from "../Svgs/ArrowSVG";
 import { Link, useParams } from "react-router-dom";
 import XsAddSVG from "../Svgs/XsAddSVG";
 import { useDispatch, useSelector } from "react-redux";
-import { modifyMyExperienceAction } from "../../../redux/actions";
+import {
+  getMyExperienceAction,
+  modifyMyExperienceAction,
+} from "../../../redux/actions";
 
 const Experience = () => {
   const dispatch = useDispatch();
@@ -83,6 +86,11 @@ const Experience = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
+
+  useEffect(() => {
+    dispatch(getMyExperienceAction(myProfile._id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="horz-card-block">
