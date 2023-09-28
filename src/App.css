@@ -34,6 +34,11 @@ body {
   text-decoration-color: #0d6efd;
 }
 
+.job:hover #job-favourite-title {
+  text-decoration: underline;
+  text-decoration-color: black;
+}
+
 .job:hover .eye-slash {
   animation: 1s linear forwards show-eye-slash;
 }

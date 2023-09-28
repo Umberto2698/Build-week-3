@@ -2,9 +2,11 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { BookmarkFill } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import Jobs from "./Jobs";
+import { useNavigate } from "react-router-dom";
 
 const FavouriteJobs = () => {
   const favouriteArray = useSelector((state) => state.favourite.list.content);
+  const navigate = useNavigate();
 
   return (
     <Container style={{ paddingTop: "65px" }}>
@@ -20,7 +22,7 @@ const FavouriteJobs = () => {
                 Le mie offerte di lavoro
               </span>
               <span className="fw-medium " style={{ fontSize: "14px" }}>
-                num
+                {favouriteArray.length}
               </span>
             </div>
           </div>
@@ -33,7 +35,29 @@ const FavouriteJobs = () => {
                 Salvate
               </Button>
             </div>
-            {favouriteArray.length !== 0 && favouriteArray.map((job) => <Jobs jobData={job} key={job._id}></Jobs>)}
+            {favouriteArray.length !== 0 ? (
+              favouriteArray.map((job) => <Jobs jobData={job} key={job._id}></Jobs>)
+            ) : (
+              <div className="w-100 d-flex flex-column align-items-center justify-content-center">
+                <div className="mx-auto">
+                  <img
+                    width={300}
+                    src="https://media.istockphoto.com/id/1314741406/vector/happy-girl-is-looking-for-job-through-internet-woman-looks-through-vacancies-on-laptop.jpg?s=612x612&w=0&k=20&c=Ru9ekJifkkkqmI1vWRYartO_0nD7HfJT28XOutu84ac="
+                    alt="Search job"
+                  />
+                </div>
+                <div className="w-100 text-center mb-4">
+                  <p className="fs-4">Inizia a salvare le offerte di lavoro che ti interessano</p>
+                  <Button
+                    variant="outline-primary"
+                    className="bg-white text-primary fw-medium rounded-4"
+                    onClick={() => navigate("/jobs/none")}
+                  >
+                    Cerca le offerte di lavoro per me
+                  </Button>
+                </div>
+              </div>
+            )}
           </div>
         </Col>
       </Row>
