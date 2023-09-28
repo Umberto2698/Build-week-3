@@ -598,3 +598,29 @@ body::-webkit-scrollbar-thumb {
 .text-underline-hover:hover {
   text-decoration: underline;
 }
+
+#post-btn-delete {
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
+}
+
+#post-btn-delete:hover {
+  background-color: #5c5c5c38;
+}
+
+#post-btn {
+  background-color: transparent;
+  border: none;
+}
+#post-btn:hover {
+  background-color: #5c5c5c38;
+}
+
+#posts-show-more {
+  background-color: transparent;
+}
+
+#posts-show-more:hover {
+  background-color: rgba(72, 128, 231, 0.199);
+}
