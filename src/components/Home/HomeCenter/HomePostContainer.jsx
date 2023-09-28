@@ -13,6 +13,7 @@ const HomePostContainer = () => {
 
   useEffect(() => {
     dispatch(getHomePosts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getRandomIndexes = () => {

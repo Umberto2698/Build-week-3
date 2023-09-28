@@ -3,11 +3,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { ChatRightText, HandThumbsUp, SendFill, ThreeDots, X } from "react-bootstrap-icons";
 import TimeConverter from "./TimeConverter";
+import { useState } from "react";
 
 const HomeSinglePost = ({ post }) => {
-  return (
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleDeleteClick = () => {
+    setIsVisible(false);
+  };
+  return isVisible ? (
     <>
-      <Card className="bg-white rounded-2 mb-2 p-3 pb-1" style={{ minHeight: "100px" }}>
+      <Card className="bg-white rounded-2 mb-2 p-3 pb-1">
         <Container className="p-0">
           <Row className="mb-2">
             <Col xs={2} className="pe-0 me-2" style={{ width: "48px" }}>
@@ -31,7 +37,11 @@ const HomeSinglePost = ({ post }) => {
                 >
                   <ThreeDots fontSize={20} className="m-auto" />
                 </span>
-                <span id="post-btn-delete" className="rounded-circle d-flex justify-content-center align-middle p-1">
+                <span
+                  id="post-btn-delete"
+                  className="rounded-circle d-flex justify-content-center align-middle p-1"
+                  onClick={handleDeleteClick}
+                >
                   <X fontSize={20} className="m-auto" />
                 </span>
               </div>
@@ -69,7 +79,7 @@ const HomeSinglePost = ({ post }) => {
         </Container>
       </Card>
     </>
-  );
+  ) : null;
 };
 
 export default HomeSinglePost;
