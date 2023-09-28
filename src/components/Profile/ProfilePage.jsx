@@ -10,26 +10,19 @@ import { Spinner } from "react-bootstrap";
 
 const ProfilePage = () => {
   // const dispatch = useDispatch()
-  const isLoadingProfiles = useSelector(
-    (state) => state.profiles.isLoadingProfiles
-  );
+  const isLoadingProfiles = useSelector((state) => state.profiles.isLoadingProfiles);
 
-  const isLoadingMyProfile = useSelector(
-    (state) => state.profiles.isLoadingMyProfile
-  );
+  const isLoadingMyProfile = useSelector((state) => state.profiles.isLoadingMyProfile);
 
   return (
     <>
       {isLoadingProfiles || isLoadingMyProfile ? (
-        <div
-          className="d-flex justify-content-center align-items-center"
-          style={{ height: "100vh", width: "100%" }}
-        >
+        <div className="d-flex justify-content-center align-items-center" style={{ height: "100vh", width: "100%" }}>
           <Spinner animation="border" variant="primary" />
         </div>
       ) : (
         <div id="profile-page">
-          <div className="d-flex flex-column gap-2">
+          <div id="profile-container" className="d-flex flex-column align-items-center gap-2">
             <ProfilePageHeroSection />
             <ProfilePageSubMainSection />
           </div>

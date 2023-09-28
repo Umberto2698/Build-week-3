@@ -10,6 +10,7 @@ const ProfilePageHeroSection = () => {
   const params = useParams();
   useEffect(() => {
     dispatch(getUserProfileAction(params.id));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="main-section">

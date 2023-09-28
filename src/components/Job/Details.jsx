@@ -182,7 +182,7 @@ const Details = () => {
                         <Link
                           key={job._id}
                           className="text-decoration-none w-100"
-                          to={`/jobs/` + params.query + `/details/mobile/` + job._id}
+                          to={`/jobs/` + params.query + `/details/mobile/random/` + job._id}
                         >
                           <Jobs selected={selectedJobId} jobData={job}></Jobs>
                         </Link>
@@ -193,7 +193,7 @@ const Details = () => {
                           <Link
                             key={job._id}
                             className="text-decoration-none w-100"
-                            to={`/jobs/` + params.query + `/details/mobile/` + job._id}
+                            to={`/jobs/` + params.query + `/details/mobile/random/` + job._id}
                           >
                             <Jobs selected={true} jobData={job}></Jobs>
                           </Link>
@@ -203,7 +203,7 @@ const Details = () => {
                             <Link
                               key={job._id}
                               className="text-decoration-none w-100"
-                              to={`/jobs/` + params.query + `/details/mobile/` + job._id}
+                              to={`/jobs/` + params.query + `/details/mobile/random/` + job._id}
                             >
                               <Jobs selected={false} jobData={job}></Jobs>
                             </Link>
@@ -285,7 +285,7 @@ const Details = () => {
                         <Link
                           key={job._id}
                           className="text-decoration-none w-100"
-                          to={`/jobs/` + params.query + `/details/mobile/` + job._id}
+                          to={`/jobs/` + params.query + `/details/mobile/dev/` + job._id}
                         >
                           <Jobs selected={selectedJobId} jobData={job}></Jobs>
                         </Link>
@@ -296,7 +296,7 @@ const Details = () => {
                           <Link
                             key={job._id}
                             className="text-decoration-none w-100"
-                            to={`/jobs/` + params.query + `/details/mobile/` + job._id}
+                            to={`/jobs/` + params.query + `/details/mobile/dev/` + job._id}
                           >
                             <Jobs selected={true} jobData={job}></Jobs>
                           </Link>
@@ -306,7 +306,7 @@ const Details = () => {
                             <Link
                               key={job._id}
                               className="text-decoration-none w-100"
-                              to={`/jobs/` + params.query + `/details/mobile/` + job._id}
+                              to={`/jobs/` + params.query + `/details/mobile/dev/` + job._id}
                             >
                               <Jobs selected={false} jobData={job}></Jobs>
                             </Link>
@@ -388,7 +388,7 @@ const Details = () => {
                         <Link
                           key={job._id}
                           className="text-decoration-none w-100"
-                          to={`/jobs/` + params.query + `/details/mobile/` + job._id}
+                          to={`/jobs/` + params.query + `/details/mobile/` + params.query + `/` + job._id}
                         >
                           <Jobs selected={selectedJobId} jobData={job}></Jobs>
                         </Link>
@@ -399,7 +399,7 @@ const Details = () => {
                           <Link
                             key={job._id}
                             className="text-decoration-none w-100"
-                            to={`/jobs/` + params.query + `/details/mobile/` + job._id}
+                            to={`/jobs/` + params.query + `/details/mobile/` + params.query + `/` + job._id}
                           >
                             <Jobs selected={true} jobData={job}></Jobs>
                           </Link>
@@ -409,7 +409,7 @@ const Details = () => {
                             <Link
                               key={job._id}
                               className="text-decoration-none w-100"
-                              to={`/jobs/` + params.query + `/details/mobile/` + job._id}
+                              to={`/jobs/` + params.query + `/details/mobile/` + params.query + `/` + job._id}
                             >
                               <Jobs selected={false} jobData={job}></Jobs>
                             </Link>

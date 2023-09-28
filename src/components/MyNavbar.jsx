@@ -25,13 +25,13 @@ const MyNavbar = () => {
     setShowOffcanvas(!showOffcanvas);
   };
 
-  const user = useSelector(state => state.user.content);
+  const user = useSelector((state) => state.user.content);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setQuery(e.target.value);
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (query === "") {
       dispatch(getJobFromQueryAction("none"));
@@ -174,7 +174,7 @@ const MyNavbar = () => {
                   <Link
                     to="/jobs/none"
                     className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                      location.pathname === "/jobs" ? "active" : ""
+                      location.pathname.includes("jobs") ? "active" : ""
                     }`}
                     style={{ color: "#8d8d8d", height: "100%" }}
                   >

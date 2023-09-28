@@ -413,7 +413,6 @@ body {
   /* background-color: var(--mainColor-light); */
   border: 1px solid var(--mid-grey);
   border-radius: 0.8rem;
-  font-size: 14px;
   line-height: 18px;
 }
 
@@ -553,6 +552,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .horz-card-block {
+  width: 100%;
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -623,4 +623,66 @@ body::-webkit-scrollbar-thumb {
 
 #posts-show-more:hover {
   background-color: rgba(72, 128, 231, 0.199);
+}
+
+@media screen and (max-width: 1200px) {
+  .main-section {
+    width: 604px;
+  }
+  .card-user-info {
+    min-width: 300px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #user-banner .img-wrapper {
+    width: 122px;
+    height: 122px;
+  }
+}
+
+#dots {
+  background-color: white;
+}
+
+@media screen and (max-width: 991px) {
+  .main-section,
+  .horz-card-block {
+    width: 404px;
+  }
+  .card-user-info {
+    min-width: 200px;
+    font-size: 13px;
+  }
+  #user-banner {
+    height: 101px;
+  }
+  #dots:hover {
+    background-color: #ebebeb;
+    outline: 2px solid gray;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main-section,
+  .horz-card-block,
+  .side-section {
+    width: 90%;
+  }
+  #user-banner {
+    height: 151px;
+  }
+  #user-banner .img-wrapper {
+    height: 152px;
+    width: 152px;
+  }
+  #profile-page {
+    width: 100%;
+    padding-bottom: 62px;
+    flex-direction: column;
+    align-items: center;
+  }
+  #profile-container {
+    width: 100%;
+  }
 }

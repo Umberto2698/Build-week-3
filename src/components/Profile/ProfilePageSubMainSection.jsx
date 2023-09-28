@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 const ProfilePageSubMainSection = () => {
   const params = useParams();
   return (
-    <div className="d-flex flex-column gap-2">
+    <div className="d-flex flex-column align-items-center gap-2" style={{ width: "100%" }}>
       {!params.id && (
         <>
           <Analisi />
