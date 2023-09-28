@@ -119,7 +119,6 @@ const MyNavbar = () => {
             </Col>
             <Col xs={1} className="d-md-none" style={{ height: "100%" }}>
               <Link
-                to="/publish/"
                 className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
                 style={{ color: "#8d8d8d", height: "100%" }}
               >
