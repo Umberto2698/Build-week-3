@@ -1,7 +1,7 @@
 import { faRetweet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { ChatRightText, HandThumbsUp, SendFill, ThreeDots, X } from "react-bootstrap-icons";
+import { ChatRightText, Dot, GlobeAmericas, HandThumbsUp, SendFill, ThreeDots, X } from "react-bootstrap-icons";
 import TimeConverter from "./TimeConverter";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -31,7 +31,13 @@ const HomeSinglePost = ({ post }) => {
                 </Link>
               </div>
               <div className="text-secondary" style={{ fontSize: "0.7rem" }}>
-                <TimeConverter createdAt={post.createdAt} />
+                <div className="d-flex">
+                  <TimeConverter createdAt={post.createdAt} />
+                  <div className=" d-flex my-auto">
+                    <Dot />
+                    <GlobeAmericas />
+                  </div>
+                </div>
               </div>
             </Col>
             <Col xs={2} className="ps-0">
