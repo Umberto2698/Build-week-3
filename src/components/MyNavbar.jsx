@@ -92,7 +92,7 @@ const MyNavbar = () => {
                 backgroundColor: "transparent",
               }}
             >
-              <Link to="/profile" className="m-auto">
+              <Link to="/profile/" className="m-auto">
                 <img src={user?.image} width={32} height={32} className="rounded-circle " alt="user" />
               </Link>
             </Col>
@@ -119,7 +119,7 @@ const MyNavbar = () => {
             </Col>
             <Col xs={1} className="d-md-none" style={{ height: "100%" }}>
               <Link
-                to="/publish"
+                to="/publish/"
                 className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
                 style={{ color: "#8d8d8d", height: "100%" }}
               >
@@ -128,7 +128,7 @@ const MyNavbar = () => {
             </Col>
             <Col xs={1} className="d-md-none" style={{ height: "100%" }}>
               <Link
-                to="/comments"
+                to="/comments/"
                 className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
                 style={{ color: "#8d8d8d", height: "100%" }}
               >
@@ -161,9 +161,9 @@ const MyNavbar = () => {
                 </Col>
                 <Col style={{ height: "100%" }}>
                   <Link
-                    to="/mynetwork"
+                    to="/mynetwork/"
                     className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                      location.pathname === "/mynetwork" ? "active" : ""
+                      location.pathname.includes("/mynetwork/") ? "active" : ""
                     }`}
                     style={{ color: "#8d8d8d", height: "100%" }}
                   >
@@ -185,9 +185,9 @@ const MyNavbar = () => {
                 </Col>
                 <Col style={{ height: "100%" }}>
                   <Link
-                    to="/messaging"
+                    to="/messaging/"
                     className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                      location.pathname === "/messaging" ? "active" : ""
+                      location.pathname.includes("/messaging/") ? "active" : ""
                     }`}
                     style={{ color: "#8d8d8d", height: "100%" }}
                   >
@@ -197,9 +197,9 @@ const MyNavbar = () => {
                 </Col>
                 <Col style={{ height: "100%" }}>
                   <Link
-                    to="/notifications"
+                    to="/notifications/"
                     className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                      location.pathname === "/notifications" ? "active" : ""
+                      location.pathname.includes("/notifications") ? "active" : ""
                     }`}
                     style={{ color: "#8d8d8d", height: "100%" }}
                   >
@@ -222,7 +222,7 @@ const MyNavbar = () => {
                       }}
                     >
                       <div>
-                        <Link to="/profile">
+                        <Link to="/profile/">
                           <img
                             src={user?.image}
                             style={{
@@ -244,7 +244,7 @@ const MyNavbar = () => {
                     >
                       <div className="text-decoration-none dropdown-item p-2 " style={{ backgroundColor: "white" }}>
                         <div className="d-flex">
-                          <Link to="/profile" className="link">
+                          <Link to="/profile/" className="link">
                             <div className="p-2">
                               <img
                                 src={user?.image}
@@ -259,7 +259,7 @@ const MyNavbar = () => {
                             </div>
                           </Link>
                           <div className="flex-grow-1">
-                            <Link to="/profile" className="link" style={{ color: "black" }}>
+                            <Link to="/profile/" className="link" style={{ color: "black" }}>
                               <h6>
                                 {user?.name} {user?.surname}
                               </h6>
@@ -279,7 +279,7 @@ const MyNavbar = () => {
                             width: "100%",
                           }}
                           onClick={() => {
-                            navigate("/profile");
+                            navigate("/profile/");
                             dispatch(getMyProfileAction());
                           }}
                         >
