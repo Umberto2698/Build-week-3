@@ -45,16 +45,29 @@ export const SINGLE_PROFILE = "SINGLE_PROFILE";
 export const SET_SEARCH = "SET_SEARCH";
 export const SET_QUERY = "SET_QUERY";
 
-export const postFormAction = (content) => ({ type: POST_EXPERIENCES, payload: content });
-export const getFormAction = (content) => ({ type: GET_FORM_DATA, payload: content });
-export const getSearchAction = (content) => ({ type: GET_SEARCH_DATA, payload: content });
+export const postFormAction = (content) => ({
+  type: POST_EXPERIENCES,
+  payload: content,
+});
+export const getFormAction = (content) => ({
+  type: GET_FORM_DATA,
+  payload: content,
+});
+export const getSearchAction = (content) => ({
+  type: GET_SEARCH_DATA,
+  payload: content,
+});
 export const setSearch = (search) => ({ type: SET_SEARCH, payload: search });
 export const setQuery = (query) => ({ type: SET_QUERY, payload: query });
 
-const randomJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?limit=20";
-const categoryJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?category=";
-const JobFromIdEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?_id=";
-const JobFromQueryEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
+const randomJobEndPoint =
+  "https://strive-benchmark.herokuapp.com/api/jobs?limit=20";
+const categoryJobEndPoint =
+  "https://strive-benchmark.herokuapp.com/api/jobs?category=";
+const JobFromIdEndPoint =
+  "https://strive-benchmark.herokuapp.com/api/jobs?_id=";
+const JobFromQueryEndPoint =
+  "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 const headers = {
   headers: {
     Authorization:
@@ -85,7 +98,10 @@ export const getCategoryJobsAction = (category) => {
   return async (dispatch) => {
     try {
       dispatch({ type: GET_JOBS_LOADING, payload: true });
-      const response = await fetch(categoryJobEndPoint + category + "&limit=20", headers);
+      const response = await fetch(
+        categoryJobEndPoint + category + "&limit=20",
+        headers
+      );
       if (response.ok) {
         const { data } = await response.json();
         dispatch({ type: GET_CATEGORTY_JOBS, payload: data });
@@ -242,6 +258,32 @@ export const modifyUserProfileAction = (query) => {
       console.log(error);
     } finally {
       dispatch({ type: ISLOADING_USER_PROFILES_FALSE });
+    }
+  };
+};
+
+export const modifyImageProfileAction = (id, formData) => {
+  return async (dispatch) => {
+    const URL = `https://striveschool-api.herokuapp.com/api/profile/${id}/picture`;
+    const method = {
+      method: "POST",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExNGI4YzM3NTJhODAwMTQ1Njg3NmMiLCJpYXQiOjE2OTU2MzIyNjgsImV4cCI6MTY5Njg0MTg2OH0.gzlYEvqJw2sYnF11tPjrNqPrWR0KLj0FbEEpodBxeZo",
+      },
+      body: formData,
+    };
+
+    try {
+      const resp = await fetch(URL, method);
+      if (resp.ok) {
+        const myProfile = await resp.json();
+        console.log("parseBody dalla fetch dell'immagine", myProfile);
+        dispatch({ type: GET_MY_PROFILE, payload: myProfile });
+        dispatch({ type: GET_USER_PROFILE, payload: myProfile });
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 };
