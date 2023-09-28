@@ -410,3 +410,8 @@ export const getHomePosts = () => {
     }
   };
 };
+
+export const setRandomIndexes = randomIndexes => ({
+  type: "SET_RANDOM_INDEXES",
+  payload: randomIndexes,
+});

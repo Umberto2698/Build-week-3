@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import HomeSinglePost from "./HomeSinglePost";
-import { getHomePosts } from "../../../redux/actions";
+import { getHomePosts, setRandomIndexes } from "../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Spinner } from "react-bootstrap";
 
@@ -8,11 +8,12 @@ const HomePostContainer = () => {
   const dispatch = useDispatch();
   const posts = useSelector(state => state.homePosts.content);
   const loading = useSelector(state => state.homePosts.isLoading);
-  const [randomIndexes, setRandomIndexes] = useState([]);
+  const randomIndexes = useSelector(state => state.homePosts.randomIndexes);
   const numRandomPosts = 5;
 
   useEffect(() => {
     dispatch(getHomePosts());
+    console.log("mount");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -26,12 +27,13 @@ const HomePostContainer = () => {
       newIndexes.push(remainingIndexes.splice(randomIndex, 1)[0]);
     }
 
-    setRandomIndexes(prevIndexes => [...prevIndexes, ...newIndexes]);
+    dispatch(setRandomIndexes([...randomIndexes, ...newIndexes]));
   };
 
   useEffect(() => {
     if (posts?.length > 0) {
       getRandomIndexes();
+      console.log("index");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [posts]);
@@ -41,6 +43,13 @@ const HomePostContainer = () => {
       getRandomIndexes();
     }
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(setRandomIndexes([]));
+      console.log("unmount");
+    };
+  }, []);
 
   return (
     <>
@@ -63,7 +72,6 @@ const HomePostContainer = () => {
       ) : (
         <>
           <div className="mt-3 text-center">
-            {" "}
             <Spinner variant="dark" />
           </div>
         </>

@@ -4,6 +4,7 @@ const initialState = {
   content: null,
   isLoading: true,
   isError: false,
+  randomIndexes: [],
 };
 
 const homePostsReducer = (state = initialState, action) => {
@@ -28,7 +29,11 @@ const homePostsReducer = (state = initialState, action) => {
         ...state,
         isError: action.payload,
       };
-
+    case "SET_RANDOM_INDEXES":
+      return {
+        ...state,
+        randomIndexes: action.payload,
+      };
     default:
       return state;
   }
