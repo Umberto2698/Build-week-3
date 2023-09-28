@@ -27,7 +27,7 @@ const HomeMain = () => {
   };
 
   return (
-    <Container fluid="sm" className="px-0 pt-3" id="home-container">
+    <Container fluid="sm" className="pt-3" id="home-container">
       <Row>
         <HomeLeftSidebarContainer />
 
