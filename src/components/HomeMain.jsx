@@ -31,7 +31,7 @@ const HomeMain = () => {
       <Row>
         <HomeLeftSidebarContainer />
 
-        <Col xs={12} md={9} lg={6} className="section" style={{ marginBottom: "4cm" }}>
+        <Col xs={12} md={9} lg={6} style={{ marginBottom: "4cm" }}>
           <Col className="bg-white rounded-3 pt-3 px-3 border">
             <Container fluid>
               <Row className="align-items-center">
@@ -72,7 +72,7 @@ const HomeMain = () => {
           <HomePostContainer />
         </Col>
 
-        <Col xs={12} md={3} className="section">
+        <Col xs={12} md={3}>
           <Col className="bg-white rounded-3 pt-3 px-3 border">
             <h2>Linkeidn Notizie</h2>
           </Col>

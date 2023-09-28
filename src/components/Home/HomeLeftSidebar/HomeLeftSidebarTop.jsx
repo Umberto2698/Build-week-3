@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 const HomeLeftSidebarTop = () => {
-  const user = useSelector(state => state.user.content);
-  const loading = useSelector(state => state.user.isLoading);
+  const user = useSelector(state => state.profiles.myProfile);
+  const loading = useSelector(state => state.profiles.isLoadingMyProfile);
 
   return (
     <>

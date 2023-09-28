@@ -19,7 +19,7 @@ const HomeSinglePost = ({ post }) => {
           <Row className="mb-2">
             <Col xs={2} className="pe-0 me-2" style={{ width: "48px" }}>
               <Link to={`/profile/${post.user._id}`} className="text-underline-hover text-black">
-                <img src={post.user.image} width={48} height={48} alt="user" className="d-flex flex-wrap" />
+                <img src={post.user.image} width={48} height={48} alt="user" />
               </Link>
             </Col>
             <Col xs={8} className="me-auto">

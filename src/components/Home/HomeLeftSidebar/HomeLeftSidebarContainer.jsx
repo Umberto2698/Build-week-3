@@ -4,7 +4,7 @@ import HomeLeftSidebarBottom from "./HomeLeftSidebarBottom";
 
 const HomeLeftSidebarContainer = () => {
   return (
-    <Col xs={12} md={3} className="section">
+    <Col xs={12} md={3}>
       <HomeLeftSidebarTop />
       <HomeLeftSidebarBottom />
     </Col>
