@@ -42,7 +42,7 @@ const profilesReducer = (state = initialState, action) => {
     case GET_EXPERIENCE:
       return {
         ...state,
-        experience: action.payload,
+        experience: [...state.experience, action.payload],
       };
 
     case ISLOADING_PROFILES_FALSE:

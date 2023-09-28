@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AddSVG from "../Svgs/AddSVG";
 import PenSVG from "../Svgs/PenSVG";
 import { Button, Form, Modal } from "react-bootstrap";
 import ArrowSVG from "../Svgs/ArrowSVG";
 import { Link, useParams } from "react-router-dom";
 import XsAddSVG from "../Svgs/XsAddSVG";
+import { useDispatch, useSelector } from "react-redux";
+import { modifyMyExperienceAction } from "../../../redux/actions";
 
 const Experience = () => {
+  const dispatch = useDispatch();
+  const myProfile = useSelector((state) => state.profiles.myProfile);
   const params = useParams();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -33,25 +37,52 @@ const Experience = () => {
     }
   }
 
+  const [startDate, setStartDate] = useState({
+    mese: "",
+    anno: "",
+  });
+
+  const [endDate, setEndDate] = useState({
+    mese: "",
+    anno: "",
+  });
+
   const [query, setQuery] = useState({
     role: "",
     company: "",
-    startDate: {
-      mese: "",
-      anno: "",
-    },
-    endDate: {
-      mese: "",
-      anno: "",
-    }, // could be null
+    startDate: "",
+    endDate: "", // could be null
     description: "",
     area: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // dispatchEvent()
+    console.log(startDate.mese, typeof startDate.mese);
+    console.log(startDate.anno, typeof startDate.anno);
+    const inizio = new Date(`${startDate.anno} ${startDate.mese} 1`);
+    const fine = new Date(`${endDate.anno} ${endDate.mese} 1`);
+    setQuery({
+      ...query,
+      startDate: inizio,
+      endDate: fine,
+    });
   };
+
+  useEffect(() => {
+    if (query.startDate !== "") {
+      dispatch(modifyMyExperienceAction(myProfile._id, query));
+      setQuery({
+        role: "",
+        company: "",
+        startDate: "",
+        endDate: "", // could be null
+        description: "",
+        area: "",
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
 
   return (
     <div className="horz-card-block">
@@ -204,9 +235,7 @@ const Experience = () => {
                           Tipologia di località
                         </Form.Label>
                         <Form.Select className="my-input-control">
-                          <option disabled>
-                            Seleziona tipologia di località
-                          </option>
+                          <option>Seleziona tipologia di località</option>
                           <option>In sede</option>
                           <option>Da remoto</option>
                           <option>Ibrida</option>
@@ -231,18 +260,15 @@ const Experience = () => {
                             className="my-input-control"
                             required
                             onChange={(e) =>
-                              setQuery({
-                                ...query,
-                                startDate: {
-                                  ...query.startDate,
-                                  mese: e.target.value,
-                                },
+                              setStartDate({
+                                ...startDate,
+                                mese: e.target.value,
                               })
                             }
                           >
-                            <option disabled>Mese</option>
-                            {arrMonths.map((e) => (
-                              <option key={`month-${e}`} value={e}>
+                            <option>Mese</option>
+                            {arrMonths.map((e, i) => (
+                              <option key={`month-${e}`} value={i + 1}>
                                 {e}
                               </option>
                             ))}
@@ -251,16 +277,13 @@ const Experience = () => {
                             className="my-input-control"
                             required
                             onChange={(e) =>
-                              setQuery({
-                                ...query,
-                                startDate: {
-                                  ...query.startDate,
-                                  anno: e.target.value,
-                                },
+                              setStartDate({
+                                ...startDate,
+                                anno: e.target.value,
                               })
                             }
                           >
-                            <option disabled>Anno</option>
+                            <option>Anno</option>
                             {arrYears.reverse().map((i) => (
                               <option key={`year-${i}`} value={i}>
                                 {i}
@@ -279,18 +302,15 @@ const Experience = () => {
                               className="my-input-control"
                               required
                               onChange={(e) =>
-                                setQuery({
-                                  ...query,
-                                  endDate: {
-                                    ...query.endDate,
-                                    mese: e.target.value,
-                                  },
+                                setEndDate({
+                                  ...endDate,
+                                  mese: e.target.value,
                                 })
                               }
                             >
-                              <option disabled>Mese</option>
-                              {arrMonths.map((e) => (
-                                <option key={`month-${e}`} value={e}>
+                              <option>Mese</option>
+                              {arrMonths.map((e, i) => (
+                                <option key={`month-${e}`} value={i + 1}>
                                   {e}
                                 </option>
                               ))}
@@ -299,16 +319,13 @@ const Experience = () => {
                               className="my-input-control"
                               required
                               onChange={(e) =>
-                                setQuery({
-                                  ...query,
-                                  endDate: {
-                                    ...query.endDate,
-                                    anno: e.target.value,
-                                  },
+                                setEndDate({
+                                  ...endDate,
+                                  anno: e.target.value,
                                 })
                               }
                             >
-                              <option disabled>Anno</option>
+                              <option>Anno</option>
                               {arrYears.reverse().map((i) => (
                                 <option key={`year-${i}`} value={i}>
                                   {i}
@@ -375,6 +392,7 @@ const Experience = () => {
                     <Button
                       variant="primary"
                       onClick={handleClose}
+                      type="submit"
                       style={{ alignSelf: "flex-end" }}
                     >
                       Salva
