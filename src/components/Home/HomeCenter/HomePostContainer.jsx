@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import HomeSinglePost from "./HomeSinglePost";
 import { getHomePosts } from "../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Placeholder, Spinner } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 
 const HomePostContainer = () => {
   const dispatch = useDispatch();
