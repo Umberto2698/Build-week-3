@@ -17,46 +17,48 @@ const HomeSinglePost = ({ post }) => {
       <Card className="bg-white rounded-2 mb-2 p-3 pb-1">
         <Container className="p-0">
           <Row className="mb-2">
-            <Col xs={2} className="pe-0 me-2" style={{ width: "48px" }}>
-              <Link to={`/profile/${post.user._id}`} className="text-underline-hover text-black">
-                <img src={post.user.image} width={48} height={48} alt="user" />
-              </Link>
-            </Col>
-            <Col xs={8} className="me-auto">
-              <div className="d-flex justify-content-between">
-                <Link to={`/profile/${post.user._id}`} className="text-underline-hover">
-                  <div className="text-black text-truncate overflow-hidden fw-medium" style={{ fontSize: "0.9rem" }}>
-                    {post.username}
-                  </div>
+            <div className="d-flex">
+              <div className="me-2 d-flex">
+                <Link to={`/profile/${post.user._id}`} className="text-underline-hover text-black">
+                  <img src={post.user.image} width={48} height={48} alt="user" className="" />
                 </Link>
               </div>
-              <div className="text-secondary" style={{ fontSize: "0.7rem" }}>
-                <div className="d-flex">
-                  <TimeConverter createdAt={post.createdAt} />
-                  <div className=" d-flex my-auto">
-                    <Dot />
-                    <GlobeAmericas />
+              <div xs={7} className="me-auto ps-0">
+                <div className="d-flex justify-content-between">
+                  <Link to={`/profile/${post.user._id}`} className="text-underline-hover">
+                    <div className="text-black text-truncate overflow-hidden fw-medium" style={{ fontSize: "0.9rem" }}>
+                      {post.username}
+                    </div>
+                  </Link>
+                </div>
+                <div className="text-secondary" style={{ fontSize: "0.7rem" }}>
+                  <div className="d-flex">
+                    <TimeConverter createdAt={post.createdAt} />
+                    <div className=" d-flex my-auto">
+                      <Dot />
+                      <GlobeAmericas />
+                    </div>
                   </div>
                 </div>
               </div>
-            </Col>
-            <Col xs={2} className="ps-0">
-              <div className="d-flex justify-content-end">
-                <span
-                  id="post-btn-delete"
-                  className="rounded-circle d-flex justify-content-center align-middle p-1 me-2"
-                >
-                  <ThreeDots fontSize={20} className="m-auto" />
-                </span>
-                <span
-                  id="post-btn-delete"
-                  className="rounded-circle d-flex justify-content-center align-middle p-1"
-                  onClick={handleDeleteClick}
-                >
-                  <X fontSize={20} className="m-auto" />
-                </span>
+              <div xs={3}>
+                <div className="d-flex justify-content-end">
+                  <span
+                    id="post-btn-delete"
+                    className="rounded-circle d-flex justify-content-center align-middle p-1 me-2"
+                  >
+                    <ThreeDots fontSize={20} className="m-auto" />
+                  </span>
+                  <span
+                    id="post-btn-delete"
+                    className="rounded-circle d-flex justify-content-center align-middle p-1"
+                    onClick={handleDeleteClick}
+                  >
+                    <X fontSize={20} className="m-auto" />
+                  </span>
+                </div>
               </div>
-            </Col>
+            </div>
           </Row>
           <div className="border-bottom pb-2" style={{ fontSize: "0.9rem" }}>
             {post.text}
