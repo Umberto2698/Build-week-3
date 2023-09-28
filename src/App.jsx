@@ -29,7 +29,7 @@ function App() {
         <Route path="/profile/:id" element={<ProfilePage />}></Route>
         <Route path="/jobs/:query" element={<JobPage></JobPage>}></Route>
         <Route path="/jobs/:query/details/:category" element={<Details></Details>}></Route>
-        <Route path="/jobs/:query/details/mobile/:jobId" element={<DetailsMobile></DetailsMobile>}></Route>
+        <Route path="/jobs/:query/details/mobile/:category/:jobId" element={<DetailsMobile></DetailsMobile>}></Route>
         <Route path="/" element={<HomeMain />} />
       </Routes>
     </BrowserRouter>

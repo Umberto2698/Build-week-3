@@ -202,7 +202,7 @@ const MyNavbar = () => {
                     <Link
                       to="/jobs/none"
                       className={`nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center ${
-                        location.pathname === "/jobs" ? "active" : ""
+                        location.pathname.includes("jobs") ? "active" : ""
                       }`}
                       style={{ color: "#8d8d8d", height: "100%" }}
                     >

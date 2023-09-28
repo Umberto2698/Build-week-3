@@ -1,5 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
-import { ArrowRight } from "react-bootstrap-icons";
+import { ArrowRight, ArrowUpLeftCircle } from "react-bootstrap-icons";
 import React, { useEffect } from "react";
 import Jobs from "./Jobs";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,7 +37,7 @@ const JobPage = () => {
             <div className="d-flex flex-column align-items-center justify-content-between mb-3 pt-3 text-secondary bg-white border border-secondary-subtle rounded-3">
               <div className="d-flex flex-column align-items-start w-100 mb-2 px-2">
                 <h2 className="m-0 text-dark" style={{ fontSize: "20px" }}>
-                  Lavori con {params.query}
+                  Risultati di ricerca con {params.query}
                 </h2>
                 <p className="m-0" style={{ fontSize: "13px" }}>
                   Sulla base della tua ricerca
@@ -49,14 +49,28 @@ const JobPage = () => {
                   searchedJobArray.map((job) => (
                     <Jobs path={params.query} selected={false} jobData={job} key={job._id}></Jobs>
                   ))}
-              <Link to={`details/` + params.query} className="text-decoration-none text-reset job-detail w-100">
-                <div className=" border-top border-top-secondary-subtle d-flex align-items-center justify-content-center py-3">
-                  <h4 className="m-0 d-inline-block me-2" style={{ fontSize: "15px" }}>
-                    Mostra tutto
-                  </h4>
-                  <ArrowRight size={20}></ArrowRight>
+              {searchedJobArray.length !== 0 ? (
+                <Link to={`details/` + params.query} className="text-decoration-none text-reset job-detail w-100">
+                  <div className=" border-top border-top-secondary-subtle d-flex align-items-center justify-content-center py-3">
+                    <h4 className="m-0 d-inline-block me-2" style={{ fontSize: "15px" }}>
+                      Mostra tutto
+                    </h4>
+                    <ArrowRight size={20}></ArrowRight>
+                  </div>
+                </Link>
+              ) : (
+                <div className=" border-top border-top-secondary-subtle d-flex w-100 text-dark align-items-center justify-content-center py-3">
+                  <ArrowUpLeftCircle size={20}></ArrowUpLeftCircle>
+                  <div className=" ms-3 d-flex flex-column align-items-center justify-content-start">
+                    <h4 className="m-0 d-inline-block me-2" style={{ fontSize: "15px" }}>
+                      La tua ricerca non ha portato ad alcun risultato
+                    </h4>
+                    <h4 className="m-0 d-inline-block me-2" style={{ fontSize: "15px" }}>
+                      specifica meglio cosa stai cercando
+                    </h4>
+                  </div>
                 </div>
-              </Link>
+              )}
             </div>
           )}
           <div className="d-flex flex-column align-items-center justify-content-between pt-3 mb-3 bg-white text-secondary border border-secondary-subtle rounded-3">
