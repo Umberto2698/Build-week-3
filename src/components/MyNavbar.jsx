@@ -15,10 +15,12 @@ import { Grid3x3GapFill, Search } from "react-bootstrap-icons";
 import MyNavbarOffcanvas from "./MyNavbarOffcanvas";
 import Bottombar from "./Bottombar";
 import { GET_USER, ISERROR_USER, ISLOADING_USER, getJobFromQueryAction, getMyProfileAction } from "../redux/actions";
+import { fetchProfile } from "../redux/actions";
 
 const MyNavbar = () => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
+
   const location = useLocation();
   const [showOffcanvas, setShowOffcanvas] = useState(false);
   const handleToggleOffcanvas = () => {
@@ -42,35 +44,8 @@ const MyNavbar = () => {
     }
   };
 
-  const fetchProfile = async () => {
-    const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile/me";
-    const token =
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4";
-
-    try {
-      dispatch({ type: ISLOADING_USER, payload: true });
-      const response = await fetch(baseEndpoint, {
-        method: "GET",
-        headers: {
-          Authorization: token,
-          team: "team-6",
-        },
-      });
-      if (response.ok) {
-        const data = await response.json();
-        dispatch({ type: GET_USER, payload: data });
-        dispatch({ type: ISLOADING_USER, payload: false });
-      } else {
-        dispatch({ type: ISERROR_USER, payload: true });
-        throw new Error("Error fetching results");
-      }
-    } catch (error) {
-      throw error;
-    }
-  };
-
   useEffect(() => {
-    fetchProfile();
+    dispatch(fetchProfile());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -89,6 +64,57 @@ const MyNavbar = () => {
                     alt="Linkedin Icon"
                   />
                 </Link>
+                </InputGroup>
+              </Form>
+            </Col>
+            <Col
+              xs={1}
+              className="nav-link d-flex justify-content-center d-md-none"
+              style={{ color: "#8d8d8d", height: "100%", backgroundColor: "transparent" }}
+            >
+              <Link to="/profile/" className="m-auto">
+                <img src={user?.image} width={32} height={32} className="rounded-circle " alt="user" />
+              </Link>
+            </Col>
+            <Col className="py-2 px-0 d-flex d-md-none ">
+              <Form onSubmit={handleSubmit} className="d-flex flex-grow-1 justify-content-center">
+                <InputGroup>
+                  <InputGroup.Text
+                    id="basic-addon1"
+                    className="border border-0 p-0 ps-4 pe-1"
+                    style={{ backgroundColor: "#EDF3F8" }}
+                  >
+                    <Search />
+                  </InputGroup.Text>
+                  <Form.Control
+                    type="search"
+                    value={query}
+                    onChange={handleChange}
+                    placeholder="Cerca"
+                    className="border border-0"
+                    style={{ backgroundColor: "#EDF3F8" }}
+                  />
+                </InputGroup>
+              </Form>
+            </Col>
+            <Col xs={1} className="d-md-none" style={{ height: "100%" }}>
+              <Link
+                to="/publish/"
+                className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
+                style={{ color: "#8d8d8d", height: "100%" }}
+              >
+                <FontAwesomeIcon icon={faArrowDownWideShort} style={{ height: "20px" }} />
+              </Link>
+            </Col>
+            <Col xs={1} className="d-md-none" style={{ height: "100%" }}>
+              <Link
+                to="/comments/"
+                className="nav-link d-flex flex-column p-0 align-items-center my-navbar-text justify-content-center "
+                style={{ color: "#8d8d8d", height: "100%" }}
+              >
+                <FontAwesomeIcon icon={faCommentDots} style={{ height: "20px" }} />
+              </Link>
+            </Col>
 
                 <Form onSubmit={handleSubmit} style={{ maxWidth: "280px" }} className="flex-grow-1 d-none d-lg-block ">
                   <InputGroup>
@@ -263,6 +289,23 @@ const MyNavbar = () => {
                           to="/profile"
                           className="text-decoration-none dropdown-item p-2 "
                           style={{ backgroundColor: "white" }}
+                        <div className="d-flex">
+                          <div className="p-2">
+                            <img src={user?.image} width={48} className="rounded-circle" alt="user" />
+                          </div>
+                          <div className="flex-grow-1">
+                            <h6>
+                              {user?.name} {user?.surname}
+                            </h6>
+                            <p>{user?.title}</p>
+                          </div>
+                        </div>
+                        <Button
+                          id="navbar-button"
+                          variant="outline-primary"
+                          className="rounded-pill py-0"
+                          size="sm"
+                          style={{ backgroundColor: "transparent", color: "#0d6efd", width: "100%" }}
                         >
                           <div className="d-flex">
                             <div className="p-2">
