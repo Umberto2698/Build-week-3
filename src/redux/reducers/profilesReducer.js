@@ -1,5 +1,6 @@
 import {
   GET_ALL_PROFILES,
+  GET_EXPERIENCE,
   GET_MY_PROFILE,
   GET_USER_PROFILE,
   ISLOADING_MY_PROFILES_FALSE,
@@ -12,6 +13,7 @@ const initialState = {
   all: [],
   myProfile: null,
   currentProfile: null,
+  experience: [],
   isLoadingProfiles: true,
   isLoadingMyProfile: true,
   isLoadingUserProfile: true,
@@ -35,6 +37,12 @@ const profilesReducer = (state = initialState, action) => {
       return {
         ...state,
         currentProfile: action.payload,
+      };
+
+    case GET_EXPERIENCE:
+      return {
+        ...state,
+        experience: action.payload,
       };
 
     case ISLOADING_PROFILES_FALSE:

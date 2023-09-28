@@ -16,13 +16,18 @@ export const ISLOADING_HOME_POSTS_TRUE = "ISLOADING_HOME_POSTS_TRUE";
 export const ISLOADING_HOME_POSTS_FALSE = "ISLOADING_HOME_POSTS_FALSE";
 export const ISERROR_HOME_POSTS = "ISERROR_HOME_POSTS";
 
+//____________________________________________________________________________________________________________________
+
 export const GET_ALL_PROFILES = "GET_ALL_PROFILES";
 export const GET_MY_PROFILE = "GET_MY_PROFILE";
 export const GET_USER_PROFILE = "GET_USER_PROFILE";
+export const GET_EXPERIENCE = "GET_EXPERIENCE";
 export const ISLOADING_PROFILES_FALSE = "ISLOADING_PROFILES_FALSE";
 export const ISLOADING_MY_PROFILES_FALSE = "ISLOADING_MY_PROFILES_FALSE";
 export const ISLOADING_USER_PROFILES_FALSE = "ISLOADING_USER_PROFILES_FALSE";
 export const ISLOADING_USER_PROFILES_TRUE = "ISLOADING_USER_PROFILES_TRUE";
+
+//____________________________________________________________________________________________________________________
 
 export const SET_PROFILE = "SET_PROFILE";
 export const PROFILE = "PROFILE";
@@ -288,24 +293,30 @@ export const modifyImageProfileAction = (id, formData) => {
   };
 };
 
-// export const getMyExperienceAction = (userId) => {
-//   return async (dispatch) => {
-//     const URL = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`
-//     const method = {
-//       method: "GET",
-//       headers: {
-//         Authorization:
-//           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExNGI4YzM3NTJhODAwMTQ1Njg3NmMiLCJpYXQiOjE2OTU2MzIyNjgsImV4cCI6MTY5Njg0MTg2OH0.gzlYEvqJw2sYnF11tPjrNqPrWR0KLj0FbEEpodBxeZo",
-//       },
-//     };
+export const getMyExperienceAction = (userId) => {
+  return async (dispatch) => {
+    const URL = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`;
+    const method = {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExNGI4YzM3NTJhODAwMTQ1Njg3NmMiLCJpYXQiOjE2OTU2MzIyNjgsImV4cCI6MTY5Njg0MTg2OH0.gzlYEvqJw2sYnF11tPjrNqPrWR0KLj0FbEEpodBxeZo",
+      },
+    };
 
-//     try {
-//       const resp = await fetch(URL, method)
-//     } catch (error) {
-//       console.log(error)
-//     }
-//   }
-// }
+    try {
+      const resp = await fetch(URL, method);
+      if (resp.ok) {
+        const experience = await resp.json();
+        console.log("experience", experience);
+        dispatch({ type: GET_EXPERIENCE, payload: experience });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 //_______________________________________________________________________________________________________________________
 
 const postsEndpoint = "https://striveschool-api.herokuapp.com/api/posts/";
