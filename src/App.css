@@ -615,6 +615,7 @@ body::-webkit-scrollbar-thumb {
 }
 #post-btn:hover {
   background-color: #5c5c5c38;
+  cursor: pointer;
 }
 
 #posts-show-more {
