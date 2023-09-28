@@ -5,8 +5,6 @@ import { ChatRightText, HandThumbsUp, SendFill, ThreeDots, X } from "react-boots
 import TimeConverter from "./TimeConverter";
 
 const HomeSinglePost = ({ post }) => {
-  console.log(post);
-
   return (
     <>
       <Card className="bg-white rounded-2 mb-2 p-3 pb-1" style={{ minHeight: "100px" }}>
