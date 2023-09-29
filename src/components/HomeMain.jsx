@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { Button, Col, Container, Form, FormControl, Row } from "react-bootstrap";
-import MyFooter from "./Footer";
-=======
 import { Button, Col, Container, Form, FormControl, InputGroup, Modal, Row } from "react-bootstrap";
-import MyFooter from "./MyFooter";
->>>>>>> develop
+import SideFooter from "./SideFooter";
 import logoSVGCalendar from "../assets/icons8-calendar-25.png";
 import logoSVGPicture from "../assets/icons8-picture.svg";
 import logoSVGArticle from "../assets/icons8-picture-attachment-at-bottom-left-corner-of-the-page-24.png";
@@ -31,11 +26,9 @@ import {
 const HomeMain = () => {
   const [inputText, setinputText] = useState("");
   const dispatch = useDispatch();
-<<<<<<< HEAD
-  const allPosts = useSelector((state) => state.allPosts?.content || []);
-=======
-  const user = useSelector(state => state.profiles.myProfile);
-  const loading = useSelector(state => state.profiles.isLoadingMyProfile);
+  // const allPosts = useSelector((state) => state.allPosts?.content || []);
+  const user = useSelector((state) => state.profiles.myProfile);
+  const loading = useSelector((state) => state.profiles.isLoadingMyProfile);
   const [show, setShow] = useState(false);
   const [showImageModal, setShowImageModal] = useState(false);
   const [formData, setFormData] = useState(new FormData());
@@ -43,7 +36,7 @@ const HomeMain = () => {
   const [fileSelected, setFileSelected] = useState(false);
   const isButtonDisabled = !inputText.trim();
 
-  const onFileChange = e => {
+  const onFileChange = (e) => {
     if (e.target && e.target.files[0]) {
       formData.append("post", e.target.files[0]);
 
@@ -53,7 +46,7 @@ const HomeMain = () => {
 
       const reader = new FileReader();
 
-      reader.onload = event => {
+      reader.onload = (event) => {
         setFilePreview(event.target.result);
       };
 
@@ -67,7 +60,6 @@ const HomeMain = () => {
     setShow(false);
   };
   const handleShow = () => setShow(true);
->>>>>>> develop
 
   useEffect(() => {
     dispatch(getPostsAction());
@@ -79,7 +71,7 @@ const HomeMain = () => {
     setinputText("");
   };
 
-  const handleImageSubmit = async e => {
+  const handleImageSubmit = async (e) => {
     e.preventDefault();
   };
 
@@ -225,7 +217,7 @@ const HomeMain = () => {
         {/* Footer */}
         <Row>
           <Col xs={12} md={{ span: 3, offset: 9 }}>
-            <MyFooter />
+            <SideFooter />
           </Col>
         </Row>
       </Container>
@@ -252,7 +244,7 @@ const HomeMain = () => {
                 className="border-0 p-3 fs-5 mx-3"
                 id="home-modal-form"
                 value={inputText}
-                onChange={e => setinputText(e.target.value)}
+                onChange={(e) => setinputText(e.target.value)}
                 placeholder="Di cosa vorresti parlare?"
                 aria-label="Di cosa vorresti parlare?"
                 aria-describedby="basic-addon2"
@@ -324,7 +316,7 @@ const HomeMain = () => {
             <div className="pb-4">
               <Form.Group controlId="formFile" className="mb-3">
                 <Form.Label>Scegli un'immagine da caricare</Form.Label>
-                <Form.Control type="file" onChange={e => onFileChange(e)} />
+                <Form.Control type="file" onChange={(e) => onFileChange(e)} />
 
                 {filePreview && (
                   <div className="text-center m-3 border rounded-3">
