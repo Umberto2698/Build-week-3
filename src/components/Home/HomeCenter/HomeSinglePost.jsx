@@ -60,10 +60,10 @@ const HomeSinglePost = ({ post }) => {
               </div>
             </div>
           </Row>
-          <div className="border-bottom pb-2" style={{ fontSize: "0.9rem" }}>
-            {post.text}
+          <div className="border-bottom" style={{ fontSize: "0.9rem" }}>
+            <div className="mb-2"> {post.text}</div>
             {post.image && (
-              <div className="object-fit-cover">
+              <div className="object-fit-cover mb-2">
                 <img src={post.image} width={"100%"} alt="" />
               </div>
             )}
