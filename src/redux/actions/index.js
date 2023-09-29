@@ -23,6 +23,7 @@ export const GET_MY_PROFILE = "GET_MY_PROFILE";
 export const GET_USER_PROFILE = "GET_USER_PROFILE";
 export const GET_EXPERIENCE = "GET_EXPERIENCE";
 export const GET_CURRENT_EXPERIENCE = "GET_CURRENT_EXPERIENCE";
+export const GET_SPECIFIC_EXPERIENCE = "GET_SPECIFIC_EXPERIENCE";
 export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
 export const PUT_EXPERIENCE = "PUT_EXPERIENCE";
 export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
@@ -323,6 +324,30 @@ export const getMyExperienceAction = (userId) => {
   };
 };
 
+export const getSpecificExperienceAction = (userId, expId) => {
+  return async (dispatch) => {
+    const URL = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`;
+    const method = {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExNGI4YzM3NTJhODAwMTQ1Njg3NmMiLCJpYXQiOjE2OTU2MzIyNjgsImV4cCI6MTY5Njg0MTg2OH0.gzlYEvqJw2sYnF11tPjrNqPrWR0KLj0FbEEpodBxeZo",
+      },
+    };
+
+    try {
+      const resp = await fetch(URL, method);
+      if (resp.ok) {
+        const experience = await resp.json();
+        console.log("experience", experience);
+        dispatch({ type: GET_SPECIFIC_EXPERIENCE, payload: experience });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
 export const getCurrentExperienceAction = (userId) => {
   return async (dispatch) => {
     const URL = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`;
@@ -347,7 +372,7 @@ export const getCurrentExperienceAction = (userId) => {
   };
 };
 
-export const modifyMyExperienceAction = (userId, experienceMod) => {
+export const addExperienceAction = (userId, experienceMod) => {
   return async (dispatch) => {
     const URL = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences`;
     const method = {

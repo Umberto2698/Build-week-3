@@ -8,7 +8,7 @@ import XsAddSVG from "../Svgs/XsAddSVG";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getMyExperienceAction,
-  modifyMyExperienceAction,
+  addExperienceAction,
 } from "../../../redux/actions";
 import SingleExperience from "./SingleExperience";
 
@@ -83,9 +83,27 @@ const Experience = () => {
     });
   };
 
+  // const handlePost = () => {
+  //   const confirmation = window.confirm(
+  //     "Sei sicuro di voler aggiungere questa esperienza"
+  //   );
+
+  //   if (confirmation) {
+  //     dispatch(addExperienceAction(myProfile._id, query));
+  //     setQuery({
+  //       role: "",
+  //       company: "",
+  //       startDate: "",
+  //       endDate: "", // could be null
+  //       description: "",
+  //       area: "",
+  //     });
+  //   }
+  // };
+
   useEffect(() => {
     if (query.startDate !== "") {
-      dispatch(modifyMyExperienceAction(myProfile._id, query));
+      dispatch(addExperienceAction(myProfile._id, query));
       setQuery({
         role: "",
         company: "",
@@ -197,30 +215,6 @@ const Experience = () => {
                           required
                         />
                       </div>
-                      {/* <div className="pb-4">
-                        <Form.Label className="my-label">
-                          Tipologia di impiego
-                        </Form.Label>
-                        <Form.Control
-                          className="my-input-control"
-                          placeholder="Inserisci la tipologia di impiego"
-                          aria-describedby="basic-addon3"
-                        />
-                        <Form.Label
-                          className="my-label mt-2"
-                          style={{ fontSize: "16px" }}
-                        >
-                          Scopri di più sui{" "}
-                          <Link
-                            to={
-                              "https://www.linkedin.com/help/linkedin/answer/a549563?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_add_position%3BtdPngjXDRJCEEu2TlGBp6Q%3D%3D"
-                            }
-                            target="_blank"
-                          >
-                            tipi di impiego
-                          </Link>
-                        </Form.Label>
-                      </div> */}
                       <div className="pb-4">
                         <Form.Label className="my-label">
                           Nome azienda*
@@ -249,7 +243,7 @@ const Experience = () => {
                           required
                         />
                       </div>
-                      <div className="pb-4">
+                      {/* <div className="pb-4">
                         <Form.Label className="my-label">
                           Tipologia di località
                         </Form.Label>
@@ -269,7 +263,7 @@ const Experience = () => {
                           label="Attualmente ricopro questo ruolo"
                           aria-describedby="basic-addon3"
                         />
-                      </div>
+                      </div> */}
                       <div className="pb-4">
                         <Form.Label className="my-label">
                           Data di inizio*

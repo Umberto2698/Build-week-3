@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getAllProfilesAction, getMyProfileAction } from "./redux/actions";
 import PutDeleteExperience from "./components/Profile/SubMainSection/PutDeleteExperience";
+import ModExp from "./components/Profile/SubMainSection/ModExp";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,11 @@ function App() {
           path="/profile/experience/details"
           element={<PutDeleteExperience />}
         ></Route>
+        <Route
+          path="/profile/experience/details/:id"
+          element={<ModExp />}
+        ></Route>
+
         <Route path="/jobs/:query" element={<JobPage></JobPage>}></Route>
         <Route
           path="/jobs/:query/details/:category"
