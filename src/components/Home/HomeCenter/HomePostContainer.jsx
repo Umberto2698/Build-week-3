@@ -46,7 +46,6 @@ const HomePostContainer = () => {
   useEffect(() => {
     return () => {
       dispatch(setRandomIndexes([]));
-      console.log("unmount");
     };
   }, []);
 

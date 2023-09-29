@@ -62,7 +62,13 @@ const HomeSinglePost = ({ post }) => {
           </Row>
           <div className="border-bottom pb-2" style={{ fontSize: "0.9rem" }}>
             {post.text}
+            {post.image && (
+              <div className="object-fit-cover">
+                <img src={post.image} width={"100%"} alt="" />
+              </div>
+            )}
           </div>
+
           <div className="d-flex justify-content-between mt-2">
             <Button id="post-btn" className="d-flex flex-wrap text-secondary">
               <HandThumbsUp className="m-auto pe-1" size={25} />

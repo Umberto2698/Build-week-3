@@ -45,29 +45,25 @@ export const SINGLE_PROFILE = "SINGLE_PROFILE";
 export const SET_SEARCH = "SET_SEARCH";
 export const SET_QUERY = "SET_QUERY";
 
-export const postFormAction = (content) => ({
+export const postFormAction = content => ({
   type: POST_EXPERIENCES,
   payload: content,
 });
-export const getFormAction = (content) => ({
+export const getFormAction = content => ({
   type: GET_FORM_DATA,
   payload: content,
 });
-export const getSearchAction = (content) => ({
+export const getSearchAction = content => ({
   type: GET_SEARCH_DATA,
   payload: content,
 });
-export const setSearch = (search) => ({ type: SET_SEARCH, payload: search });
-export const setQuery = (query) => ({ type: SET_QUERY, payload: query });
+export const setSearch = search => ({ type: SET_SEARCH, payload: search });
+export const setQuery = query => ({ type: SET_QUERY, payload: query });
 
-const randomJobEndPoint =
-  "https://strive-benchmark.herokuapp.com/api/jobs?limit=20";
-const categoryJobEndPoint =
-  "https://strive-benchmark.herokuapp.com/api/jobs?category=";
-const JobFromIdEndPoint =
-  "https://strive-benchmark.herokuapp.com/api/jobs?_id=";
-const JobFromQueryEndPoint =
-  "https://strive-benchmark.herokuapp.com/api/jobs?search=";
+const randomJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?limit=20";
+const categoryJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?category=";
+const JobFromIdEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?_id=";
+const JobFromQueryEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 const headers = {
   headers: {
     Authorization:
@@ -76,7 +72,7 @@ const headers = {
 };
 
 export const getRandomJobsAction = () => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       dispatch({ type: GET_JOBS_LOADING, payload: true });
       const response = await fetch(randomJobEndPoint, headers);
@@ -94,14 +90,11 @@ export const getRandomJobsAction = () => {
   };
 };
 
-export const getCategoryJobsAction = (category) => {
-  return async (dispatch) => {
+export const getCategoryJobsAction = category => {
+  return async dispatch => {
     try {
       dispatch({ type: GET_JOBS_LOADING, payload: true });
-      const response = await fetch(
-        categoryJobEndPoint + category + "&limit=20",
-        headers
-      );
+      const response = await fetch(categoryJobEndPoint + category + "&limit=20", headers);
       if (response.ok) {
         const { data } = await response.json();
         dispatch({ type: GET_CATEGORTY_JOBS, payload: data });
@@ -116,8 +109,8 @@ export const getCategoryJobsAction = (category) => {
   };
 };
 
-export const getJobFromIdAction = (id) => {
-  return async (dispatch) => {
+export const getJobFromIdAction = id => {
+  return async dispatch => {
     try {
       dispatch({ type: GET_JOBS_LOADING, payload: true });
       const response = await fetch(JobFromIdEndPoint + id, headers);
@@ -135,8 +128,8 @@ export const getJobFromIdAction = (id) => {
   };
 };
 
-export const getJobFromQueryAction = (query) => {
-  return async (dispatch) => {
+export const getJobFromQueryAction = query => {
+  return async dispatch => {
     try {
       dispatch({ type: GET_JOBS_LOADING, payload: true });
       const response = await fetch(JobFromQueryEndPoint + query, headers);
@@ -155,7 +148,7 @@ export const getJobFromQueryAction = (query) => {
 };
 
 export const getAllProfilesAction = () => {
-  return async (dispatch) => {
+  return async dispatch => {
     const URL = "https://striveschool-api.herokuapp.com/api/profile/";
     const method = {
       method: "GET",
@@ -182,7 +175,7 @@ export const getAllProfilesAction = () => {
 };
 
 export const getMyProfileAction = () => {
-  return async (dispatch) => {
+  return async dispatch => {
     const URL = "https://striveschool-api.herokuapp.com/api/profile/me";
     const method = {
       method: "GET",
@@ -209,8 +202,8 @@ export const getMyProfileAction = () => {
   };
 };
 
-export const getUserProfileAction = (userId) => {
-  return async (dispatch) => {
+export const getUserProfileAction = userId => {
+  return async dispatch => {
     const URL = `https://striveschool-api.herokuapp.com/api/profile/${userId}`;
     const method = {
       method: "GET",
@@ -235,8 +228,8 @@ export const getUserProfileAction = (userId) => {
   };
 };
 
-export const modifyUserProfileAction = (query) => {
-  return async (dispatch) => {
+export const modifyUserProfileAction = query => {
+  return async dispatch => {
     const URL = `https://striveschool-api.herokuapp.com/api/profile/`;
     const method = {
       method: "PUT",
@@ -263,7 +256,7 @@ export const modifyUserProfileAction = (query) => {
 };
 
 export const modifyImageProfileAction = (id, formData) => {
-  return async (dispatch) => {
+  return async dispatch => {
     const URL = `https://striveschool-api.herokuapp.com/api/profile/${id}/picture`;
     const method = {
       method: "POST",
@@ -311,7 +304,7 @@ export const modifyImageProfileAction = (id, formData) => {
 const postsEndpoint = "https://striveschool-api.herokuapp.com/api/posts/";
 
 export const getPostsAction = () => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const response = await fetch(
         postsEndpoint,
@@ -331,8 +324,8 @@ export const getPostsAction = () => {
     }
   };
 };
-export const postPostAction = (newData) => {
-  return async (dispatch) => {
+export const postPostAction = newData => {
+  return async dispatch => {
     try {
       const response = await fetch(postsEndpoint, {
         method: "POST",
@@ -356,7 +349,7 @@ export const postPostAction = (newData) => {
 };
 
 export const putPostAction = (newData, postID) => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       const response = await fetch(postsEndpoint + "/" + postID, {
         method: "PUT",
@@ -377,8 +370,8 @@ export const putPostAction = (newData, postID) => {
   };
 };
 
-export const deletePostAction = (postID) => {
-  return async (dispatch) => {
+export const deletePostAction = postID => {
+  return async dispatch => {
     try {
       const response = await fetch(postsEndpoint + "/" + postID, {
         method: "DELETE",
@@ -403,7 +396,7 @@ export const fetchProfile = () => {
   const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile/me";
   const token =
     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4";
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       dispatch({ type: ISLOADING_USER_TRUE, payload: true });
       const response = await fetch(baseEndpoint, {
@@ -428,7 +421,7 @@ export const fetchProfile = () => {
 };
 
 export const getHomePosts = () => {
-  return async (dispatch) => {
+  return async dispatch => {
     try {
       dispatch({ type: ISLOADING_HOME_POSTS_FALSE, payload: true });
 
@@ -452,7 +445,7 @@ export const getHomePosts = () => {
   };
 };
 
-export const setRandomIndexes = (randomIndexes) => ({
+export const setRandomIndexes = randomIndexes => ({
   type: "SET_RANDOM_INDEXES",
   payload: randomIndexes,
 });

@@ -27,7 +27,7 @@ const HomeLeftSidebarTop = () => {
               <div id="home-left-sidebar-image" className="position-absolute">
                 <img
                   className="rounded-circle border border-2 border-white"
-                  src={user.image}
+                  src={user?.image}
                   width={72}
                   height={72}
                   alt=""
@@ -35,14 +35,14 @@ const HomeLeftSidebarTop = () => {
               </div>
               <div style={{ height: "52px" }}></div>
               <Card.Title style={{ fontSize: "1rem" }}>
-                {user.name}
+                {user?.name}
                 <span> </span>
-                {user.surname}
+                {user?.surname}
               </Card.Title>
             </Link>
             <Card.Body className="p-0">
               <Card.Text className="text-center text-secondary pb-3 " style={{ fontSize: "0.8rem" }}>
-                {user.title}
+                {user?.title}
               </Card.Text>
             </Card.Body>
             <div className={`d-md-block ${!isExpanded ? "d-none" : "d-block"}`}>
