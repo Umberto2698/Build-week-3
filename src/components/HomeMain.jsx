@@ -1,5 +1,5 @@
 import { Button, Col, Container, Form, FormControl, Row } from "react-bootstrap";
-import MyFooter from "./MyFooter";
+import MyFooter from "./Footer";
 import logoSVGCalendar from "../assets/icons8-calendar-25.png";
 import logoSVGPicture from "../assets/icons8-picture.svg";
 import logoSVGArticle from "../assets/icons8-picture-attachment-at-bottom-left-corner-of-the-page-24.png";
@@ -14,13 +14,13 @@ import HomePostContainer from "./Home/HomeCenter/HomePostContainer";
 const HomeMain = () => {
   const [newPost, setNewPost] = useState("");
   const dispatch = useDispatch();
-  const allPosts = useSelector(state => state.allPosts?.content || []);
+  const allPosts = useSelector((state) => state.allPosts?.content || []);
 
   useEffect(() => {
     dispatch(getPostsAction());
   }, []);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postPostAction(newPost));
     setNewPost("");

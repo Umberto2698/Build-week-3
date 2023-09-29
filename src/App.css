@@ -155,6 +155,10 @@ body {
   text-decoration-color: black;
 }
 
+#favourite-page {
+  height: 90vh;
+}
+
 /* Fine Job */
 
 .my-navbar-text {

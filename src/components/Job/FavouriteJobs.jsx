@@ -2,17 +2,19 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 import { BookmarkFill } from "react-bootstrap-icons";
 import { useSelector } from "react-redux";
 import Jobs from "./Jobs";
-import { useNavigate } from "react-router-dom";
+import Footer from "../Footer";
+import { useNavigate, useParams } from "react-router-dom";
 
 const FavouriteJobs = () => {
   const favouriteArray = useSelector((state) => state.favourite.list.content);
   const navigate = useNavigate();
+  const params = useParams();
 
   return (
-    <Container style={{ paddingTop: "65px" }}>
-      <Row>
+    <Container id="favourite-page" style={{ paddingTop: "65px" }}>
+      <Row className="mb-5">
         <Col lg={3}>
-          <div className="d-flex flex-column align-items-center justify-content-center bg-white border border-secondary-subtle rounded-2 w-100">
+          <div className="d-flex flex-column align-items-center justify-content-center bg-white border border-secondary-subtle rounded-2 w-100 mb-2">
             <div className="d-flex align-items-center text-secondary border-bottom border-bottom-secondary w-100 px-2 py-2">
               <BookmarkFill size={15}></BookmarkFill>
               <span className="text-start ms-2 fs-6 fw-medium flex-grow-1">I miei elementi</span>
@@ -36,7 +38,7 @@ const FavouriteJobs = () => {
               </Button>
             </div>
             {favouriteArray.length !== 0 ? (
-              favouriteArray.map((job) => <Jobs jobData={job} key={job._id}></Jobs>)
+              favouriteArray.map((job) => <Jobs path={params.query} jobData={job} key={job._id}></Jobs>)
             ) : (
               <div className="w-100 d-flex flex-column align-items-center justify-content-center">
                 <div className="mx-auto">
@@ -61,6 +63,7 @@ const FavouriteJobs = () => {
           </div>
         </Col>
       </Row>
+      <Footer></Footer>
     </Container>
   );
 };

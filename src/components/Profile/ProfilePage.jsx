@@ -2,7 +2,8 @@ import ProfilePageHeroSection from "./ProfilePageHeroSection";
 import ProfilePageSideSection from "./ProfilePageSideSection";
 import ProfilePageSubMainSection from "./ProfilePageSubMainSection";
 import { useSelector } from "react-redux";
-import { Spinner } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
+import Footer from "../Footer";
 // import { useDispatch } from "react-redux";
 // import { useParams } from "react-router-dom";
 // import { useEffect } from "react";
@@ -21,13 +22,16 @@ const ProfilePage = () => {
           <Spinner animation="border" variant="primary" />
         </div>
       ) : (
-        <div id="profile-page">
-          <div id="profile-container" className="d-flex flex-column align-items-center gap-2">
-            <ProfilePageHeroSection />
-            <ProfilePageSubMainSection />
+        <Container>
+          <div id="profile-page">
+            <div id="profile-container" className="d-flex flex-column align-items-center gap-2">
+              <ProfilePageHeroSection />
+              <ProfilePageSubMainSection />
+            </div>
+            <ProfilePageSideSection />
           </div>
-          <ProfilePageSideSection />
-        </div>
+          <Footer />
+        </Container>
       )}
     </>
   );

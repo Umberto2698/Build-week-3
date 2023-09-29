@@ -69,7 +69,7 @@ const JobFromQueryEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?se
 const headers = {
   headers: {
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NTZlY2MwMzRmZjAwMTQwM2Y0ZTgiLCJpYXQiOjE2OTU2NTI2NTAsImV4cCI6MTY5Njg2MjI1MH0.ROP89XyV2jpTEa6kkk724nZCyeo7tM76kwNhuPToIb8",
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTE2OTcxMjViODI2MjAwMTgzMDVmNGMiLCJpYXQiOjE2OTU5NzkyODIsImV4cCI6MTY5NzE4ODg4Mn0.YyZQWzT58pn-aSd8sTCOD8VyFQHT23tlDA2_gAVj1X0",
   },
 };
 
@@ -154,7 +154,6 @@ export const getAllProfilesAction = () => {
     const URL = "https://striveschool-api.herokuapp.com/api/profile/";
     const method = {
       method: "GET",
-
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExNGI4YzM3NTJhODAwMTQ1Njg3NmMiLCJpYXQiOjE2OTU2MzIyNjgsImV4cCI6MTY5Njg0MTg2OH0.gzlYEvqJw2sYnF11tPjrNqPrWR0KLj0FbEEpodBxeZo",
@@ -181,7 +180,6 @@ export const getMyProfileAction = () => {
     const URL = "https://striveschool-api.herokuapp.com/api/profile/me";
     const method = {
       method: "GET",
-
       headers: {
         Authorization:
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExNGI4YzM3NTJhODAwMTQ1Njg3NmMiLCJpYXQiOjE2OTU2MzIyNjgsImV4cCI6MTY5Njg0MTg2OH0.gzlYEvqJw2sYnF11tPjrNqPrWR0KLj0FbEEpodBxeZo",

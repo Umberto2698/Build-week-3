@@ -5,7 +5,7 @@ import Jobs from "./Jobs";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoryJobsAction, getJobFromQueryAction, getRandomJobsAction } from "../../redux/actions";
 import JobsPlaceholder from "./JobsPlaceholder";
-import Footer from "../SideFooter";
+import SideFooter from "../SideFooter";
 import Sidebar from "./Sidebar";
 import { Link, useParams } from "react-router-dom";
 
@@ -121,7 +121,7 @@ const JobPage = () => {
           </div>
         </Col>
         <Col sm={12} md={5} lg={3} className="d-flex flex-grow-1 flex-column justify-content-start align-items-center">
-          <Footer></Footer>
+          <SideFooter></SideFooter>
         </Col>
       </Row>
     </Container>

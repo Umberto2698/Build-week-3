@@ -5,7 +5,7 @@ import DropdownItem from "react-bootstrap/esm/DropdownItem";
 import { Plus } from "react-bootstrap-icons";
 import React from "react";
 
-const Footer = () => {
+const SideFooter = () => {
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => {
     return (
       <Link
@@ -134,4 +134,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default SideFooter;

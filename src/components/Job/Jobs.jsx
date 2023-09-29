@@ -53,7 +53,10 @@ const Jobs = ({ path, jobData, selected }) => {
             </div>
           </Col>
           <Col xs={7} sm={6} className="ms-3 flex-grow-1 flex-lg-grow-1">
-            <Link to={`details/` + path} className="text-decoration-none text-reset">
+            <Link
+              to={`/jobs/` + path + `/details/mobile/` + path + `/` + jobData._id}
+              className="text-decoration-none text-reset"
+            >
               {location.pathname.includes("favourite") ? (
                 <h2 id="job-favourite-title" className="text-dark mb-1" style={{ fontSize: "18px" }}>
                   {jobData.title}
