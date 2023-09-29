@@ -53,6 +53,7 @@ const HomePostContainer = () => {
   useEffect(() => {
     return () => {
       dispatch(setRandomIndexes([]));
+      setNumSortedPosts(5);
     };
   }, []);
 
