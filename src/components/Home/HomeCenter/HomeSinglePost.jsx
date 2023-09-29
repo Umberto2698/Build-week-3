@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 const HomeSinglePost = ({ post }) => {
   const [isVisible, setIsVisible] = useState(true);
+  console.log(post);
 
   const handleDeleteClick = () => {
     setIsVisible(false);

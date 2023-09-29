@@ -158,7 +158,7 @@ const HomeMain = () => {
           <HomeLeftSidebarContainer />
 
           <Col xs={12} md={9} lg={6} className="mb-2">
-            <Col className="bg-white rounded-3 pt-3 px-3 border mb-3">
+            <Col className="bg-white rounded-3 pt-3 px-3 border mb-1">
               <Container fluid>
                 <Row className="align-items-center">
                   <div className="d-flex p-0">
@@ -212,6 +212,17 @@ const HomeMain = () => {
                 </div>
               </div>
             </Col>
+            <div className="d-flex mb-1">
+              <div className="d-flex flex-grow-1 align-items-center">
+                <div className="border-bottom border-secondary flex-grow-1"></div>
+              </div>
+              <div className="ms-3 text-secondary" style={{ fontSize: "0.7rem" }}>
+                Seleziona la visualizzazione del feed:
+              </div>
+              <div className="ms-1" style={{ fontSize: "0.7rem" }}>
+                <span className="fw-medium"> Piú rilevanti per primi </span> <CaretDownFill />
+              </div>
+            </div>
 
             <HomePostContainer />
           </Col>
