@@ -167,7 +167,7 @@ const HomeMain = () => {
                         <img
                           src={logoSVGProfilePicture}
                           alt="profile-img"
-                          className="img-profile-input rounded-circle"
+                          className="img-profile-input rounded-circle object-fit-cover"
                         />
                       ) : (
                         <Link to="/profile/">
@@ -176,7 +176,7 @@ const HomeMain = () => {
                             width={48}
                             height={48}
                             alt="profile-img"
-                            className="img-profile-input rounded-circle"
+                            className="img-profile-input rounded-circle object-fit-cover"
                           />
                         </Link>
                       )}
