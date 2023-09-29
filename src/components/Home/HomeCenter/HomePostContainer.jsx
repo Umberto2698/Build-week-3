@@ -88,7 +88,7 @@ const HomePostContainer = () => {
 
   return (
     <>
-      <div className="d-flex mb-1" onClick={sortByDateButtonHandler}>
+      <div className="d-flex mb-1" style={{ cursor: "pointer" }} onClick={sortByDateButtonHandler}>
         <div className="d-flex flex-grow-1 align-items-center">
           <div className="border-bottom border-secondary flex-grow-1"></div>
         </div>
