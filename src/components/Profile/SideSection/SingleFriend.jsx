@@ -1,7 +1,10 @@
 import { Button, Image } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { getUserProfileAction } from "../../../redux/actions";
+import {
+  getCurrentExperienceAction,
+  getUserProfileAction,
+} from "../../../redux/actions";
 
 const SingleFriend = ({ profile }) => {
   const dispatch = useDispatch();
@@ -9,7 +12,10 @@ const SingleFriend = ({ profile }) => {
     <div className="single-friend">
       {/* <i className="bi bi-person-circle"></i> */}
       <Link
-        onClick={() => dispatch(getUserProfileAction(profile._id))}
+        onClick={() => {
+          dispatch(getUserProfileAction(profile._id));
+          dispatch(getCurrentExperienceAction(profile._id));
+        }}
         to={`/profile/${profile._id}`}
       >
         <Image

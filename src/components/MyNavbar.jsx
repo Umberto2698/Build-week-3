@@ -26,13 +26,13 @@ const MyNavbar = () => {
     setShowOffcanvas(!showOffcanvas);
   };
 
-  const user = useSelector(state => state.profiles.myProfile);
+  const user = useSelector((state) => state.profiles.myProfile);
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setQuery(e.target.value);
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (query === "") {
       dispatch(getJobFromQueryAction("none"));
@@ -222,18 +222,16 @@ const MyNavbar = () => {
                       }}
                     >
                       <div>
-                        <Link to="/profile/">
-                          <img
-                            src={user?.image}
-                            style={{
-                              width: "20px",
-                              height: "20px",
-                              borderRadius: "50%",
-                            }}
-                            alt="user"
-                            className="object-fit-cover"
-                          />
-                        </Link>
+                        <img
+                          src={user?.image}
+                          style={{
+                            width: "20px",
+                            height: "20px",
+                            borderRadius: "50%",
+                          }}
+                          alt="user"
+                          className="object-fit-cover"
+                        />
                       </div>
                       Tu
                     </Dropdown.Toggle>
@@ -245,27 +243,24 @@ const MyNavbar = () => {
                     >
                       <div className="text-decoration-none dropdown-item p-2 " style={{ backgroundColor: "white" }}>
                         <div className="d-flex">
-                          <Link to="/profile/" className="link">
-                            <div className="p-2">
-                              <img
-                                src={user?.image}
-                                style={{
-                                  width: "48px",
-                                  height: "48px",
-                                  borderRadius: "50%",
-                                }}
-                                // className="rounded-circle"
-                                alt="user"
-                                className="object-fit-cover"
-                              />
-                            </div>
-                          </Link>
+                          <div className="p-2">
+                            <img
+                              src={user?.image}
+                              style={{
+                                width: "48px",
+                                height: "48px",
+                                borderRadius: "50%",
+                              }}
+                              // className="rounded-circle"
+                              alt="user"
+                              className="object-fit-cover"
+                            />
+                          </div>
                           <div className="flex-grow-1">
-                            <Link to="/profile/" className="link" style={{ color: "black" }}>
-                              <h6>
-                                {user?.name} {user?.surname}
-                              </h6>
-                            </Link>
+                            <h6>
+                              {user?.name} {user?.surname}
+                            </h6>
+
                             <p>{user?.title}</p>
                           </div>
                         </div>
