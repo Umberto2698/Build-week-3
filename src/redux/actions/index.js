@@ -308,7 +308,6 @@ export const getMyExperienceAction = (userId) => {
       const resp = await fetch(URL, method);
       if (resp.ok) {
         const experience = await resp.json();
-        console.log("experience", experience);
         dispatch({ type: GET_EXPERIENCE, payload: experience });
       }
     } catch (error) {
@@ -408,7 +407,6 @@ export const putMyExperienceAction = (userId, expId, experienceMod, index) => {
       const resp = await fetch(URL, method);
       if (resp.ok) {
         const experience = await resp.json();
-        console.log("experience", experience);
         dispatch({ type: PUT_EXPERIENCE, payload: experience });
         // dispatch({ type: PUT_EXPERIENCE, payload: [experience, index] });
       }

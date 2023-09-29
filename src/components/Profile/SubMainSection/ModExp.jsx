@@ -3,16 +3,11 @@ import { Button, Form } from "react-bootstrap";
 import XsAddSVG from "../Svgs/XsAddSVG";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getMyExperienceAction,
-  getSpecificExperienceAction,
-  putMyExperienceAction,
-} from "../../../redux/actions";
+import { getMyExperienceAction, getSpecificExperienceAction, putMyExperienceAction } from "../../../redux/actions";
 
 const ModExp = () => {
   const navigate = useNavigate();
   const params = useParams();
-  console.log("params", params);
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const modExperience = useSelector((state) => state.profiles.modExperience);
@@ -62,9 +57,7 @@ const ModExp = () => {
 
   const handlePut = (expId) => {
     console.log("expId", expId);
-    const confirmation = window.confirm(
-      "Sei sicuro di modificare questa esperienza?"
-    );
+    const confirmation = window.confirm("Sei sicuro di modificare questa esperienza?");
     if (confirmation) {
       dispatch(putMyExperienceAction(myProfile._id, expId, query));
       dispatch(getMyExperienceAction(myProfile._id));
@@ -183,18 +176,14 @@ const ModExp = () => {
                 />
               </div>
               <div className="pb-4">
-                <Form.Label className="my-label">
-                  Tipologia di località
-                </Form.Label>
+                <Form.Label className="my-label">Tipologia di località</Form.Label>
                 <Form.Select className="my-input-control">
                   <option>Seleziona tipologia di località</option>
                   <option>In sede</option>
                   <option>Da remoto</option>
                   <option>Ibrida</option>
                 </Form.Select>
-                <Form.Label className="my-label">
-                  Scegli un tipo di località (es. da remoto)
-                </Form.Label>
+                <Form.Label className="my-label">Scegli un tipo di località (es. da remoto)</Form.Label>
               </div>
               <div className="pb-4">
                 <Form.Check
@@ -299,9 +288,7 @@ const ModExp = () => {
                   </div>
                 </div>
                 <div>
-                  <Form.Label className="my-label">
-                    Descrizione (max 2000)
-                  </Form.Label>
+                  <Form.Label className="my-label">Descrizione (max 2000)</Form.Label>
                   <Form.Control
                     maxLength="2000"
                     as="textarea"
@@ -325,8 +312,7 @@ const ModExp = () => {
                     marginBottom: "12px",
                   }}
                 >
-                  Oltre il 50% delle aziende su LinkedIn usa i dati sulle
-                  competenze per coprire le posizioni aperte
+                  Oltre il 50% delle aziende su LinkedIn usa i dati sulle competenze per coprire le posizioni aperte
                 </p>
                 <Button size="sm" className="my-btn">
                   <div className="d-flex align-items-center gap-1">
@@ -343,8 +329,8 @@ const ModExp = () => {
                     marginBottom: "12px",
                   }}
                 >
-                  Aggiungi contenuti multimediali come immagini, documenti, siti
-                  o presentazioni. Scopri di più sui {"  "}
+                  Aggiungi contenuti multimediali come immagini, documenti, siti o presentazioni. Scopri di più sui{" "}
+                  {"  "}
                   <Link
                     to={
                       "https://www.linkedin.com/help/linkedin/answer/a1516731?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_self_add_position%3Bm0emWd%2BMR8GVhWRjePUDjw%3D%3D"
