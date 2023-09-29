@@ -29,7 +29,7 @@ const HomeLeftSidebarBottom = () => {
         <Link to="/mynetwork/discover-hub/" className="text-decoration-none text-secondary">
           <Card.Text
             id="home-left-sidebar-link-bg"
-            className="text-center rounded-bottom p-2"
+            className="text-center rounded-bottom-3 p-2"
             style={{ fontSize: "0.8rem" }}
           >
             <span className="fw-medium mb-1">Scopri di piú </span>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import HomeSinglePost from "./HomeSinglePost";
 import { getHomePosts, setRandomIndexes } from "../../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,14 +11,8 @@ const HomePostContainer = () => {
   const randomIndexes = useSelector(state => state.homePosts.randomIndexes);
   const numRandomPosts = 5;
 
-  useEffect(() => {
-    dispatch(getHomePosts());
-    console.log("mount");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const getRandomIndexes = () => {
-    const allIndexes = Array.from({ length: posts.length }, (_, i) => i);
+    const allIndexes = Array.from({ length: posts?.length }, (_, i) => i);
     const remainingIndexes = allIndexes.filter(index => !randomIndexes.includes(index));
 
     const newIndexes = [];
@@ -31,12 +25,17 @@ const HomePostContainer = () => {
   };
 
   useEffect(() => {
-    if (posts?.length > 0) {
+    const fetchData = () => {
+      dispatch(getHomePosts());
+    };
+
+    if (!posts || posts.length === 0) {
+      fetchData();
+    } else {
       getRandomIndexes();
-      console.log("index");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [posts]);
+  }, [dispatch, posts]);
 
   const handleShowMoreClick = () => {
     if (posts?.length > 0) {
@@ -47,7 +46,6 @@ const HomePostContainer = () => {
   useEffect(() => {
     return () => {
       dispatch(setRandomIndexes([]));
-      console.log("unmount");
     };
   }, []);
 

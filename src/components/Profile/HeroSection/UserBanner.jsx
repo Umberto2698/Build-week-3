@@ -5,8 +5,8 @@ import { useParams } from "react-router-dom";
 import { modifyImageProfileAction } from "../../../redux/actions";
 
 const UserBanner = () => {
-  const myProfile = useSelector((state) => state.profiles.myProfile);
-  const currentProfile = useSelector((state) => state.profiles.currentProfile);
+  const myProfile = useSelector(state => state.profiles.myProfile);
+  const currentProfile = useSelector(state => state.profiles.currentProfile);
   const dispatch = useDispatch();
   const params = useParams();
   const [show, setShow] = useState(false);
@@ -15,14 +15,14 @@ const UserBanner = () => {
 
   const [formData, setFormData] = useState(new FormData());
 
-  const onFileChange = (e) => {
+  const onFileChange = e => {
     if (e.target && e.target.files[0]) {
       formData.append("profile", e.target.files[0]);
       setFormData(formData);
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     dispatch(modifyImageProfileAction(myProfile._id, formData));
   };
@@ -53,20 +53,13 @@ const UserBanner = () => {
                 overflowY: "scroll",
               }}
             >
-              <p style={{ fontSize: "12px", margin: "0" }}>
-                * Indica che è obbligatorio
-              </p>
+              <p style={{ fontSize: "12px", margin: "0" }}>* Indica che è obbligatorio</p>
               <Form className="pt-4" onSubmit={handleSubmit}>
                 <div className="pb-4">
-                  <Form.Label className="my-label">
-                    Immagine profilo*
-                  </Form.Label>
+                  <Form.Label className="my-label">Immagine profilo*</Form.Label>
                   <Form.Group controlId="formFile" className="mb-3">
                     <Form.Label>Scegli la tua immagine profilo</Form.Label>
-                    <Form.Control
-                      type="file"
-                      onChange={(e) => onFileChange(e)}
-                    />
+                    <Form.Control type="file" onChange={e => onFileChange(e)} />
                   </Form.Group>
                 </div>
                 <Button variant="primary" type="submit" onClick={handleClose}>

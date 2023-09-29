@@ -635,6 +635,7 @@ body::-webkit-scrollbar-thumb {
 }
 #post-btn:hover {
   background-color: #5c5c5c38;
+  cursor: pointer;
 }
 
 #posts-show-more {
@@ -705,4 +706,38 @@ body::-webkit-scrollbar-thumb {
   #profile-container {
     width: 100%;
   }
+}
+
+#home-modal-form {
+  border: none;
+}
+#home-modal-form:focus {
+  border: none;
+}
+
+#home-modal-icons {
+  background-color: rgba(128, 128, 128, 0.096);
+  border: none;
+  height: 56px;
+  width: 56px;
+}
+#home-modal-icons:hover {
+  background-color: #5c5c5c38;
+  cursor: pointer;
+}
+
+.disabled-button {
+  background-color: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+  border: none;
+}
+
+#home-modal-close {
+  right: 0;
+}
+
+.large-modal .modal-dialog {
+  max-width: 900px;
+  min-height: 900px;
 }
