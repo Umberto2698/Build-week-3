@@ -64,11 +64,12 @@ const HomePostContainer = () => {
         return dateB - dateA;
       });
       setSortedPosts(sorted.slice(0, numSortedPosts));
+    } else if (!sortByDate) {
+      setSortedPosts(randomIndexes.map(randomIndex => posts[randomIndex]));
     } else {
       setSortedPosts([]);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [numSortedPosts, sortByDate]);
+  }, [numSortedPosts, sortByDate, posts, randomIndexes]);
 
   const sortByDateButtonHandler = () => {
     setSortedMode(!sortedMode);
