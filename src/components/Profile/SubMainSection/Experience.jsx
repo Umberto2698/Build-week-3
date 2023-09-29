@@ -16,6 +16,9 @@ const Experience = () => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const experience = useSelector((state) => state.profiles.experience);
+  const currentExperience = useSelector(
+    (state) => state.profiles.currentExperience
+  );
   const params = useParams();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -431,23 +434,47 @@ const Experience = () => {
           paddingBlock: "12px",
         }}
       >
-        {experience.length === 0 ? (
-          <div className="d-flex gap-2">
-            <div className="d-flex flex-column">
-              <h4 style={{ fontSize: "16px" }}>
-                Non hai ancora pubblicato nulla
-              </h4>
-              <p style={{ fontSize: "14px" }}>
-                Le esperienze che condividi appariranno qui
-              </p>
-            </div>
-          </div>
+        {!params.id ? (
+          <>
+            {experience.length === 0 ? (
+              <div className="d-flex gap-2">
+                <div className="d-flex flex-column">
+                  <h4 style={{ fontSize: "16px" }}>
+                    Non hai ancora pubblicato nulla
+                  </h4>
+                  <p style={{ fontSize: "14px" }}>
+                    Le esperienze che condividi appariranno qui
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <>
+                {experience.map((elem) => (
+                  <SingleExperience key={`experience-${elem._id}`} exp={elem} />
+                ))}
+              </>
+            )}
+          </>
         ) : (
           <>
-            {console.log("experience", experience)}
-            {experience.map((elem) => (
-              <SingleExperience key={`experience-${elem._id}`} exp={elem} />
-            ))}
+            {currentExperience.length === 0 ? (
+              <div className="d-flex gap-2">
+                <div className="d-flex flex-column">
+                  <h4 style={{ fontSize: "16px" }}>
+                    Non hai ancora pubblicato nulla
+                  </h4>
+                  <p style={{ fontSize: "14px" }}>
+                    Le esperienze che condividi appariranno qui
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <>
+                {currentExperience.map((elem) => (
+                  <SingleExperience key={`experience-${elem._id}`} exp={elem} />
+                ))}
+              </>
+            )}
           </>
         )}
       </div>

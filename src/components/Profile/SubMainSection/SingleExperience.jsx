@@ -16,7 +16,18 @@ const SingleExperience = ({ exp }) => {
           {exp.company} • {exp.area}
         </p>
         <p style={{ fontSize: "14px" }}>
-          {exp.startDate} - {exp.endDate} • (tempo trascorso)
+          {new Date(`${exp.startDate}`).toLocaleDateString()} -{" "}
+          {new Date(`${exp.endDate}`).toLocaleDateString()}
+          {/* •{" "}
+          {Math.floor(
+            (new Date(`${exp.startDate}`).toLocaleDateString().getTime() -
+              new Date(`${exp.endDate}`).toLocaleDateString().getTime()) /
+              1000 /
+              60 /
+              60 /
+              24
+          )}{" "}
+          giorni */}
         </p>
       </div>
     </div>
