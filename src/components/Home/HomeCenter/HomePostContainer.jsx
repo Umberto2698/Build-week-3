@@ -97,9 +97,9 @@ const HomePostContainer = () => {
           Seleziona la visualizzazione del feed:
         </div>
         <div className="ms-1" style={{ fontSize: "0.7rem" }}>
-          {!sortedMode ? (
+          {sortedMode ? (
             <>
-              <span className="fw-medium">Ordina per data</span> <CaretDownFill />
+              <span className="fw-medium">Piú recenti per primi</span> <CaretDownFill />
             </>
           ) : (
             <>
