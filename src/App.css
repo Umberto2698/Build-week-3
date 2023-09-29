@@ -721,3 +721,17 @@ body::-webkit-scrollbar-thumb {
   max-width: 900px;
   min-height: 900px;
 }
+
+#home-posts-img-remove {
+  top: 0;
+  right: 0;
+  background-color: rgba(128, 128, 128, 0.096);
+  border: none;
+  height: 30px;
+  width: 30px;
+}
+
+#home-posts-img-remove:hover {
+  background-color: #5c5c5c38;
+  cursor: pointer;
+}

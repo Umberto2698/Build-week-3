@@ -11,17 +11,16 @@ import { getPostsAction } from "../redux/actions";
 import HomeLeftSidebarContainer from "./Home/HomeLeftSidebar/HomeLeftSidebarContainer";
 import HomePostContainer from "./Home/HomeCenter/HomePostContainer";
 import {
-  Calendar,
   CalendarWeek,
   CaretDownFill,
   Clock,
   EmojiSmile,
-  Facebook,
   Image,
-  PatchPlus,
   PatchPlusFill,
   ThreeDots,
+  X,
 } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
 
 const HomeMain = () => {
   const [inputText, setinputText] = useState("");
@@ -55,13 +54,68 @@ const HomeMain = () => {
     }
   };
 
+  const handlePostSubmit = async () => {
+    try {
+      const response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4", // Sostituisci con il tuo token
+        },
+        body: JSON.stringify({ text: inputText }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to create a new post");
+      }
+
+      const responseData = await response.json();
+      const postId = responseData._id;
+
+      console.log("Post created successfully! Post ID:", postId);
+
+      if (fileSelected) {
+        await sendImage(postId);
+        handleRemoveImage();
+      }
+
+      handleClose();
+    } catch (error) {
+      console.error("Error creating post:", error);
+    }
+  };
+
+  const sendImage = async postId => {
+    try {
+      const imageResponse = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4",
+        },
+        body: formData,
+      });
+
+      if (!imageResponse.ok) {
+        throw new Error("Failed to upload the image");
+      }
+
+      console.log("Image uploaded successfully!");
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
+  };
+
   const handleClose = () => {
     setShow(false);
   };
+
   const handleShow = () => setShow(true);
 
   useEffect(() => {
     dispatch(getPostsAction());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleSubmit = e => {
@@ -80,9 +134,11 @@ const HomeMain = () => {
 
   const handleImageModalClose = () => {
     setShowImageModal(false);
+    handleRemoveImage();
   };
   const handleImageModalNext = () => {
     setShowImageModal(false);
+    setShow(true);
   };
 
   const handleRemoveImage = () => {
@@ -92,50 +148,6 @@ const HomeMain = () => {
     const fileInput = document.getElementById("formFile");
     if (fileInput) {
       fileInput.value = null;
-    }
-  };
-
-  const handlePostSubmit = async () => {
-    try {
-      const response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4",
-        },
-        body: JSON.stringify({ text: inputText }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to create a new post");
-      }
-
-      const responseData = await response.json();
-      console.log(responseData);
-
-      if (fileSelected) {
-        console.log(formData);
-        const imageResponse = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${responseData._id}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4",
-          },
-          body: formData,
-        });
-
-        if (!imageResponse.ok) {
-          throw new Error("Failed to upload the image");
-        }
-      }
-
-      console.log("Post created successfully!");
-
-      handleClose();
-    } catch (error) {
-      console.error("Error creating post:", error);
     }
   };
 
@@ -158,13 +170,15 @@ const HomeMain = () => {
                           className="img-profile-input rounded-circle"
                         />
                       ) : (
-                        <img
-                          src={user?.image}
-                          width={48}
-                          height={48}
-                          alt="profile-img"
-                          className="img-profile-input rounded-circle"
-                        />
+                        <Link to="/profile/">
+                          <img
+                            src={user?.image}
+                            width={48}
+                            height={48}
+                            alt="profile-img"
+                            className="img-profile-input rounded-circle"
+                          />
+                        </Link>
                       )}
                     </div>
 
@@ -179,7 +193,7 @@ const HomeMain = () => {
               <div className="py-3">
                 <div className="d-flex px-0 text-center align-items-center flex-wrap justify-content-between">
                   <div id="post-btn" className="rounded-1">
-                    <Button className="bg-transparent border-0 text-dark d-flex">
+                    <Button onClick={handleImageModalShow} className="bg-transparent border-0 text-dark d-flex">
                       <img src={logoSVGPicture} alt="error" width={29} height={29} className="m-auto me-2" /> Contenuti
                     </Button>
                   </div>
@@ -223,7 +237,7 @@ const HomeMain = () => {
       {/* modale post */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton id="home-modal-close" className="border-0 position-absolute "></Modal.Header>
-        <div id="post-btn" className="d-flex p-3 rounded-4 me-auto">
+        <div id="post-btn" className="d-flex p-3 m-3 rounded-4 me-auto">
           <div>
             <img src={user?.image} width={58} height={58} className="rounded-circle me-3" alt="" />
           </div>
@@ -233,7 +247,6 @@ const HomeMain = () => {
             </div>
             <span className="fs-6">Pubblica: Chiunque</span>
           </Modal.Title>
-          <div></div>
         </div>
         <Form onSubmit={handleSubmit}>
           <div className="d-flex flex-column justify-content-between" style={{ minHeight: "350px" }}>
@@ -251,8 +264,18 @@ const HomeMain = () => {
             </InputGroup>
 
             {filePreview && (
-              <div className="text-center border rounded m-3">
-                <img src={filePreview} alt="Anteprima" width={200} className="p-2" />{" "}
+              <div className="text-center border rounded m-3 position-relative">
+                <img src={filePreview} alt="Anteprima" width={200} className="p-2" />
+                {fileSelected && (
+                  <div
+                    id="home-posts-img-remove"
+                    className="me-3 mt-2 text-center rounded-circle position-absolute"
+                    variant="danger"
+                    onClick={handleRemoveImage}
+                  >
+                    <X className="fs-3" />
+                  </div>
+                )}
               </div>
             )}
 
@@ -318,26 +341,30 @@ const HomeMain = () => {
                 <Form.Control type="file" onChange={e => onFileChange(e)} />
 
                 {filePreview && (
-                  <div className="text-center m-3 border rounded-3">
-                    {" "}
-                    <img src={filePreview} alt="Anteprima" className="p-3" />{" "}
-                  </div>
-                )}
+                  <div className="text-center m-3 border rounded-3 position-relative">
+                    <img src={filePreview} alt="Anteprima" className="p-3" />
 
-                {fileSelected && (
-                  <div className="text-center mt-4 ">
-                    <Button variant="danger" onClick={handleRemoveImage}>
-                      Rimuovi Immagine
-                    </Button>
+                    {fileSelected && (
+                      <div
+                        id="home-posts-img-remove"
+                        className="me-3 mt-2 text-center rounded-circle position-absolute"
+                        variant="danger"
+                        onClick={handleRemoveImage}
+                      >
+                        <X className="fs-3" />
+                      </div>
+                    )}
                   </div>
                 )}
               </Form.Group>
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="outline-primary rounded-pill" onClick={handleImageModalClose}>
-              Indietro
-            </Button>
+            {show && (
+              <Button variant="outline-primary rounded-pill" onClick={handleImageModalClose}>
+                Indietro
+              </Button>
+            )}
             <Button
               variant="primary"
               type="submit"
