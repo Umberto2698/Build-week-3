@@ -1,4 +1,5 @@
 import { Button, Col, Container, Form, InputGroup, Modal, Row } from "react-bootstrap";
+import { InfoSquareFill } from "react-bootstrap-icons";
 import SideFooter from "./SideFooter";
 import logoSVGCalendar from "../assets/icons8-calendar-25.png";
 import logoSVGPicture from "../assets/icons8-picture.svg";
@@ -23,6 +24,8 @@ import {
 import { Link } from "react-router-dom";
 
 const HomeMain = () => {
+  const postArray = useSelector((state) => state.homePosts.content);
+  const postLoading = useSelector((state) => state.homePosts.isLoading);
   const [inputText, setinputText] = useState("");
   const dispatch = useDispatch();
   // const allPosts = useSelector((state) => state.allPosts?.content || []);
@@ -33,7 +36,22 @@ const HomeMain = () => {
   const [formData, setFormData] = useState(new FormData());
   const [filePreview, setFilePreview] = useState(null);
   const [fileSelected, setFileSelected] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [showMore, setShowMore] = useState(true);
   const isButtonDisabled = !inputText.trim();
+  const initialItemsToShow = 3;
+  const itemsToAdd = 5;
+  const itemsToShow = showMore ? initialItemsToShow : initialItemsToShow + itemsToAdd;
+
+  const handleMouseEnter = (index) => {
+    setHoveredIndex(index);
+  };
+  const handleToggleShowMore = () => {
+    setShowMore(!showMore);
+  };
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+  };
 
   const onFileChange = (e) => {
     if (e.target && e.target.files[0]) {
@@ -213,27 +231,104 @@ const HomeMain = () => {
                 </div>
               </div>
             </Col>
-
             <HomePostContainer />
           </Col>
-
-          <Col xs={12} md={3}>
-            <Col className="bg-white rounded-3 pt-3 px-3 border">
-              <h2>Linkeidn Notizie</h2>
-            </Col>
-
+          <Col xs={12} md={3} className="section">
+            {!postLoading && (
+              <Col className="bg-white rounded-3 border mb-3">
+                <div className="p-2">
+                  <div className="d-flex align-items-center justify-content-between">
+                    <p className="mt-2 d-inline-block t-14  " style={{ marginLeft: "7px", color: "#000000e6" }}>
+                      Linkedin Notizie
+                    </p>
+                    <InfoSquareFill></InfoSquareFill>
+                  </div>
+                  {postArray.length !== 0 &&
+                    postArray?.slice(0, itemsToShow).map((element, index) => (
+                      <ul
+                        key={index}
+                        onMouseEnter={() => handleMouseEnter(index)}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          cursor: "pointer",
+                          paddingLeft: "16px",
+                          fontSize: "7.8px",
+                          listStyleType: "disc",
+                          backgroundColor: hoveredIndex === index ? "rgb(234, 234, 234)" : "transparent",
+                          transition: "background-color 0.3s",
+                        }}
+                      >
+                        <li>
+                          <span className="t-12" style={{ fontWeight: "bold", color: "3e3e3e" }}>
+                            {element.text}
+                          </span>
+                          <span>
+                            {/* <p className="t-12" style={{ color: "gray" }}>
+                {formatDistanceToNow(new Date(element.createdAt), { locale: it })} fa
+              </p> */}
+                          </span>
+                        </li>
+                      </ul>
+                    ))}
+                </div>
+                {postArray.length !== 0 && postArray.length > initialItemsToShow && (
+                  <button
+                    aria-expanded="false"
+                    className="artdeco-button artdeco-button--muted artdeco-button--icon-right artdeco-button--1 artdeco-button--tertiary ember-view news-module__toggle-storylines"
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      color: "rgb(174, 174, 174)",
+                      borderRadius: "6px",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: "0",
+                      backgroundColor: "transparent",
+                      marginLeft: "12px",
+                      marginBottom: "5px",
+                      transition: "background-color 0.3s",
+                    }}
+                    onClick={handleToggleShowMore}
+                  >
+                    <span
+                      style={{
+                        fontSize: "10px",
+                        color: "darkgray",
+                        marginRight: "3px",
+                        marginLeft: "9px",
+                      }}
+                      className="artdeco-button__text"
+                    >
+                      {showMore ? "Mostra di PiÃ¹" : "Mostra di meno"}
+                    </span>{" "}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 16 16"
+                      className="artdeco-button__icon"
+                      width="8"
+                      height="8"
+                      focusable="false"
+                      style={{
+                        marginRight: "4px",
+                        transform: showMore ? "rotate(0deg)" : "rotate(180deg)",
+                      }}
+                    >
+                      <path d="M1 5l7 4.61L15 5v2.39L8 12 1 7.39z"></path>
+                    </svg>
+                  </button>
+                )}
+              </Col>
+            )}
             {/* Immagine LinkedIn */}
             <Col className="bg-white rounded-3 pt-3 px-3 border">
-              <img src={Linkedin} alt="error" width={170} height={180} />
+              <div className="text-center">
+                <img src={Linkedin} alt="error" style={{ width: "210px" }} />
+              </div>
             </Col>
-          </Col>
-        </Row>
-        {/* Footer */}
-        <Row>
-          <Col xs={12} md={{ span: 3, offset: 9 }}>
             <SideFooter />
           </Col>
         </Row>
+        {/* Footer */}
       </Container>
       {/* modale post */}
       <Modal show={show} onHide={handleClose}>
