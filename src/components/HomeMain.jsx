@@ -1,4 +1,4 @@
-import { Button, Col, Container, Form, FormControl, InputGroup, Modal, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, InputGroup, Modal, Row } from "react-bootstrap";
 import SideFooter from "./SideFooter";
 import logoSVGCalendar from "../assets/icons8-calendar-25.png";
 import logoSVGPicture from "../assets/icons8-picture.svg";
@@ -7,7 +7,7 @@ import logoSVGProfilePicture from "../assets/icons8-profile-48.png";
 import Linkedin from "../assets/linkedin.png";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPostsAction } from "../redux/actions";
+import { getHomePosts } from "../redux/actions";
 import HomeLeftSidebarContainer from "./Home/HomeLeftSidebar/HomeLeftSidebarContainer";
 import HomePostContainer from "./Home/HomeCenter/HomePostContainer";
 import {
@@ -87,7 +87,7 @@ const HomeMain = () => {
     }
   };
 
-  const sendImage = async postId => {
+  const sendImage = async (postId) => {
     try {
       const imageResponse = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postId}`, {
         method: "POST",
@@ -115,7 +115,7 @@ const HomeMain = () => {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    dispatch(getPostsAction());
+    dispatch(getHomePosts());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

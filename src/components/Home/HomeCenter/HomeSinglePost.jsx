@@ -1,17 +1,40 @@
 import { faRetweet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { ChatRightText, Dot, GlobeAmericas, HandThumbsUp, SendFill, ThreeDots, X } from "react-bootstrap-icons";
+import { Container, Row, Card, Button, Dropdown } from "react-bootstrap";
+import { ChatRightText, Dot, GlobeAmericas, HandThumbsUp, SendFill, ThreeDots, X, Trash } from "react-bootstrap-icons";
 import TimeConverter from "./TimeConverter";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import DropdownToggle from "react-bootstrap/esm/DropdownToggle";
+
+import React from "react";
+import { deletePostAction } from "../../../redux/actions";
 
 const HomeSinglePost = ({ post }) => {
   const [isVisible, setIsVisible] = useState(true);
+  const dispatch = useDispatch();
+
+  const handleDeletePost = (postId) => {
+    // Chiamata all'azione per eliminare il post
+    dispatch(deletePostAction(postId));
+  };
 
   const handleDeleteClick = () => {
     setIsVisible(false);
   };
+
+  const customDrop = React.forwardRef(({ children, onClick }, ref) => (
+    <div
+      ref={ref}
+      onClick={(e) => {
+        e.preventDefault();
+        onClick(e);
+      }}
+    >
+      {children}
+    </div>
+  ));
   return isVisible ? (
     <>
       <Card className="bg-white rounded-2 mb-2 p-3 pb-1">
@@ -43,12 +66,27 @@ const HomeSinglePost = ({ post }) => {
               </div>
               <div xs={3}>
                 <div className="d-flex justify-content-end">
-                  <span
+                  <Dropdown
                     id="post-btn-delete"
-                    className="rounded-circle d-flex justify-content-center align-middle p-1 me-2"
+                    className="job-icon rounded-5 d-flex align-items-center justify-content-center m-0 "
+                    style={{ width: "30px", height: "30px" }}
                   >
-                    <ThreeDots fontSize={20} className="m-auto" />
-                  </span>
+                    <DropdownToggle as={customDrop}>
+                      <ThreeDots size={20}></ThreeDots>
+                    </DropdownToggle>
+                    <Dropdown.Menu className="py-1">
+                      <Dropdown.Item className="sidebar-dropdown text-dark">
+                        <div
+                          className="d-sm-flex text-secondary align-items-center justify-content-between w-100 my-1"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => handleDeletePost(post._id)}
+                        >
+                          <Trash size={18}></Trash>
+                          <span className="text-start ms-2 fs-6 fw-medium flex-grow-1">Elimina post</span>
+                        </div>
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
                   <span
                     id="post-btn-delete"
                     className="rounded-circle d-flex justify-content-center align-middle p-1"

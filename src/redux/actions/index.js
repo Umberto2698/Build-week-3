@@ -17,6 +17,7 @@ export const GET_HOME_POSTS = "GET_HOME_POSTS";
 export const ISLOADING_HOME_POSTS_TRUE = "ISLOADING_HOME_POSTS_TRUE";
 export const ISLOADING_HOME_POSTS_FALSE = "ISLOADING_HOME_POSTS_FALSE";
 export const ISERROR_HOME_POSTS = "ISERROR_HOME_POSTS";
+export const DELETE_POST = "DELETE_POST";
 
 export const GET_ALL_PROFILES = "GET_ALL_PROFILES";
 export const GET_MY_PROFILE = "GET_MY_PROFILE";
@@ -47,20 +48,20 @@ export const SINGLE_PROFILE = "SINGLE_PROFILE";
 export const SET_SEARCH = "SET_SEARCH";
 export const SET_QUERY = "SET_QUERY";
 
-export const postFormAction = content => ({
+export const postFormAction = (content) => ({
   type: POST_EXPERIENCES,
   payload: content,
 });
-export const getFormAction = content => ({
+export const getFormAction = (content) => ({
   type: GET_FORM_DATA,
   payload: content,
 });
-export const getSearchAction = content => ({
+export const getSearchAction = (content) => ({
   type: GET_SEARCH_DATA,
   payload: content,
 });
-export const setSearch = search => ({ type: SET_SEARCH, payload: search });
-export const setQuery = query => ({ type: SET_QUERY, payload: query });
+export const setSearch = (search) => ({ type: SET_SEARCH, payload: search });
+export const setQuery = (query) => ({ type: SET_QUERY, payload: query });
 
 const randomJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?limit=20";
 const categoryJobEndPoint = "https://strive-benchmark.herokuapp.com/api/jobs?category=";
@@ -74,7 +75,7 @@ const headers = {
 };
 
 export const getRandomJobsAction = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       dispatch({ type: GET_JOBS_LOADING, payload: true });
       const response = await fetch(randomJobEndPoint, headers);
@@ -92,8 +93,8 @@ export const getRandomJobsAction = () => {
   };
 };
 
-export const getCategoryJobsAction = category => {
-  return async dispatch => {
+export const getCategoryJobsAction = (category) => {
+  return async (dispatch) => {
     try {
       dispatch({ type: GET_JOBS_LOADING, payload: true });
       const response = await fetch(categoryJobEndPoint + category + "&limit=20", headers);
@@ -111,8 +112,8 @@ export const getCategoryJobsAction = category => {
   };
 };
 
-export const getJobFromIdAction = id => {
-  return async dispatch => {
+export const getJobFromIdAction = (id) => {
+  return async (dispatch) => {
     try {
       dispatch({ type: GET_JOBS_LOADING, payload: true });
       const response = await fetch(JobFromIdEndPoint + id, headers);
@@ -130,8 +131,8 @@ export const getJobFromIdAction = id => {
   };
 };
 
-export const getJobFromQueryAction = query => {
-  return async dispatch => {
+export const getJobFromQueryAction = (query) => {
+  return async (dispatch) => {
     try {
       dispatch({ type: GET_JOBS_LOADING, payload: true });
       const response = await fetch(JobFromQueryEndPoint + query, headers);
@@ -150,7 +151,7 @@ export const getJobFromQueryAction = query => {
 };
 
 export const getAllProfilesAction = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     const URL = "https://striveschool-api.herokuapp.com/api/profile/";
     const method = {
       method: "GET",
@@ -159,7 +160,6 @@ export const getAllProfilesAction = () => {
           "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExNGI4YzM3NTJhODAwMTQ1Njg3NmMiLCJpYXQiOjE2OTU2MzIyNjgsImV4cCI6MTY5Njg0MTg2OH0.gzlYEvqJw2sYnF11tPjrNqPrWR0KLj0FbEEpodBxeZo",
       },
     };
-
     try {
       const resp = await fetch(URL, method);
       if (resp.ok) {
@@ -176,7 +176,7 @@ export const getAllProfilesAction = () => {
 };
 
 export const getMyProfileAction = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     const URL = "https://striveschool-api.herokuapp.com/api/profile/me";
     const method = {
       method: "GET",
@@ -202,8 +202,8 @@ export const getMyProfileAction = () => {
   };
 };
 
-export const getUserProfileAction = userId => {
-  return async dispatch => {
+export const getUserProfileAction = (userId) => {
+  return async (dispatch) => {
     const URL = `https://striveschool-api.herokuapp.com/api/profile/${userId}`;
     const method = {
       method: "GET",
@@ -228,8 +228,8 @@ export const getUserProfileAction = userId => {
   };
 };
 
-export const modifyUserProfileAction = query => {
-  return async dispatch => {
+export const modifyUserProfileAction = (query) => {
+  return async (dispatch) => {
     const URL = `https://striveschool-api.herokuapp.com/api/profile/`;
     const method = {
       method: "PUT",
@@ -256,7 +256,7 @@ export const modifyUserProfileAction = query => {
 };
 
 export const modifyImageProfileAction = (id, formData) => {
-  return async dispatch => {
+  return async (dispatch) => {
     const URL = `https://striveschool-api.herokuapp.com/api/profile/${id}/picture`;
     const method = {
       method: "POST",
@@ -303,75 +303,76 @@ export const modifyImageProfileAction = (id, formData) => {
 
 const postsEndpoint = "https://striveschool-api.herokuapp.com/api/posts/";
 
-export const getPostsAction = () => {
-  return async dispatch => {
-    try {
-      const response = await fetch(
-        postsEndpoint,
-        headers
-        //   {
-        //   headers: {
-        //     Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-        //   },
-        // }
-      );
-      if (response.ok) {
-        const allPosts = await response.json();
-        dispatch({ type: GET_POSTS, payload: allPosts });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
-export const postPostAction = newData => {
-  return async dispatch => {
-    try {
-      const response = await fetch(postsEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NTZlY2MwMzRmZjAwMTQwM2Y0ZTgiLCJpYXQiOjE2OTU2NTI2NTAsImV4cCI6MTY5Njg2MjI1MH0.ROP89XyV2jpTEa6kkk724nZCyeo7tM76kwNhuPToIb8",
-          // Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-        },
-        body: JSON.stringify({ text: newData }),
-      });
-      if (response.ok) {
-        const newPostData = await response.json();
-        dispatch({ type: PUBLIC_POST, payload: newPostData });
-        dispatch(getPostsAction());
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
+// export const getPostsAction = () => {
+//   return async (dispatch) => {
+//     try {
+//       const response = await fetch(
+//         postsEndpoint,
+//         headers
+//         //   {
+//         //   headers: {
+//         //     Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+//         //   },
+//         // }
+//       );
+//       if (response.ok) {
+//         const allPosts = await response.json();
+//         dispatch({ type: GET_POSTS, payload: allPosts });
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
 
-export const putPostAction = (newData, postID) => {
-  return async dispatch => {
-    try {
-      const response = await fetch(postsEndpoint + "/" + postID, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NTZlY2MwMzRmZjAwMTQwM2Y0ZTgiLCJpYXQiOjE2OTU2NTI2NTAsImV4cCI6MTY5Njg2MjI1MH0.ROP89XyV2jpTEa6kkk724nZCyeo7tM76kwNhuPToIb8",
-          // Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-        },
-        body: JSON.stringify({ text: newData }),
-      });
-      if (response.ok) {
-        dispatch(getPostsAction());
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
+// export const postPostAction = (newData) => {
+//   return async (dispatch) => {
+//     try {
+//       const response = await fetch(postsEndpoint, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization:
+//             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NTZlY2MwMzRmZjAwMTQwM2Y0ZTgiLCJpYXQiOjE2OTU2NTI2NTAsImV4cCI6MTY5Njg2MjI1MH0.ROP89XyV2jpTEa6kkk724nZCyeo7tM76kwNhuPToIb8",
+//           // Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+//         },
+//         body: JSON.stringify({ text: newData }),
+//       });
+//       if (response.ok) {
+//         const newPostData = await response.json();
+//         dispatch({ type: PUBLIC_POST, payload: newPostData });
+//         dispatch(getPostsAction());
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
 
-export const deletePostAction = postID => {
-  return async dispatch => {
+// export const putPostAction = (newData, postID) => {
+//   return async (dispatch) => {
+//     try {
+//       const response = await fetch(postsEndpoint + "/" + postID, {
+//         method: "PUT",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization:
+//             "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NTZlY2MwMzRmZjAwMTQwM2Y0ZTgiLCJpYXQiOjE2OTU2NTI2NTAsImV4cCI6MTY5Njg2MjI1MH0.ROP89XyV2jpTEa6kkk724nZCyeo7tM76kwNhuPToIb8",
+//           // Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+//         },
+//         body: JSON.stringify({ text: newData }),
+//       });
+//       if (response.ok) {
+//         dispatch(getPostsAction());
+//       }
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
+
+export const deletePostAction = (postID) => {
+  return async (dispatch) => {
     try {
       const response = await fetch(postsEndpoint + "/" + postID, {
         method: "DELETE",
@@ -384,7 +385,7 @@ export const deletePostAction = postID => {
       });
       if (response.ok) {
         alert("Post eliminato!");
-        dispatch(getPostsAction());
+        dispatch({ type: DELETE_POST, payload: postID });
       }
     } catch (error) {
       console.log(error);
@@ -392,36 +393,36 @@ export const deletePostAction = postID => {
   };
 };
 
-export const fetchProfile = () => {
-  const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile/me";
-  const token =
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4";
-  return async dispatch => {
-    try {
-      dispatch({ type: ISLOADING_USER_TRUE, payload: true });
-      const response = await fetch(baseEndpoint, {
-        method: "GET",
-        headers: {
-          Authorization: token,
-          team: "team-6",
-        },
-      });
-      if (response.ok) {
-        const data = await response.json();
-        dispatch({ type: GET_USER, payload: data });
-        dispatch({ type: ISLOADING_USER_FALSE, payload: false });
-      } else {
-        dispatch({ type: ISERROR_USER, payload: true });
-        throw new Error("Error fetching results");
-      }
-    } catch (error) {
-      throw error;
-    }
-  };
-};
+// export const fetchProfile = () => {
+//   const baseEndpoint = "https://striveschool-api.herokuapp.com/api/profile/me";
+//   const token =
+//     "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExMzQ1MTM3NTJhODAwMTQ1Njg3NWUiLCJpYXQiOjE2OTU2NDk2MzMsImV4cCI6MTY5Njg1OTIzM30.ziDZO_nM89fW4fdpTggQDUDbOtVr2omLXNxEN2_kac4";
+//   return async (dispatch) => {
+//     try {
+//       dispatch({ type: ISLOADING_USER_TRUE, payload: true });
+//       const response = await fetch(baseEndpoint, {
+//         method: "GET",
+//         headers: {
+//           Authorization: token,
+//           team: "team-6",
+//         },
+//       });
+//       if (response.ok) {
+//         const data = await response.json();
+//         dispatch({ type: GET_USER, payload: data });
+//         dispatch({ type: ISLOADING_USER_FALSE, payload: false });
+//       } else {
+//         dispatch({ type: ISERROR_USER, payload: true });
+//         throw new Error("Error fetching results");
+//       }
+//     } catch (error) {
+//       throw error;
+//     }
+//   };
+// };
 
 export const getHomePosts = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       dispatch({ type: ISLOADING_HOME_POSTS_FALSE, payload: true });
 
@@ -445,7 +446,7 @@ export const getHomePosts = () => {
   };
 };
 
-export const setRandomIndexes = randomIndexes => ({
+export const setRandomIndexes = (randomIndexes) => ({
   type: "SET_RANDOM_INDEXES",
   payload: randomIndexes,
 });
