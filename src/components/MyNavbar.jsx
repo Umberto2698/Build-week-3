@@ -60,6 +60,7 @@ const MyNavbar = () => {
                   width={34}
                   height={34}
                   alt="Linkedin Icon"
+                  className="object-fit-cover"
                 />
               </Link>
 
@@ -93,7 +94,7 @@ const MyNavbar = () => {
               }}
             >
               <Link to="/profile/" className="m-auto">
-                <img src={user?.image} width={32} height={32} className="rounded-circle " alt="user" />
+                <img src={user?.image} width={32} height={32} className="rounded-circle object-fit-cover" alt="user" />
               </Link>
             </Col>
             <Col className="py-2 px-0 d-flex d-md-none ">
@@ -230,6 +231,7 @@ const MyNavbar = () => {
                               borderRadius: "50%",
                             }}
                             alt="user"
+                            className="object-fit-cover"
                           />
                         </Link>
                       </div>
@@ -254,6 +256,7 @@ const MyNavbar = () => {
                                 }}
                                 // className="rounded-circle"
                                 alt="user"
+                                className="object-fit-cover"
                               />
                             </div>
                           </Link>
