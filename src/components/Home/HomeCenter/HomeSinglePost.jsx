@@ -43,7 +43,7 @@ const HomeSinglePost = ({ post }) => {
             <div className="d-flex">
               <div className="me-2 d-flex">
                 <Link to={`/profile/${post.user._id}`} className="text-underline-hover text-black">
-                  <img src={post.user.image} width={48} height={48} alt="user" className="" />
+                  <img src={post.user.image} width={48} height={48} alt="user" className="object-fit-cover" />
                 </Link>
               </div>
               <div xs={7} className="me-auto ps-0">

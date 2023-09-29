@@ -26,7 +26,7 @@ const HomeLeftSidebarTop = () => {
             <Link id="home-left-sidebar-link" to="/profile/" className="text-center text-black">
               <div id="home-left-sidebar-image" className="position-absolute">
                 <img
-                  className="rounded-circle border border-2 border-white"
+                  className="rounded-circle border border-2 border-white object-fit-cover"
                   src={user?.image}
                   width={72}
                   height={72}

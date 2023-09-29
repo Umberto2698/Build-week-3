@@ -177,7 +177,7 @@ const HomeMain = () => {
           <HomeLeftSidebarContainer />
 
           <Col xs={12} md={9} lg={6} className="mb-2">
-            <Col className="bg-white rounded-3 pt-3 px-3 border mb-3">
+            <Col className="bg-white rounded-3 pt-3 px-3 border mb-1">
               <Container fluid>
                 <Row className="align-items-center">
                   <div className="d-flex p-0">
@@ -186,7 +186,7 @@ const HomeMain = () => {
                         <img
                           src={logoSVGProfilePicture}
                           alt="profile-img"
-                          className="img-profile-input rounded-circle"
+                          className="img-profile-input rounded-circle object-fit-cover"
                         />
                       ) : (
                         <Link to="/profile/">
@@ -195,7 +195,7 @@ const HomeMain = () => {
                             width={48}
                             height={48}
                             alt="profile-img"
-                            className="img-profile-input rounded-circle"
+                            className="img-profile-input rounded-circle object-fit-cover"
                           />
                         </Link>
                       )}
