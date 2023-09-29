@@ -1,5 +1,6 @@
 import {
   ADD_EXPERIENCE,
+  DELETE_EXPERIENCE,
   GET_ALL_PROFILES,
   GET_CURRENT_EXPERIENCE,
   GET_EXPERIENCE,
@@ -9,6 +10,7 @@ import {
   ISLOADING_PROFILES_FALSE,
   ISLOADING_USER_PROFILES_FALSE,
   ISLOADING_USER_PROFILES_TRUE,
+  PUT_EXPERIENCE,
 } from "../actions";
 
 const initialState = {
@@ -60,6 +62,43 @@ const profilesReducer = (state = initialState, action) => {
         experience: state.experience.concat(action.payload),
       };
 
+    case PUT_EXPERIENCE:
+      return {
+        ...state,
+        experience: state.experience
+          .slice(
+            0,
+            state.experience.findIndex(
+              (elem) => elem._id === action.payload._id
+            )
+          )
+          .concat(
+            (state.experience.slice(
+              state.experience.findIndex(
+                (elem) => elem._id === action.payload._id
+              ),
+              state.experience.findIndex(
+                (elem) => elem._id === action.payload._id
+              ) + 1
+            )[0] = [action.payload])
+          )
+          .concat(
+            state.experience.slice(
+              state.experience.findIndex(
+                (elem) => elem._id === action.payload._id
+              ) + 1
+            )
+          ),
+        // experience: state.experience.map((elem, i) => {return (if(i === action.payload[1]) {elem = action.payload[0]})})
+      };
+
+    case DELETE_EXPERIENCE:
+      return {
+        ...state,
+        experience: state.experience.filter(
+          (elem) => elem._id !== action.payload
+        ),
+      };
     case ISLOADING_PROFILES_FALSE:
       return {
         ...state,

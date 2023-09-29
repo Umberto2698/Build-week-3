@@ -18,7 +18,9 @@ const Details = () => {
   const categoryJobArray = useSelector((state) => state.job.category.content);
   const searchedJobArray = useSelector((state) => state.job.query.content);
   const selectedJobId = useSelector((state) => state.job.selected.content);
-  const selectedDescription = useSelector((state) => state.job.description.content);
+  const selectedDescription = useSelector(
+    (state) => state.job.description.content
+  );
   const loading = useSelector((state) => state.state.loading.content);
   const dispatch = useDispatch();
   const location = useLocation();
@@ -29,7 +31,7 @@ const Details = () => {
   const changeDescription = (col, des) => {
     if (des.slice(0, 15) === "<p><br><br></p>") {
       col.innerHTML = des.slice(15);
-    } else if (des.slice(0, 21) === `<p class="description`) {
+    } else if (des.slice(0, 21) === `<p className="description`) {
       col.innerHTML = des.slice(324);
     } else {
       col.innerHTML = des;
@@ -41,42 +43,63 @@ const Details = () => {
       if (
         selectedJobId !== "" &&
         parser
-          .parseFromString(randomJobArray.filter((el) => el._id === selectedJobId)[0].description, "text/html")
+          .parseFromString(
+            randomJobArray.filter((el) => el._id === selectedJobId)[0]
+              .description,
+            "text/html"
+          )
           .body.innerHTML.slice(0, 100) !== selectedDescription.slice(0, 100)
       ) {
         const colonnaDescrizione = document.getElementById("description");
         changeDescription(
           colonnaDescrizione,
-          parser.parseFromString(randomJobArray.filter((el) => el._id === selectedJobId)[0].description, "text/html")
-            .body.innerHTML
+          parser.parseFromString(
+            randomJobArray.filter((el) => el._id === selectedJobId)[0]
+              .description,
+            "text/html"
+          ).body.innerHTML
         );
       }
     } else if (location.pathname.includes("category")) {
       if (
         selectedJobId !== "" &&
         parser
-          .parseFromString(categoryJobArray.filter((el) => el._id === selectedJobId)[0].description, "text/html")
+          .parseFromString(
+            categoryJobArray.filter((el) => el._id === selectedJobId)[0]
+              .description,
+            "text/html"
+          )
           .body.innerHTML.slice(0, 100) !== selectedDescription.slice(0, 100)
       ) {
         const colonnaDescrizione = document.getElementById("description");
         changeDescription(
           colonnaDescrizione,
-          parser.parseFromString(categoryJobArray.filter((el) => el._id === selectedJobId)[0].description, "text/html")
-            .body.innerHTML
+          parser.parseFromString(
+            categoryJobArray.filter((el) => el._id === selectedJobId)[0]
+              .description,
+            "text/html"
+          ).body.innerHTML
         );
       }
     } else {
       if (
         selectedJobId !== "" &&
         parser
-          .parseFromString(searchedJobArray.filter((el) => el._id === selectedJobId)[0].description, "text/html")
+          .parseFromString(
+            searchedJobArray.filter((el) => el._id === selectedJobId)[0]
+              .description,
+            "text/html"
+          )
           .body.innerHTML.slice(0, 100) !== selectedDescription.slice(0, 100)
       ) {
         const colonnaDescrizione = document.getElementById("description");
         changeDescription(
           colonnaDescrizione,
-          parser.parseFromString(searchedJobArray.filter((el) => el._id === selectedJobId)[0].description, "text/html")
-            .body.innerHTML
+          parser.parseFromString(
+            searchedJobArray.filter((el) => el._id === selectedJobId)[0]
+              .description,
+            "text/html"
+          ).body.innerHTML
         );
       }
     }
@@ -89,15 +112,19 @@ const Details = () => {
         const colonnaDescrizione = document.getElementById("description");
         changeDescription(
           colonnaDescrizione,
-          parser.parseFromString(randomJobArray.filter((el) => el._id === selectedJobId)[0].description, "text/html")
-            .body.innerHTML
+          parser.parseFromString(
+            randomJobArray.filter((el) => el._id === selectedJobId)[0]
+              .description,
+            "text/html"
+          ).body.innerHTML
         );
       } else if (selectedJobId === "" && randomJobArray.length !== 0) {
         dispatch({ type: SELECT_JOB, payload: randomJobArray[0]._id });
         const colonnaDescrizione = document.getElementById("description");
         changeDescription(
           colonnaDescrizione,
-          parser.parseFromString(randomJobArray[0].description, "text/html").body.innerHTML
+          parser.parseFromString(randomJobArray[0].description, "text/html")
+            .body.innerHTML
         );
       }
     } else if (location.pathname.includes("category")) {
@@ -105,15 +132,19 @@ const Details = () => {
         const colonnaDescrizione = document.getElementById("description");
         changeDescription(
           colonnaDescrizione,
-          parser.parseFromString(categoryJobArray.filter((el) => el._id === selectedJobId)[0].description, "text/html")
-            .body.innerHTML
+          parser.parseFromString(
+            categoryJobArray.filter((el) => el._id === selectedJobId)[0]
+              .description,
+            "text/html"
+          ).body.innerHTML
         );
       } else if (selectedJobId === "" && categoryJobArray.length !== 0) {
         dispatch({ type: SELECT_JOB, payload: categoryJobArray[0]._id });
         const colonnaDescrizione = document.getElementById("description");
         changeDescription(
           colonnaDescrizione,
-          parser.parseFromString(categoryJobArray[0].description, "text/html").body.innerHTML
+          parser.parseFromString(categoryJobArray[0].description, "text/html")
+            .body.innerHTML
         );
       }
     } else {
@@ -121,15 +152,19 @@ const Details = () => {
         const colonnaDescrizione = document.getElementById("description");
         changeDescription(
           colonnaDescrizione,
-          parser.parseFromString(searchedJobArray.filter((el) => el._id === selectedJobId)[0].description, "text/html")
-            .body.innerHTML
+          parser.parseFromString(
+            searchedJobArray.filter((el) => el._id === selectedJobId)[0]
+              .description,
+            "text/html"
+          ).body.innerHTML
         );
       } else if (selectedJobId === "" && searchedJobArray.length !== 0) {
         dispatch({ type: SELECT_JOB, payload: searchedJobArray[0]._id });
         const colonnaDescrizione = document.getElementById("description");
         changeDescription(
           colonnaDescrizione,
-          parser.parseFromString(searchedJobArray[0].description, "text/html").body.innerHTML
+          parser.parseFromString(searchedJobArray[0].description, "text/html")
+            .body.innerHTML
         );
       }
     }
@@ -152,7 +187,10 @@ const Details = () => {
     <Container fluid="md" style={{ paddingTop: "53px" }}>
       {location.pathname.includes("random") ? (
         <Row>
-          <Col sm={6} className="flex-grow-1 mb-5 mb-md-0 align-items-center justify-content-start">
+          <Col
+            sm={6}
+            className="flex-grow-1 mb-5 mb-md-0 align-items-center justify-content-start"
+          >
             <div className="bg-primary px-2 py-1 position-sticky top-0 text-white">
               <h4 className="m-0" style={{ fontSize: "15px" }}>
                 Offerte di lavoro sulla base del tuo profilo
@@ -168,7 +206,9 @@ const Details = () => {
                     dispatch({
                       type: SELECT_DESCRIPTION,
                       payload: parser.parseFromString(
-                        randomJobArray.filter((el) => el._id === selectedJobId)[0].description,
+                        randomJobArray.filter(
+                          (el) => el._id === selectedJobId
+                        )[0].description,
                         "text/html"
                       ).body.innerHTML,
                     });
@@ -176,13 +216,20 @@ const Details = () => {
                   className="d-flex flex-column align-items-center justify-content-start w-100"
                 >
                   {loading === true
-                    ? [...Array(3).keys()].map((el) => <JobsPlaceholder key={el}></JobsPlaceholder>)
+                    ? [...Array(3).keys()].map((el) => (
+                        <JobsPlaceholder key={el}></JobsPlaceholder>
+                      ))
                     : randomJobArray.length !== 0 && selectedJobId !== ""
                     ? randomJobArray.map((job) => (
                         <Link
                           key={job._id}
                           className="text-decoration-none w-100"
-                          to={`/jobs/` + params.query + `/details/mobile/random/` + job._id}
+                          to={
+                            `/jobs/` +
+                            params.query +
+                            `/details/mobile/random/` +
+                            job._id
+                          }
                         >
                           <Jobs selected={selectedJobId} jobData={job}></Jobs>
                         </Link>
@@ -193,7 +240,12 @@ const Details = () => {
                           <Link
                             key={job._id}
                             className="text-decoration-none w-100"
-                            to={`/jobs/` + params.query + `/details/mobile/random/` + job._id}
+                            to={
+                              `/jobs/` +
+                              params.query +
+                              `/details/mobile/random/` +
+                              job._id
+                            }
                           >
                             <Jobs selected={true} jobData={job}></Jobs>
                           </Link>
@@ -203,7 +255,12 @@ const Details = () => {
                             <Link
                               key={job._id}
                               className="text-decoration-none w-100"
-                              to={`/jobs/` + params.query + `/details/mobile/random/` + job._id}
+                              to={
+                                `/jobs/` +
+                                params.query +
+                                `/details/mobile/random/` +
+                                job._id
+                              }
                             >
                               <Jobs selected={false} jobData={job}></Jobs>
                             </Link>
@@ -216,7 +273,9 @@ const Details = () => {
                     dispatch({
                       type: SELECT_DESCRIPTION,
                       payload: parser.parseFromString(
-                        randomJobArray.filter((el) => el._id === selectedJobId)[0].description,
+                        randomJobArray.filter(
+                          (el) => el._id === selectedJobId
+                        )[0].description,
                         "text/html"
                       ).body.innerHTML,
                     });
@@ -224,16 +283,36 @@ const Details = () => {
                   className="d-flex flex-column align-items-center justify-content-start w-100"
                 >
                   {loading === true
-                    ? [...Array(3).keys()].map((el) => <JobsPlaceholder key={el}></JobsPlaceholder>)
+                    ? [...Array(3).keys()].map((el) => (
+                        <JobsPlaceholder key={el}></JobsPlaceholder>
+                      ))
                     : randomJobArray.length !== 0 && selectedJobId !== ""
-                    ? randomJobArray.map((job) => <Jobs selected={selectedJobId} jobData={job} key={job._id}></Jobs>)
+                    ? randomJobArray.map((job) => (
+                        <Jobs
+                          selected={selectedJobId}
+                          jobData={job}
+                          key={job._id}
+                        ></Jobs>
+                      ))
                     : randomJobArray
                         .slice(0, 1)
-                        .map((job) => <Jobs selected={true} jobData={job} key={job._id}></Jobs>)
+                        .map((job) => (
+                          <Jobs
+                            selected={true}
+                            jobData={job}
+                            key={job._id}
+                          ></Jobs>
+                        ))
                         .concat(
                           randomJobArray
                             .slice(1)
-                            .map((job) => <Jobs selected={false} jobData={job} key={job._id}></Jobs>)
+                            .map((job) => (
+                              <Jobs
+                                selected={false}
+                                jobData={job}
+                                key={job._id}
+                              ></Jobs>
+                            ))
                         )}
                 </div>
               )}
@@ -255,7 +334,10 @@ const Details = () => {
         </Row>
       ) : location.pathname.includes("category") ? (
         <Row>
-          <Col sm={6} className="flex-grow-1 mb-5 mb-md-0 align-items-center justify-content-start">
+          <Col
+            sm={6}
+            className="flex-grow-1 mb-5 mb-md-0 align-items-center justify-content-start"
+          >
             <div className="bg-primary px-2 py-1 position-sticky top-0 text-white">
               <h4 className="m-0" style={{ fontSize: "15px" }}>
                 Offerte di lavoro sulla base del tuo profilo
@@ -271,7 +353,9 @@ const Details = () => {
                     dispatch({
                       type: SELECT_DESCRIPTION,
                       payload: parser.parseFromString(
-                        categoryJobArray.filter((el) => el._id === selectedJobId)[0].description,
+                        categoryJobArray.filter(
+                          (el) => el._id === selectedJobId
+                        )[0].description,
                         "text/html"
                       ).body.innerHTML,
                     });
@@ -279,13 +363,20 @@ const Details = () => {
                   className="d-flex flex-column align-items-center justify-content-start w-100"
                 >
                   {loading === true
-                    ? [...Array(3).keys()].map((el) => <JobsPlaceholder key={el}></JobsPlaceholder>)
+                    ? [...Array(3).keys()].map((el) => (
+                        <JobsPlaceholder key={el}></JobsPlaceholder>
+                      ))
                     : categoryJobArray.length !== 0 && selectedJobId !== ""
                     ? categoryJobArray.map((job) => (
                         <Link
                           key={job._id}
                           className="text-decoration-none w-100"
-                          to={`/jobs/` + params.query + `/details/mobile/dev/` + job._id}
+                          to={
+                            `/jobs/` +
+                            params.query +
+                            `/details/mobile/dev/` +
+                            job._id
+                          }
                         >
                           <Jobs selected={selectedJobId} jobData={job}></Jobs>
                         </Link>
@@ -296,7 +387,12 @@ const Details = () => {
                           <Link
                             key={job._id}
                             className="text-decoration-none w-100"
-                            to={`/jobs/` + params.query + `/details/mobile/dev/` + job._id}
+                            to={
+                              `/jobs/` +
+                              params.query +
+                              `/details/mobile/dev/` +
+                              job._id
+                            }
                           >
                             <Jobs selected={true} jobData={job}></Jobs>
                           </Link>
@@ -306,7 +402,12 @@ const Details = () => {
                             <Link
                               key={job._id}
                               className="text-decoration-none w-100"
-                              to={`/jobs/` + params.query + `/details/mobile/dev/` + job._id}
+                              to={
+                                `/jobs/` +
+                                params.query +
+                                `/details/mobile/dev/` +
+                                job._id
+                              }
                             >
                               <Jobs selected={false} jobData={job}></Jobs>
                             </Link>
@@ -319,7 +420,9 @@ const Details = () => {
                     dispatch({
                       type: SELECT_DESCRIPTION,
                       payload: parser.parseFromString(
-                        categoryJobArray.filter((el) => el._id === selectedJobId)[0].description,
+                        categoryJobArray.filter(
+                          (el) => el._id === selectedJobId
+                        )[0].description,
                         "text/html"
                       ).body.innerHTML,
                     });
@@ -327,16 +430,36 @@ const Details = () => {
                   className="d-flex flex-column align-items-center justify-content-start w-100"
                 >
                   {loading === true
-                    ? [...Array(3).keys()].map((el) => <JobsPlaceholder key={el}></JobsPlaceholder>)
+                    ? [...Array(3).keys()].map((el) => (
+                        <JobsPlaceholder key={el}></JobsPlaceholder>
+                      ))
                     : categoryJobArray.length !== 0 && selectedJobId !== ""
-                    ? categoryJobArray.map((job) => <Jobs selected={selectedJobId} jobData={job} key={job._id}></Jobs>)
+                    ? categoryJobArray.map((job) => (
+                        <Jobs
+                          selected={selectedJobId}
+                          jobData={job}
+                          key={job._id}
+                        ></Jobs>
+                      ))
                     : categoryJobArray
                         .slice(0, 1)
-                        .map((job) => <Jobs selected={true} jobData={job} key={job._id}></Jobs>)
+                        .map((job) => (
+                          <Jobs
+                            selected={true}
+                            jobData={job}
+                            key={job._id}
+                          ></Jobs>
+                        ))
                         .concat(
                           categoryJobArray
                             .slice(1)
-                            .map((job) => <Jobs selected={false} jobData={job} key={job._id}></Jobs>)
+                            .map((job) => (
+                              <Jobs
+                                selected={false}
+                                jobData={job}
+                                key={job._id}
+                              ></Jobs>
+                            ))
                         )}
                 </div>
               )}
@@ -358,7 +481,10 @@ const Details = () => {
         </Row>
       ) : (
         <Row>
-          <Col sm={6} className="flex-grow-1 mb-5 mb-md-0 align-items-center justify-content-start">
+          <Col
+            sm={6}
+            className="flex-grow-1 mb-5 mb-md-0 align-items-center justify-content-start"
+          >
             <div className="bg-primary px-2 py-1 position-sticky top-0 text-white">
               <h4 className="m-0" style={{ fontSize: "15px" }}>
                 Offerte di lavoro sulla base del tuo profilo
@@ -374,7 +500,9 @@ const Details = () => {
                     dispatch({
                       type: SELECT_DESCRIPTION,
                       payload: parser.parseFromString(
-                        searchedJobArray.filter((el) => el._id === selectedJobId)[0].description,
+                        searchedJobArray.filter(
+                          (el) => el._id === selectedJobId
+                        )[0].description,
                         "text/html"
                       ).body.innerHTML,
                     });
@@ -382,13 +510,22 @@ const Details = () => {
                   className="d-flex flex-column align-items-center justify-content-start w-100"
                 >
                   {loading === true
-                    ? [...Array(3).keys()].map((el) => <JobsPlaceholder key={el}></JobsPlaceholder>)
+                    ? [...Array(3).keys()].map((el) => (
+                        <JobsPlaceholder key={el}></JobsPlaceholder>
+                      ))
                     : searchedJobArray.length !== 0 && selectedJobId !== ""
                     ? searchedJobArray.map((job) => (
                         <Link
                           key={job._id}
                           className="text-decoration-none w-100"
-                          to={`/jobs/` + params.query + `/details/mobile/` + params.query + `/` + job._id}
+                          to={
+                            `/jobs/` +
+                            params.query +
+                            `/details/mobile/` +
+                            params.query +
+                            `/` +
+                            job._id
+                          }
                         >
                           <Jobs selected={selectedJobId} jobData={job}></Jobs>
                         </Link>
@@ -399,7 +536,14 @@ const Details = () => {
                           <Link
                             key={job._id}
                             className="text-decoration-none w-100"
-                            to={`/jobs/` + params.query + `/details/mobile/` + params.query + `/` + job._id}
+                            to={
+                              `/jobs/` +
+                              params.query +
+                              `/details/mobile/` +
+                              params.query +
+                              `/` +
+                              job._id
+                            }
                           >
                             <Jobs selected={true} jobData={job}></Jobs>
                           </Link>
@@ -409,7 +553,14 @@ const Details = () => {
                             <Link
                               key={job._id}
                               className="text-decoration-none w-100"
-                              to={`/jobs/` + params.query + `/details/mobile/` + params.query + `/` + job._id}
+                              to={
+                                `/jobs/` +
+                                params.query +
+                                `/details/mobile/` +
+                                params.query +
+                                `/` +
+                                job._id
+                              }
                             >
                               <Jobs selected={false} jobData={job}></Jobs>
                             </Link>
@@ -422,7 +573,9 @@ const Details = () => {
                     dispatch({
                       type: SELECT_DESCRIPTION,
                       payload: parser.parseFromString(
-                        searchedJobArray.filter((el) => el._id === selectedJobId)[0].description,
+                        searchedJobArray.filter(
+                          (el) => el._id === selectedJobId
+                        )[0].description,
                         "text/html"
                       ).body.innerHTML,
                     });
@@ -430,16 +583,36 @@ const Details = () => {
                   className="d-flex flex-column align-items-center justify-content-start w-100"
                 >
                   {loading === true
-                    ? [...Array(3).keys()].map((el) => <JobsPlaceholder key={el}></JobsPlaceholder>)
+                    ? [...Array(3).keys()].map((el) => (
+                        <JobsPlaceholder key={el}></JobsPlaceholder>
+                      ))
                     : searchedJobArray.length !== 0 && selectedJobId !== ""
-                    ? searchedJobArray.map((job) => <Jobs selected={selectedJobId} jobData={job} key={job._id}></Jobs>)
+                    ? searchedJobArray.map((job) => (
+                        <Jobs
+                          selected={selectedJobId}
+                          jobData={job}
+                          key={job._id}
+                        ></Jobs>
+                      ))
                     : searchedJobArray
                         .slice(0, 1)
-                        .map((job) => <Jobs selected={true} jobData={job} key={job._id}></Jobs>)
+                        .map((job) => (
+                          <Jobs
+                            selected={true}
+                            jobData={job}
+                            key={job._id}
+                          ></Jobs>
+                        ))
                         .concat(
                           searchedJobArray
                             .slice(1)
-                            .map((job) => <Jobs selected={false} jobData={job} key={job._id}></Jobs>)
+                            .map((job) => (
+                              <Jobs
+                                selected={false}
+                                jobData={job}
+                                key={job._id}
+                              ></Jobs>
+                            ))
                         )}
                 </div>
               )}

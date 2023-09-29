@@ -11,11 +11,11 @@ const SingleExperience = ({ exp }) => {
         />
       </div>
       <div className="d-flex flex-column">
-        <h4 style={{ fontSize: "16px" }}>{exp.role}</h4>
-        <p style={{ fontSize: "14px" }}>
+        <h4 style={{ fontSize: "16px", margin: "0" }}>{exp.role}</h4>
+        <p style={{ fontSize: "14px", margin: "0" }}>
           {exp.company} • {exp.area}
         </p>
-        <p style={{ fontSize: "14px" }}>
+        <p style={{ fontSize: "14px", margin: "0" }}>
           {new Date(`${exp.startDate}`).toLocaleDateString()} -{" "}
           {new Date(`${exp.endDate}`).toLocaleDateString()}
           {/* •{" "}

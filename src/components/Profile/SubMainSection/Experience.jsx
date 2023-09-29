@@ -3,7 +3,7 @@ import AddSVG from "../Svgs/AddSVG";
 import PenSVG from "../Svgs/PenSVG";
 import { Button, Form, Modal } from "react-bootstrap";
 import ArrowSVG from "../Svgs/ArrowSVG";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import XsAddSVG from "../Svgs/XsAddSVG";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -16,13 +16,20 @@ const Experience = () => {
   const dispatch = useDispatch();
   const myProfile = useSelector((state) => state.profiles.myProfile);
   const experience = useSelector((state) => state.profiles.experience);
+  const navigate = useNavigate();
   const currentExperience = useSelector(
     (state) => state.profiles.currentExperience
   );
   const params = useParams();
+
+  //___________________________PER MODALE___________________________
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  //___________________________FINE PER MODALE___________________________
+
   const arrMonths = [
     "Gennaio",
     "Febbraio",
@@ -67,8 +74,6 @@ const Experience = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(startDate.mese, typeof startDate.mese);
-    console.log(startDate.anno, typeof startDate.anno);
     const inizio = new Date(`${startDate.anno} ${startDate.mese} 1`);
     const fine = new Date(`${endDate.anno} ${endDate.mese} 1`);
     setQuery({
@@ -107,7 +112,7 @@ const Experience = () => {
           paddingTop: "18px",
         }}
       >
-        <h3 style={{ fontSize: "20px" }}>Esperienza</h3>
+        <h3 style={{ fontSize: "20px" }}>Esperienze</h3>
         {!params.id && (
           <div className="d-flex align-items-center gap-1">
             <span onClick={handleShow} className="SVG-click">
@@ -421,7 +426,10 @@ const Experience = () => {
                 
               </Modal.Footer> */}
             </Modal>
-            <span className="SVG-click">
+            <span
+              className="SVG-click"
+              onClick={() => navigate(`/profile/experience/details`)}
+            >
               <PenSVG />
             </span>
           </div>

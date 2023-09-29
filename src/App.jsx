@@ -11,6 +11,7 @@ import DetailsMobile from "./components/Job/DetailsMobile";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getAllProfilesAction, getMyProfileAction } from "./redux/actions";
+import PutDeleteExperience from "./components/Profile/SubMainSection/PutDeleteExperience";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,9 +28,19 @@ function App() {
       <Routes>
         <Route path="/profile/" element={<ProfilePage />}></Route>
         <Route path="/profile/:id" element={<ProfilePage />}></Route>
+        <Route
+          path="/profile/experience/details"
+          element={<PutDeleteExperience />}
+        ></Route>
         <Route path="/jobs/:query" element={<JobPage></JobPage>}></Route>
-        <Route path="/jobs/:query/details/:category" element={<Details></Details>}></Route>
-        <Route path="/jobs/:query/details/mobile/:category/:jobId" element={<DetailsMobile></DetailsMobile>}></Route>
+        <Route
+          path="/jobs/:query/details/:category"
+          element={<Details></Details>}
+        ></Route>
+        <Route
+          path="/jobs/:query/details/mobile/:category/:jobId"
+          element={<DetailsMobile></DetailsMobile>}
+        ></Route>
         <Route path="/" element={<HomeMain />} />
       </Routes>
     </BrowserRouter>

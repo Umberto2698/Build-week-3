@@ -24,6 +24,8 @@ export const GET_USER_PROFILE = "GET_USER_PROFILE";
 export const GET_EXPERIENCE = "GET_EXPERIENCE";
 export const GET_CURRENT_EXPERIENCE = "GET_CURRENT_EXPERIENCE";
 export const ADD_EXPERIENCE = "ADD_EXPERIENCE";
+export const PUT_EXPERIENCE = "PUT_EXPERIENCE";
+export const DELETE_EXPERIENCE = "DELETE_EXPERIENCE";
 export const ISLOADING_PROFILES_FALSE = "ISLOADING_PROFILES_FALSE";
 export const ISLOADING_MY_PROFILES_FALSE = "ISLOADING_MY_PROFILES_FALSE";
 export const ISLOADING_USER_PROFILES_FALSE = "ISLOADING_USER_PROFILES_FALSE";
@@ -31,16 +33,16 @@ export const ISLOADING_USER_PROFILES_TRUE = "ISLOADING_USER_PROFILES_TRUE";
 
 //____________________________________________________________________________________________________________________
 
-export const SET_PROFILE = "SET_PROFILE";
-export const PROFILE = "PROFILE";
-export const ALL_PROFILE = "ALL_PROFILE";
+// export const SET_PROFILE = "SET_PROFILE";
+// export const PROFILE = "PROFILE";
+// export const ALL_PROFILE = "ALL_PROFILE";
+// export const ALL_EXPERIENCES = "ALL_EXPERIENCES";
+// export const CHANGE_EXP = "CHANGE_EXP";
+// export const DELETE_EXP = "DELETE_EXP";
+// export const PUT_EXPERIENCES = "PUT_EXPERIENCES";
 export const GET_FORM_DATA = "GET_FORM_DATA";
 export const GET_SEARCH_DATA = "GET_SEARCH_DATA";
 export const POST_EXPERIENCES = "POST_EXPERIENCES";
-export const ALL_EXPERIENCES = "ALL_EXPERIENCES";
-export const CHANGE_EXP = "CHANGE_EXP";
-export const DELETE_EXP = "DELETE_EXP";
-export const PUT_EXPERIENCES = "PUT_EXPERIENCES";
 export const GET_POSTS = "GET_POSTS";
 export const NEW_POST = "NEW_POST";
 export const PUBLIC_POST = "PUBLIC_POST";
@@ -364,6 +366,54 @@ export const modifyMyExperienceAction = (userId, experienceMod) => {
         const experience = await resp.json();
         console.log("experience", experience);
         dispatch({ type: ADD_EXPERIENCE, payload: experience });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const putMyExperienceAction = (userId, expId, experienceMod, index) => {
+  return async (dispatch) => {
+    const URL = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`;
+    const method = {
+      method: "PUT",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExNGI4YzM3NTJhODAwMTQ1Njg3NmMiLCJpYXQiOjE2OTU2MzIyNjgsImV4cCI6MTY5Njg0MTg2OH0.gzlYEvqJw2sYnF11tPjrNqPrWR0KLj0FbEEpodBxeZo",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(experienceMod),
+    };
+
+    try {
+      const resp = await fetch(URL, method);
+      if (resp.ok) {
+        const experience = await resp.json();
+        console.log("experience", experience);
+        dispatch({ type: PUT_EXPERIENCE, payload: experience });
+        // dispatch({ type: PUT_EXPERIENCE, payload: [experience, index] });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+export const deleteMyExperienceAction = (userId, expId) => {
+  return async (dispatch) => {
+    const URL = `https://striveschool-api.herokuapp.com/api/profile/${userId}/experiences/${expId}`;
+    const method = {
+      method: "DELETE",
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTExNGI4YzM3NTJhODAwMTQ1Njg3NmMiLCJpYXQiOjE2OTU2MzIyNjgsImV4cCI6MTY5Njg0MTg2OH0.gzlYEvqJw2sYnF11tPjrNqPrWR0KLj0FbEEpodBxeZo",
+      },
+    };
+
+    try {
+      const resp = await fetch(URL, method);
+      if (resp.ok) {
+        dispatch({ type: DELETE_EXPERIENCE, payload: expId });
       }
     } catch (error) {
       console.log(error);
