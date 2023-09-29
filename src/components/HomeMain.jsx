@@ -212,17 +212,6 @@ const HomeMain = () => {
                 </div>
               </div>
             </Col>
-            <div className="d-flex mb-1">
-              <div className="d-flex flex-grow-1 align-items-center">
-                <div className="border-bottom border-secondary flex-grow-1"></div>
-              </div>
-              <div className="ms-3 text-secondary" style={{ fontSize: "0.7rem" }}>
-                Seleziona la visualizzazione del feed:
-              </div>
-              <div className="ms-1" style={{ fontSize: "0.7rem" }}>
-                <span className="fw-medium"> Piú rilevanti per primi </span> <CaretDownFill />
-              </div>
-            </div>
 
             <HomePostContainer />
           </Col>
